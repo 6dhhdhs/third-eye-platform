@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="页面不可用：内容不存在或当前账号无权限访问。"
+    />
+    <title>页面不可用 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="404" class="workspace no-sidebar">
+    <main
+      id="main-content"
+      class="ws-main"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        min-height: calc(100vh - 120px);
+      "
+    >
+      <section
+        class="panel"
+        style="
+          max-width: 520px;
+          width: 100%;
+          text-align: center;
+          padding: 40px 32px;
+        "
+        aria-labelledby="err-title"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="
+            font-size: 30px;
+            color: #426278;
+            background: #eaf1f5;
+            width: 62px;
+            height: 62px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          "
+          aria-hidden="true"
+          >search_off</span
+        >
+        <p
+          class="tabular"
+          style="
+            font-size: 38px;
+            font-weight: 700;
+            color: #234357;
+            margin-top: 10px;
+          "
+        >
+          404
+        </p>
+        <h1 id="err-title" style="font-size: 20px; margin-top: 4px">
+          内容不可用
+        </h1>
+        <p class="muted" style="margin-top: 8px; font-size: 12px">
+          该页面可能已删除，或你暂无权限访问他人的课例与教案记录。
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+          "
+        >
+          <a class="btn-primary" href="home.html">
+            <span class="material-symbols-outlined" style="font-size: 18px"
+              >home</span
+            >返回首页
+          </a>
+          <button type="button" id="goBack" class="btn-ghost btn-sm">
+            <span class="material-symbols-outlined">arrow_back</span>返回上一页
+          </button>
+        </div>
+        <p class="hint" style="margin-top: 14px">
+          若确认链接无误，请联系课程助教核对课例授权。
+        </p>
+      </section>
+
+      <p class="ws-note" style="margin: 0">
+        原型演示：所有数据均为示例，不涉及真实账号与课例。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script>
+      document.getElementById("goBack").addEventListener("click", function () {
+        if (window.history.length > 1) window.history.back();
+        else window.location.href = "home.html";
+      });
+    </script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

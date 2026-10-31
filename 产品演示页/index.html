@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第三只眼 · 产品演示页</title>
+<!-- 内联 SVG 站点图标：不引用外部图片，保证离线可用 -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%238FAFC8'/><path d='M5 16s4.6-6.5 11-6.5S27 16 27 16s-4.6 6.5-11 6.5S5 16 5 16Z' fill='none' stroke='%23253B4A' stroke-width='2.4' stroke-linejoin='round'/><circle cx='16' cy='16' r='3.4' fill='%23253B4A'/></svg>">
+<!--
+  第三只眼 —— 师范生智能学习与教学能力训练平台 · 产品演示页
+  ------------------------------------------------------------------
+  性质：静态陈列页。只呈现 PRD 已定义的内容，不实现任何产品逻辑。
+  本文件含 0 行 JavaScript，双击即可打开，断网亦可完整查看。
+  全部内容可溯源至《智能学习平台 PRD 需求规范》V1.0（2026-10-08）的章节号。
+-->
+<style>
+/* ============================================================
+   设计令牌：直接落地 PRD 10.2，未自行改色
+   ============================================================ */
+:root{
+  --brand-blue:#8FAFC8;
+  --brand-white:#FFFFFF;
+  --blue-light:#EDF3F8;
+  --blue-lighter:#F7FAFC;
+  --text-primary:#253B4A;
+  --text-secondary:#526778;
+  --border-default:#DAE5ED;
+  --focus-outline:#395A73;
+  --danger:#A84646;
+  --success:#3C7862;
+  --radius-card:16px;
+  --radius-control:10px;
+  --space-unit:8px;
+
+  /* 布局令牌（非 PRD 规定，仅本演示页排版用） */
+  --maxw:1200px;
+  --line:#DCE7EF;
+  --shadow:0 1px 2px rgba(37,59,74,.04), 0 6px 20px rgba(37,59,74,.05);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--brand-white);
+  color:var(--text-primary);
+  font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+a{color:var(--focus-outline)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.sec{padding:64px 0;border-top:1px solid var(--border-default);scroll-margin-top:64px}
+.sec--tint{background:var(--blue-lighter)}
+.sec--tint2{background:var(--blue-light)}
+
+/* ============================================================
+   顶部吸顶导航
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border-default);
+}
+.topbar__in{
+  max-width:var(--maxw);margin:0 auto;padding:10px 24px;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px}
+.brand__mark{width:26px;height:26px;flex:none;border-radius:7px;background:var(--brand-blue);display:grid;place-items:center}
+.brand__mark svg{width:18px;height:18px;display:block}
+.brand small{font-weight:400;font-size:12px;color:var(--text-secondary);letter-spacing:0}
+.topnav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.topnav a{
+  display:block;padding:6px 12px;border-radius:var(--radius-control);
+  font-size:14px;text-decoration:none;color:var(--text-secondary);
+  border:1px solid transparent;
+}
+.topnav a:hover{background:var(--blue-light);color:var(--text-primary)}
+.topnav a:focus-visible{outline:2px solid var(--focus-outline);outline-offset:2px}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{padding:56px 0 48px;background:var(--brand-white)}
+.hero__eyebrow{
+  display:inline-block;padding:4px 12px;border-radius:999px;
+  background:var(--blue-light);color:var(--focus-outline);
+  font-size:13px;letter-spacing:.5px;margin-bottom:20px;
+}
+.hero h1{
+  margin:0;font-size:clamp(34px,6vw,54px);line-height:1.15;letter-spacing:2px;
+}
+/* 「只眼」二字用主蓝底 + 深蓝灰字：PRD 10.2 禁止 #8FAFC8 作为白底小字号文字
+   （白底对比度仅 2.30:1），因此把主蓝用作填充而非字色。 */
+.hero h1 span{
+  background:var(--brand-blue);color:var(--text-primary);
+  padding:0 .1em;border-radius:8px;
+}
+.hero__sub{margin:6px 0 0;font-size:15px;letter-spacing:3px;color:var(--text-secondary);text-transform:uppercase}
+.hero__pos{margin:20px 0 0;font-size:clamp(18px,2.4vw,22px);font-weight:700}
+.hero__lead{margin:16px 0 0;max-width:74ch;color:var(--text-secondary);font-size:16px}
+.hero__quote{
+  margin:24px 0 0;padding:16px 20px;max-width:74ch;
+  border-left:3px solid var(--brand-blue);background:var(--blue-lighter);
+  border-radius:0 var(--radius-control) var(--radius-control) 0;
+  font-size:17px;
+}
+.hero__meta{
+  margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 28px;
+  font-size:13px;color:var(--text-secondary);
+}
+.hero__meta b{color:var(--text-primary);font-weight:600}
+
+/* 令牌条 */
+.strip{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px}
+.strip i{height:34px;flex:1 1 60px;border-radius:6px;border:1px solid rgba(37,59,74,.08)}
+
+/* ============================================================
+   区块标题
+   ============================================================ */
+.head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.head__no{
+  font-size:13px;font-weight:700;letter-spacing:1px;color:var(--focus-outline);
+  background:var(--blue-light);padding:3px 10px;border-radius:6px;
+}
+.head h2{margin:0;font-size:clamp(22px,3vw,28px);letter-spacing:.5px}
+.head__src{margin-left:auto;font-size:12px;color:var(--text-secondary);border:1px dashed var(--border-default);padding:2px 8px;border-radius:6px}
+.sec__note{margin:0 0 28px;max-width:80ch;color:var(--text-secondary);font-size:15px}
+h3.blk{margin:40px 0 14px;font-size:19px;letter-spacing:.5px}
+h3.blk:first-of-type{margin-top:0}
+h3.blk small{font-weight:400;font-size:13px;color:var(--text-secondary);margin-left:8px}
+
+/* ============================================================
+   通用卡片
+   ============================================================ */
+.card{
+  background:var(--brand-white);border:1px solid var(--border-default);
+  border-radius:var(--radius-card);box-shadow:var(--shadow);padding:20px;
+}
+.grid{display:grid;gap:16px}
+.g-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g-3{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.g-4{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.g-page{grid-template-columns:repeat(auto-fill,minmax(304px,1fr));gap:20px}
+
+/* ============================================================
+   S1 立意对照 / 价值 / 痛点
+   ============================================================ */
+.cmp{width:100%;border-collapse:collapse;font-size:15px;background:#fff;
+     border:1px solid var(--border-default);border-radius:var(--radius-card);overflow:hidden}
+.cmp th,.cmp td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border-default);vertical-align:top}
+.cmp thead th{background:var(--blue-light);font-size:14px}
+.cmp thead th:last-child{background:var(--brand-blue);color:var(--text-primary)}
+.cmp tbody tr:last-child td{border-bottom:0}
+.cmp td:first-child{color:var(--text-secondary);width:88px;font-size:14px}
+.cmp td:last-child{font-weight:600}
+
+.vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.val{background:#fff;border:1px solid var(--border-default);border-radius:var(--radius-card);padding:18px 20px}
+.val b{display:block;font-size:18px;letter-spacing:2px;margin-bottom:6px}
+.val b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;
+               background:var(--brand-blue);margin-right:8px;vertical-align:middle}
+.val p{margin:0;font-size:14px;color:var(--text-secondary)}
+
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.tbl th,.tbl td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border-default);vertical-align:top}
+.tbl thead th{background:var(--blue-light);white-space:nowrap}
+.tbl tbody tr:nth-child(even){background:var(--blue-lighter)}
+.tbl code{background:var(--blue-light);padding:1px 5px;border-radius:4px;font-size:13px}
+
+/* ============================================================
+   S2 功能模块卡
+   ============================================================ */
+.mod{position:relative;background:#fff;border:1px solid var(--border-default);
+     border-radius:var(--radius-card);padding:18px 18px 16px;box-shadow:var(--shadow);
+     display:flex;flex-direction:column;gap:8px}
+.mod__id{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--focus-outline)}
+.mod h4{margin:0;font-size:17px}
+.mod p{margin:0;font-size:14px;color:var(--text-secondary);flex:1}
+.mod__foot{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.tag{font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--border-default);color:var(--text-secondary);background:var(--blue-lighter)}
+.tag--p0{background:var(--brand-blue);border-color:var(--brand-blue);color:var(--text-primary);font-weight:600}
+.tag--p1{background:#fff;border-color:var(--brand-blue);color:var(--focus-outline)}
+.tag--p2{background:#fff;border-style:dashed;color:var(--text-secondary)}
+.tag--key{background:var(--text-primary);border-color:var(--text-primary);color:#fff;font-weight:600}
+.mod--key{border-color:var(--brand-blue);border-left:5px solid var(--brand-blue)}
+
+/* ============================================================
+   S3 流程图
+   ============================================================ */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px}
+.node{
+  background:#fff;border:1px solid var(--border-default);border-radius:var(--radius-control);
+  padding:10px 16px;font-size:14px;display:flex;align-items:center;gap:8px;
+  box-shadow:var(--shadow);
+}
+.node--a{background:var(--brand-blue);border-color:var(--brand-blue);color:var(--text-primary);font-weight:600}
+.node--l{background:var(--blue-light)}
+/* 箭头是有文字的蓝色元素，同样不能直接取 #8FAFC8 作字色，改用 PRD 令牌 --focus-outline */
+.arw{display:grid;place-items:center;color:var(--focus-outline);font-size:16px;min-width:20px}
+.flow--col{flex-direction:column;align-items:flex-start}
+.flow--col .arw{transform:rotate(90deg);padding-left:14px}
+
+/* ============================================================
+   S4 页面地图卡 + 线框缩略图
+   ============================================================ */
+.pg{background:#fff;border:1px solid var(--border-default);border-radius:var(--radius-card);
+    padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.pg__top{display:flex;align-items:baseline;gap:8px}
+.pg__id{font-size:12px;font-weight:700;color:var(--focus-outline);background:var(--blue-light);
+        padding:2px 8px;border-radius:6px;letter-spacing:.5px}
+.pg__name{font-size:16px;font-weight:700}
+.pg__route{font-size:12px;color:var(--text-secondary);font-family:Consolas,Menlo,monospace;
+           background:var(--blue-lighter);border:1px solid var(--border-default);
+           padding:1px 6px;border-radius:5px;align-self:flex-start}
+
+/* 线框缩略图 */
+.wf{height:152px;background:#fff;border:1px solid var(--border-default);border-radius:10px;
+    overflow:hidden;display:flex;flex-direction:column}
+.wf-top{height:16px;flex:none;background:var(--blue-light);display:flex;align-items:center;gap:5px;padding:0 8px}
+.wf-top b{width:14px;height:7px;border-radius:2px;background:var(--brand-blue);flex:none}
+.wf-top i{width:16px;height:5px;border-radius:2px;background:#C6D6E3;flex:none}
+.wf-b{flex:1;padding:8px;display:flex;gap:6px;min-height:0;overflow:hidden}
+.wf-c{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0;min-height:0}
+.wf-r{display:flex;gap:5px;min-width:0}
+.p{background:#DCE7EF;border-radius:3px;flex:none}
+.a{background:var(--brand-blue);border-radius:3px;flex:none}
+.l{background:var(--blue-light);border-radius:3px;flex:none}
+.t{background:#C6D6E3;border-radius:2px;height:5px;flex:none}
+.g{flex:1 1 auto;min-height:0}
+.f1{flex:1}
+.f12{flex:1.2}
+.f15{flex:1.5}
+.ctr{align-items:center;justify-content:center}
+
+.pg__meta{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--text-secondary)}
+.pg__meta dl{margin:0;display:grid;grid-template-columns:64px 1fr;gap:4px 10px}
+.pg__meta dt{color:var(--text-secondary);opacity:.85}
+.pg__meta dd{margin:0;color:var(--text-primary)}
+.pg__states{display:flex;flex-wrap:wrap;gap:6px}
+.st{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--blue-lighter);
+    border:1px solid var(--border-default);color:var(--text-primary)}
+
+/* ============================================================
+   S5 状态样例
+   ============================================================ */
+.demo{background:#fff;border:1px solid var(--border-default);border-radius:var(--radius-card);
+      padding:18px;display:flex;flex-direction:column;gap:12px}
+.demo__cap{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.demo__cap b{font-size:15px}
+.demo__cap span{font-size:12px;color:var(--text-secondary)}
+.demo__body{flex:1;display:flex;flex-direction:column;gap:10px;justify-content:center;
+            background:var(--blue-lighter);border:1px dashed var(--border-default);
+            border-radius:var(--radius-control);padding:14px}
+.demo__desc{margin:0;font-size:13px;color:var(--text-secondary)}
+
+/* 真按钮（静态，不响应点击） */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  font:inherit;font-size:14px;padding:9px 18px;border-radius:var(--radius-control);
+  border:1px solid transparent;cursor:default;white-space:nowrap;
+}
+.btn--primary{background:var(--brand-blue);color:var(--text-primary);font-weight:600}
+.btn--ghost{background:#fff;border-color:var(--brand-blue);color:var(--focus-outline)}
+.btn--text{background:transparent;color:var(--focus-outline);text-decoration:underline;padding-left:4px;padding-right:4px}
+.btn--done{background:var(--blue-light);color:var(--text-primary);border-color:var(--brand-blue);font-weight:600}
+.btn[disabled],.btn--off{background:#E7EDF2;color:#8C9AA5;border-color:#E7EDF2;cursor:not-allowed}
+.btn__why{font-size:12px;color:var(--text-secondary);display:block;margin-top:6px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.stack{display:flex;flex-direction:column;gap:6px}
+
+/* 骨架屏 */
+.sk{border-radius:4px;background:linear-gradient(90deg,#E9F0F5 25%,#F3F8FB 37%,#E9F0F5 63%);
+    background-size:400% 100%;height:10px}
+.sk--t{width:58%}
+.sk--m{width:82%}
+.sk--s{width:40%}
+.spin{width:18px;height:18px;border-radius:50%;border:2px solid var(--blue-light);
+      border-top-color:var(--brand-blue);flex:none}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--brand-blue);display:block}
+
+/* 日历 */
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal div{
+  aspect-ratio:1;border-radius:7px;background:#fff;border:1px solid var(--border-default);
+  display:grid;place-items:center;font-size:12px;color:var(--text-secondary);
+}
+.cal div.on{background:var(--brand-blue);border-color:var(--brand-blue);color:var(--text-primary);font-weight:700}
+.cal div.today{border:2px solid var(--focus-outline)}
+.cal__legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);margin-top:10px}
+.cal__legend span{display:inline-flex;align-items:center;gap:6px}
+.cal__legend i{width:12px;height:12px;border-radius:4px;display:block;border:1px solid var(--border-default)}
+
+/* 进度条 */
+.bar{height:8px;border-radius:999px;background:var(--blue-light);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand-blue);border-radius:999px}
+
+/* 提示条 */
+.note{font-size:13px;padding:10px 14px;border-radius:var(--radius-control);display:flex;gap:8px;align-items:flex-start}
+.note--ok{background:#EAF3EE;color:var(--success);border:1px solid #CFE2D8}
+.note--err{background:#F8EDED;color:var(--danger);border:1px solid #EBD4D4}
+.note--info{background:var(--blue-light);color:var(--focus-outline);border:1px solid var(--border-default)}
+.note b{font-weight:700}
+
+/* ============================================================
+   S6 配色
+   ============================================================ */
+.sw{background:#fff;border:1px solid var(--border-default);border-radius:var(--radius-card);
+    overflow:hidden;box-shadow:var(--shadow)}
+.sw__chip{height:76px;display:grid;place-items:end start;padding:8px 12px;font-size:12px;font-weight:600}
+.sw__b{padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.sw__b code{font-family:Consolas,Menlo,monospace;font-size:13px;color:var(--text-primary)}
+.sw__b small{font-size:12px;color:var(--text-secondary)}
+.sw__var{font-size:12px;font-family:Consolas,Menlo,monospace;color:var(--focus-outline)}
+.ratio{font-size:12px;color:var(--text-secondary)}
+.ratio em{font-style:normal;font-weight:700;color:var(--text-primary)}
+
+/* ============================================================
+   S7 排版
+   ============================================================ */
+.type-row{display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:baseline;
+          padding:14px 0;border-bottom:1px dashed var(--border-default)}
+.type-row:last-child{border-bottom:0}
+.type-row dt{font-size:12px;color:var(--text-secondary);font-family:Consolas,Menlo,monospace;margin:0}
+.type-row dd{margin:0}
+.space-scale{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.space-scale div{text-align:center;font-size:12px;color:var(--text-secondary)}
+.space-scale i{display:block;background:var(--brand-blue);border-radius:3px;margin-bottom:6px}
+
+/* ============================================================
+   S8 响应式
+   ============================================================ */
+.dev{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end}
+.dev figure{margin:0;text-align:center}
+.dev .frame{border:2px solid var(--text-primary);border-radius:10px;padding:6px;background:#fff}
+.dev .frame .in{background:var(--blue-lighter);border-radius:5px;display:flex;flex-direction:column;gap:4px;padding:5px}
+.dev figcaption{font-size:12px;color:var(--text-secondary);margin-top:8px;line-height:1.5}
+
+/* ============================================================
+   S9 边界
+   ============================================================ */
+.no{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--border-default);
+    border-radius:var(--radius-control);padding:12px 14px;font-size:14px}
+.no i{color:var(--danger);font-style:normal;font-weight:700;flex:none}
+.no i.ok{color:var(--success)}
+
+footer{padding:40px 0 56px;border-top:1px solid var(--border-default);background:var(--blue-lighter);
+       font-size:13px;color:var(--text-secondary)}
+footer b{color:var(--text-primary)}
+
+@media (max-width:860px){
+  .head__src{margin-left:0}
+  .sec{padding:48px 0}
+  .topnav{width:100%;margin-left:0}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .topbar__in{padding:8px 16px}
+  .type-row{grid-template-columns:1fr;gap:6px}
+  .pg__meta dl{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= 顶部导航 ================= -->
+<header class="topbar">
+  <div class="topbar__in">
+    <div class="brand">
+      <span class="brand__mark">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 12s3.8-5.6 10-5.6S22 12 22 12s-3.8 5.6-10 5.6S2 12 2 12Z"
+                fill="none" stroke="#253B4A" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="2.6" fill="#253B4A"/>
+        </svg>
+      </span>
+      第三只眼 <small>产品演示页</small>
+    </div>
+    <nav class="topnav" aria-label="页内导航">
+      <a href="#position">产品定位</a>
+      <a href="#modules">功能模块</a>
+      <a href="#flow">模块关联</a>
+      <a href="#pages">页面地图</a>
+      <a href="#states">状态设计</a>
+      <a href="#design">配色与组件</a>
+      <a href="#type">排版间距</a>
+      <a href="#responsive">响应式</a>
+      <a href="#boundary">边界声明</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="hero__eyebrow">课程《智能学习平台开发》· PRD 需求规范 V1.0 可视化陈列</span>
+    <h1>第三<span>只眼</span></h1>
+    <p class="hero__sub">Third Eye</p>
+    <p class="hero__pos">师范生智能学习与教学能力训练平台</p>
+    <p class="hero__lead">
+      学生观看真实课堂录像，边看边打点标注教学事件并撰写评课文本；平台从「注意、推理、表述」三个维度
+      刻画其课堂观察能力，定位每个人的观察盲区，据此靶向推送针对性训练任务，并支持与专家标注、
+      同伴观察结果的对比分析。
+    </p>
+    <p class="hero__quote">
+      它不是替学生评课，而是<b>评学生怎么评课</b>——同一节课，学生打点的分布和编码偏好就是数据，
+      系统据此判出他的观察盲区在哪，再推训练。
+    </p>
+
+    <div class="hero__meta">
+      <span>项目理念：<b>观察他人的课，练习自己的课，让教学成长有据可依</b></span>
+      <span>主题配色：<b>低饱和蓝 #8FAFC8 + 纯白 #FFFFFF</b></span>
+      <span>本页依据：<b>《智能学习平台 PRD 需求规范》V1.0（2026-10-08）</b></span>
+    </div>
+
+    <div class="strip" aria-hidden="true">
+      <i style="background:#8FAFC8"></i>
+      <i style="background:#FFFFFF"></i>
+      <i style="background:#EDF3F8"></i>
+      <i style="background:#F7FAFC"></i>
+      <i style="background:#253B4A"></i>
+      <i style="background:#526778"></i>
+      <i style="background:#DAE5ED"></i>
+      <i style="background:#395A73"></i>
+      <i style="background:#A84646"></i>
+      <i style="background:#3C7862"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 一、产品定位与立意 ================= -->
+<section class="sec" id="position">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">01</span>
+      <h2>产品定位与立意</h2>
+      <span class="head__src">PRD 1.1 – 1.4 · 2.3</span>
+    </div>
+    <p class="sec__note">
+      平台的分析对象不是「课堂」，而是<b>看课堂的人</b>。传统课堂分析工具替人评课，第三只眼评的是评课的人——
+      这是本项目在答辩中反复强调的一层翻转。
+    </p>
+
+    <h3 class="blk">1.1 立意对照</h3>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th scope="col">对比项</th><th scope="col">传统课堂分析工具</th><th scope="col">第三只眼</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>输入</td><td>课堂录像</td><td>课堂录像 + 你的观察打点</td></tr>
+          <tr><td>输出</td><td>课堂分析报告</td><td>你的观察能力画像</td></tr>
+          <tr><td>本质</td><td>工具替人评课</td><td>工具评的是「评课的人」</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="blk">1.2 核心价值 <small>PRD 1.2</small></h3>
+    <div class="vals">
+      <div class="val"><b>看得清</b><p>从课堂录像中发现有教育意义的师生行为与教学事件。</p></div>
+      <div class="val"><b>说得明</b><p>利用事件证据解释课堂表现，而不是仅给出主观好坏判断。</p></div>
+      <div class="val"><b>练得会</b><p>上传自己的说课视频，获得结构化反馈与具体改进方向。</p></div>
+      <div class="val"><b>能坚持</b><p>通过每日学习打卡、学习任务和成长档案形成持续训练习惯。</p></div>
+    </div>
+
+    <h3 class="blk">1.3 差异化特色 <small>PRD 1.3</small></h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">核心特色</th><th scope="col">常规学习平台的典型功能</th><th scope="col">「第三只眼」的拓展设计</th></tr></thead>
+        <tbody>
+          <tr><td>课堂学习</td><td>视频播放、学习进度记录</td><td>录像时间戳标注、教学事件分类、基于证据评课</td></tr>
+          <tr><td>教学能力训练</td><td>观看示范课程</td><td>观察能力三维反馈与专家标注对照</td></tr>
+          <tr><td>个人实践</td><td>习题、作业提交</td><td>自主上传说课录像并获取分维度 AI 辅助评价</td></tr>
+          <tr><td>学习反馈</td><td>完成率与成绩</td><td>课堂观察诊断 + 说课专项报告 + 进步记录</td></tr>
+          <tr><td>学习激励</td><td>学习提醒</td><td>有效学习后打卡、连续学习天数、七日学习日历</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="blk">1.4 用户痛点 → 产品响应 <small>PRD 2.3</small></h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">编号</th><th scope="col">用户痛点</th><th scope="col">产品响应</th><th scope="col">对应模块</th></tr></thead>
+        <tbody>
+          <tr><td><code>N-01</code></td><td>学习入口零散，不知从何开始</td><td>首页提供继续学习、推荐课程与今日任务</td><td>首页工作台</td></tr>
+          <tr><td><code>N-02</code></td><td>缺少基础理论与示范案例</td><td>分类课程、课程详情、视频学习及进度追踪</td><td>课程学习</td></tr>
+          <tr><td><code>N-03</code></td><td>课堂观察缺乏记录工具</td><td>时间戳标注、事件类型、笔记编辑</td><td>课堂观察</td></tr>
+          <tr><td><code>N-04</code></td><td>评课意见缺少充分证据</td><td>标注引用、评课草稿与提交</td><td>评课训练</td></tr>
+          <tr><td><code>N-05</code></td><td>难以判断观察能力的不足</td><td>注意、推理、表述三维分析</td><td>观察能力报告</td></tr>
+          <tr><td><code>N-06</code></td><td>自我说课练习缺少及时反馈</td><td>上传视频、按量表评价、定位证据、改进建议</td><td>AI 说课评测</td></tr>
+          <tr><td><code>N-07</code></td><td>难以判断长期是否进步</td><td>历次评价报告、学习记录与成长趋势</td><td>个人中心</td></tr>
+          <tr><td><code>N-08</code></td><td>学习习惯难以长期坚持</td><td>有效学习后打卡、连续天数、学习日历</td><td>每日打卡</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 二、功能模块 ================= -->
+<section class="sec sec--tint" id="modules">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">02</span>
+      <h2>PRD 核心功能板块</h2>
+      <span class="head__src">PRD 3.3 · 4.2 · 5.1 – 5.10</span>
+    </div>
+    <p class="sec__note">
+      共 10 个功能模块，分为 P0 核心 / P1 增强 / P2 扩展三档。其中
+      <b>F-05 课堂观察与教学事件标注</b>、<b>F-07 AI 说课视频上传与评价</b> 是平台的两个特色核心模块。
+    </p>
+
+    <div class="grid g-3">
+
+      <article class="mod">
+        <span class="mod__id">F-01</span>
+        <h4>用户注册与登录</h4>
+        <p>邮箱 + 密码注册登录，账号信息维护，密码找回列入 P1。未登录访问受保护页面先跳登录，成功后回到原目标页。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0</span><span class="tag">账号与身份</span></div>
+      </article>
+
+      <article class="mod">
+        <span class="mod__id">F-02</span>
+        <h4>首页学习工作台</h4>
+        <p>欢迎信息与今日学习目标、继续学习卡、课程与训练入口、每日学习打卡卡片，是进入平台后的总调度页。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0</span><span class="tag">学习入口</span></div>
+      </article>
+
+      <article class="mod">
+        <span class="mod__id">F-03</span>
+        <h4>每日学习打卡</h4>
+        <p>完成一项有效学习任务即获得当日打卡资格；以自然日为唯一键，同日不重复计次；连续天数中断不清零累计。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0</span><span class="tag tag--key">重点功能</span></div>
+      </article>
+
+      <article class="mod">
+        <span class="mod__id">F-04</span>
+        <h4>课程学习</h4>
+        <p>课程搜索与筛选、课程详情与章节目录、视频学习与进度记录、完成学习任务。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0</span><span class="tag">课程</span></div>
+      </article>
+
+      <article class="mod mod--key">
+        <span class="mod__id">F-05</span>
+        <h4>课堂观察与教学事件标注</h4>
+        <p>已授权课堂录像播放与时间定位；按事件类型打点标注（时间戳 / 事实 / 初步解释）；评课文本撰写并引用标注证据。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0</span><span class="tag tag--key">特色核心模块一</span></div>
+      </article>
+
+      <article class="mod">
+        <span class="mod__id">F-06</span>
+        <h4>评课撰写与观察能力反馈</h4>
+        <p>围绕「课堂事实—分析解释—改进建议」撰写评课；按注意 / 推理 / 表述三维输出观察能力反馈。专家参考标注对照为 P1。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0</span><span class="tag tag--p1">P1 智能诊断</span></div>
+      </article>
+
+      <article class="mod mod--key">
+        <span class="mod__id">F-07</span>
+        <h4>AI 说课视频上传与评价</h4>
+        <p>选择说课主题、上传本人录像、本地预览与授权确认；按五维量表输出辅助评价报告与可定位的视频证据。真实解析为 P1。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0 上传/预览</span><span class="tag tag--key">特色核心模块二</span></div>
+      </article>
+
+      <article class="mod">
+        <span class="mod__id">F-08</span>
+        <h4>个性化学习与训练推荐</h4>
+        <p>针对已形成的有效评价结果，优先推荐最薄弱的一至两个维度；提供「为什么推荐」，用户自主决定是否参与。</p>
+        <div class="mod__foot"><span class="tag tag--p1">P1</span><span class="tag">推荐引擎</span></div>
+      </article>
+
+      <article class="mod">
+        <span class="mod__id">F-09</span>
+        <h4>个人中心</h4>
+        <p>个人资料、我的课程、学习打卡日历、课堂观察记录、我的说课作品与成长档案、隐私与数据管理。</p>
+        <div class="mod__foot"><span class="tag tag--p0">P0</span><span class="tag">成长档案</span></div>
+      </article>
+
+      <article class="mod">
+        <span class="mod__id">F-10</span>
+        <h4>教师与平台管理</h4>
+        <p>教师创建训练任务、维护专家参考标注、人工点评授权作品；管理员维护资源授权与账号基础状态。</p>
+        <div class="mod__foot"><span class="tag tag--p2">P2 规划</span><span class="tag">后台</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 三、模块关联 ================= -->
+<section class="sec" id="flow">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">03</span>
+      <h2>核心模块关联</h2>
+      <span class="head__src">PRD 4.3</span>
+    </div>
+    <p class="sec__note">
+      平台的两条训练主线各自闭环，再共同汇入薄弱项分析与个性化训练；而所有有效学习行为都会汇聚到每日打卡，
+      沉淀为个人成长档案。
+    </p>
+
+    <div class="grid g-2">
+      <div class="card">
+        <h3 class="blk" style="margin-top:0">主线一 · 课堂观察与评课</h3>
+        <div class="flow flow--col">
+          <span class="node node--a">课程学习</span>
+          <span class="arw">↓</span>
+          <span class="node">课堂录像观察</span>
+          <span class="arw">↓</span>
+          <span class="node">教学事件标注</span>
+          <span class="arw">↓</span>
+          <span class="node">评课提交</span>
+          <span class="arw">↓</span>
+          <span class="node node--l">课堂观察能力反馈（注意 / 推理 / 表述）</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="blk" style="margin-top:0">主线二 · AI 说课实训</h3>
+        <div class="flow flow--col">
+          <span class="node node--a">自主录制说课</span>
+          <span class="arw">↓</span>
+          <span class="node">上传视频</span>
+          <span class="arw">↓</span>
+          <span class="node">AI 辅助评价（五维量表）</span>
+          <span class="arw">↓</span>
+          <span class="node node--l">可定位证据与改进建议</span>
+          <span class="arw">↓</span>
+          <span class="node">再次实践</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="blk">两线汇合 · 闭环</h3>
+    <div class="card">
+      <div class="flow">
+        <span class="node">课堂观察能力反馈</span>
+        <span class="arw">+</span>
+        <span class="node">AI 说课辅助评价</span>
+        <span class="arw">→</span>
+        <span class="node node--l">薄弱项分析</span>
+        <span class="arw">→</span>
+        <span class="node node--l">个性化训练</span>
+        <span class="arw">→</span>
+        <span class="node node--a">再次实践</span>
+      </div>
+      <div class="flow" style="margin-top:16px">
+        <span class="node">上述有效学习行为</span>
+        <span class="arw">→</span>
+        <span class="node node--l">达成今日打卡资格</span>
+        <span class="arw">→</span>
+        <span class="node node--l">每日打卡</span>
+        <span class="arw">→</span>
+        <span class="node node--a">成长档案</span>
+      </div>
+      <p class="demo__desc" style="margin-top:14px">
+        重要约束（PRD 5.6.2）：课堂观察三维反馈与 AI 说课五维评分是<b>两套不同的能力体系</b>，不得直接混算为单一分数。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 四、页面地图 ================= -->
+<section class="sec sec--tint" id="pages">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">04</span>
+      <h2>主要页面与核心状态</h2>
+      <span class="head__src">PRD 7.1 · 7.2 · 8.1 – 8.4</span>
+    </div>
+    <p class="sec__note">
+      共 15 个页面。每张卡片左侧是按 PRD 第 8 章文字线框重绘的示意图，右侧列出建议路由、
+      页面核心内容、主要去向，以及该页最需要被设计出来的<b>核心状态</b>。缩略图为线框示意，非视觉稿。
+    </p>
+
+    <div class="grid g-page">
+
+      <!-- P-01 登录 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-01</span><span class="pg__name">登录页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b ctr">
+            <div class="wf-c" style="width:64%;gap:6px">
+              <div class="p" style="height:10px;width:44%"></div>
+              <div class="p" style="height:16px"></div>
+              <div class="p" style="height:16px"></div>
+              <div class="a" style="height:16px"></div>
+              <div class="t" style="width:52%;align-self:center"></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/login</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>邮箱、密码、登录</dd>
+            <dt>主要去向</dt><dd>首页 / 原目标页面、注册页</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">初始态</span><span class="st">字段校验失败</span><span class="st">登录失败</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-02 注册 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-02</span><span class="pg__name">注册页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b ctr">
+            <div class="wf-c" style="width:64%;gap:6px">
+              <div class="p" style="height:10px;width:44%"></div>
+              <div class="p" style="height:16px"></div>
+              <div class="p" style="height:16px"></div>
+              <div class="p" style="height:16px"></div>
+              <div class="l" style="height:16px;border:1px solid #8FAFC8"></div>
+              <div class="a" style="height:16px"></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/register</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>昵称、邮箱、密码、确认密码</dd>
+            <dt>主要去向</dt><dd>登录页</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">初始态</span><span class="st">密码不一致</span><span class="st">注册成功提示</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-03 首页 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-03</span><span class="pg__name">首页学习工作台</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b">
+            <div class="wf-c f1" style="gap:5px">
+              <div class="t" style="width:62%"></div>
+              <div class="p g" style="height:34px"></div>
+              <div class="t" style="width:44%"></div>
+              <div class="a" style="height:11px;width:56%"></div>
+            </div>
+            <div class="wf-c f12" style="gap:5px">
+              <div class="l" style="height:18px"></div>
+              <div class="wf-r"><div class="a" style="width:10px;height:10px;border-radius:50%"></div><div class="t f1" style="align-self:center"></div></div>
+              <div class="wf-r"><div class="a" style="width:10px;height:10px;border-radius:50%"></div><div class="t f1" style="align-self:center"></div></div>
+              <div class="a" style="height:13px;width:64%"></div>
+              <div class="wf-r" style="gap:4px"><div class="p f1" style="height:12px"></div><div class="p f1" style="height:12px"></div><div class="p f1" style="height:12px"></div><div class="p f1" style="height:12px"></div><div class="p f1" style="height:12px"></div><div class="p f1" style="height:12px"></div><div class="p f1" style="height:12px"></div></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/home</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>学习入口、今日目标、每日打卡</dd>
+            <dt>主要去向</dt><dd>课程、观察、说课、个人中心</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">加载态（骨架屏）</span><span class="st">初始态（无进行中课程）</span><span class="st">打卡五态</span><span class="st">空状态</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-04 课程列表 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-04</span><span class="pg__name">课程列表页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column">
+            <div class="wf-r"><div class="l f1" style="height:14px"></div><div class="a" style="width:34px;height:14px"></div></div>
+            <div class="wf-r f1" style="gap:6px">
+              <div class="wf-c"><div class="p f1"></div><div class="t" style="width:70%"></div></div>
+              <div class="wf-c"><div class="p f1"></div><div class="t" style="width:70%"></div></div>
+              <div class="wf-c"><div class="p f1"></div><div class="t" style="width:70%"></div></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/courses</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>搜索、筛选、课程卡片</dd>
+            <dt>主要去向</dt><dd>课程详情</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">加载态</span><span class="st">空状态（未找到匹配课程）</span><span class="st">正常结果</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-05 课程详情 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-05</span><span class="pg__name">课程详情页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b">
+            <div class="wf-c f12" style="gap:5px">
+              <div class="p" style="height:40px"></div>
+              <div class="t" style="width:80%"></div>
+              <div class="t" style="width:62%"></div>
+              <div class="a" style="height:12px;width:48%"></div>
+            </div>
+            <div class="wf-c f1" style="gap:4px">
+              <div class="t" style="width:60%"></div>
+              <div class="l" style="height:11px"></div>
+              <div class="l" style="height:11px"></div>
+              <div class="l" style="height:11px"></div>
+              <div class="l" style="height:11px"></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/courses/:courseId</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>课程简介、目录、学习状态</dd>
+            <dt>主要去向</dt><dd>课程学习</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">未开始</span><span class="st">学习中</span><span class="st">已完成</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-06 课程学习 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-06</span><span class="pg__name">课程学习页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b">
+            <div class="wf-c f15" style="gap:5px">
+              <div class="p g"></div>
+              <div class="wf-r ctr"><div class="a" style="width:16px;height:16px;border-radius:50%"></div><div class="l f1" style="height:6px"></div></div>
+            </div>
+            <div class="wf-c f1" style="gap:4px">
+              <div class="t" style="width:66%"></div>
+              <div class="l" style="height:10px"></div>
+              <div class="l" style="height:10px"></div>
+              <div class="l" style="height:10px"></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/learn/:lessonId</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>视频、章节、学习任务</dd>
+            <dt>主要去向</dt><dd>下节课、首页</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">加载态</span><span class="st">播放中</span><span class="st">本课完成</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-07 观察任务 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-07</span><span class="pg__name">课堂观察任务页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column">
+            <div class="t" style="width:40%"></div>
+            <div class="wf-r" style="align-items:center"><div class="p" style="width:34px;height:22px"></div><div class="wf-c f1" style="gap:4px"><div class="t" style="width:70%"></div><div class="t" style="width:46%"></div></div><div class="a" style="width:30px;height:12px"></div></div>
+            <div class="wf-r" style="align-items:center"><div class="p" style="width:34px;height:22px"></div><div class="wf-c f1" style="gap:4px"><div class="t" style="width:70%"></div><div class="t" style="width:46%"></div></div><div class="a" style="width:30px;height:12px"></div></div>
+            <div class="wf-r" style="align-items:center"><div class="p" style="width:34px;height:22px"></div><div class="wf-c f1" style="gap:4px"><div class="t" style="width:70%"></div><div class="t" style="width:46%"></div></div><div class="l" style="width:30px;height:12px"></div></div>
+          </div>
+        </div>
+        <span class="pg__route">/observe</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>可用任务列表</dd>
+            <dt>主要去向</dt><dd>观察工作台</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">空状态</span><span class="st">有可用任务</span><span class="st">已完成</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-08 观察工作台 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-08</span><span class="pg__name">课堂观察工作台</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column;gap:5px">
+            <div class="wf-r f1">
+              <div class="wf-c f15" style="gap:5px">
+                <div class="p g"></div>
+                <div class="wf-r ctr"><div class="a" style="width:14px;height:14px;border-radius:50%"></div><div class="l f1" style="height:5px"></div><div class="t" style="width:22%"></div></div>
+              </div>
+              <div class="wf-c f1" style="gap:4px">
+                <div class="t" style="width:74%"></div>
+                <div class="l" style="height:10px"></div>
+                <div class="l" style="height:10px"></div>
+                <div class="a" style="height:11px"></div>
+                <div class="p" style="height:9px"></div>
+                <div class="p" style="height:9px"></div>
+              </div>
+            </div>
+            <div class="wf-r ctr"><div class="p f1" style="height:20px"></div><div class="l" style="width:34px;height:14px"></div><div class="a" style="width:34px;height:14px"></div></div>
+          </div>
+        </div>
+        <span class="pg__route">/observe/:taskId</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>播放器、标注、评课编辑</dd>
+            <dt>主要去向</dt><dd>观察反馈报告</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">未选事件（保存禁用）</span><span class="st">编辑态</span><span class="st">保存成功</span><span class="st">视频无权限</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-09 观察报告 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-09</span><span class="pg__name">课堂观察报告页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column">
+            <div class="t" style="width:44%"></div>
+            <div class="wf-r f1" style="gap:6px">
+              <div class="wf-c" style="gap:4px"><div class="a f1"></div><div class="t"></div></div>
+              <div class="wf-c" style="gap:4px"><div class="a f1" style="opacity:.7"></div><div class="t"></div></div>
+              <div class="wf-c" style="gap:4px"><div class="a f1" style="opacity:.45"></div><div class="t"></div></div>
+            </div>
+            <div class="l" style="height:14px"></div>
+          </div>
+        </div>
+        <span class="pg__route">/observe/report/:taskId</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>三维反馈、参考标注</dd>
+            <dt>主要去向</dt><dd>推荐训练、个人中心</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">加载态（分析中）</span><span class="st">报告完整</span><span class="st">证据不足</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-10 说课首页 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-10</span><span class="pg__name">AI 说课实训首页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column">
+            <div class="wf-r"><div class="t f1" style="width:40%"></div><div class="a" style="width:44px;height:14px"></div></div>
+            <div class="wf-r f1" style="gap:6px">
+              <div class="wf-c"><div class="p f1"></div><div class="t" style="width:72%"></div></div>
+              <div class="wf-c"><div class="p f1"></div><div class="t" style="width:72%"></div></div>
+              <div class="wf-c"><div class="p f1"></div><div class="t" style="width:72%"></div></div>
+              <div class="wf-c"><div class="p f1"></div><div class="t" style="width:72%"></div></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/speaking</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>创建练习、历史作品</dd>
+            <dt>主要去向</dt><dd>说课上传页</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">空状态（尚无作品）</span><span class="st">有历史作品</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-11 上传 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-11</span><span class="pg__name">说课视频上传页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column;gap:5px">
+            <div class="wf-r ctr"><div class="t" style="width:16%"></div><div class="l f1" style="height:14px"></div></div>
+            <div class="wf-r ctr"><div class="t" style="width:16%"></div><div class="p" style="width:42px;height:14px"></div><div class="t f1"></div></div>
+            <div class="p f1" style="border:1px dashed #8FAFC8"></div>
+            <div class="wf-r ctr"><div class="l f1" style="height:12px"></div><div class="a" style="width:40px;height:14px"></div></div>
+          </div>
+        </div>
+        <span class="pg__route">/speaking/upload</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>主题选择、视频上传与预览</dd>
+            <dt>主要去向</dt><dd>处理状态 / 报告</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">未选择文件</span><span class="st">已选待确认</span><span class="st">格式/时长超限（失败态）</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-12 进度 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-12</span><span class="pg__name">说课分析进度页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b ctr">
+            <div class="wf-c" style="width:70%;gap:7px;align-items:center">
+              <div class="a" style="width:22px;height:22px;border-radius:50%"></div>
+              <div class="t" style="width:64%"></div>
+              <div class="bar" style="height:8px;width:100%;background:#EDF3F8;border-radius:999px"><i style="display:block;height:100%;width:62%;background:#8FAFC8;border-radius:999px"></i></div>
+              <div class="t" style="width:40%"></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/speaking/status/:submissionId</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>待分析 / 分析中 / 失败 / 完成</dd>
+            <dt>主要去向</dt><dd>评价报告</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">待分析</span><span class="st">分析中</span><span class="st">失败可重试</span><span class="st">完成</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-13 报告 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-13</span><span class="pg__name">说课评价报告页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column">
+            <div class="wf-r" style="gap:6px">
+              <div class="a" style="width:38px;height:38px;border-radius:50%"></div>
+              <div class="wf-c" style="gap:4px;justify-content:center"><div class="t" style="width:46%"></div><div class="t" style="width:64%"></div></div>
+            </div>
+            <div class="wf-c" style="gap:4px">
+              <div class="wf-r ctr"><div class="t" style="width:26%"></div><div class="bar f1" style="height:6px;background:#EDF3F8;border-radius:999px"><i style="display:block;height:100%;width:80%;background:#8FAFC8;border-radius:999px"></i></div></div>
+              <div class="wf-r ctr"><div class="t" style="width:26%"></div><div class="bar f1" style="height:6px;background:#EDF3F8;border-radius:999px"><i style="display:block;height:100%;width:58%;background:#8FAFC8;border-radius:999px"></i></div></div>
+              <div class="wf-r ctr"><div class="t" style="width:26%"></div><div class="bar f1" style="height:6px;background:#EDF3F8;border-radius:999px"><i style="display:block;height:100%;width:44%;background:#8FAFC8;border-radius:999px"></i></div></div>
+            </div>
+            <div class="l" style="height:14px"></div>
+          </div>
+        </div>
+        <span class="pg__route">/speaking/report/:submissionId</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>五维反馈、证据、建议</dd>
+            <dt>主要去向</dt><dd>再次练习、个人中心</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">报告完整</span><span class="st">证据不足（报告不完整）</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-14 个人中心 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-14</span><span class="pg__name">个人中心页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b" style="flex-direction:column">
+            <div class="wf-r ctr"><div class="a" style="width:22px;height:22px;border-radius:50%"></div><div class="wf-c" style="gap:4px"><div class="t" style="width:44%"></div><div class="t" style="width:64%"></div></div></div>
+            <div class="wf-r f1" style="gap:6px">
+              <div class="wf-c f1" style="gap:3px"><div class="t" style="width:60%"></div><div class="wf-r" style="gap:3px"><div class="a f1" style="height:10px"></div><div class="a f1" style="height:10px"></div><div class="l f1" style="height:10px"></div><div class="l f1" style="height:10px"></div><div class="a f1" style="height:10px"></div><div class="a f1" style="height:10px"></div><div class="l f1" style="height:10px"></div></div></div>
+              <div class="wf-c f1" style="gap:4px"><div class="l" style="height:10px"></div><div class="l" style="height:10px"></div><div class="l" style="height:10px"></div></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/profile</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>资料、学习记录、打卡日历</dd>
+            <dt>主要去向</dt><dd>对应课程 / 任务 / 报告</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">有记录</span><span class="st">空状态</span><span class="st">打卡日历与首页同源</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- P-15 404 -->
+      <article class="pg">
+        <div class="pg__top"><span class="pg__id">P-15</span><span class="pg__name">未找到 / 错误页</span></div>
+        <div class="wf"><div class="wf-top"><b></b><i></i><i></i><i></i><i></i></div>
+          <div class="wf-b ctr">
+            <div class="wf-c" style="width:56%;gap:7px;align-items:center">
+              <div class="p" style="width:38px;height:26px"></div>
+              <div class="t" style="width:76%"></div>
+              <div class="t" style="width:54%"></div>
+              <div class="a" style="height:13px;width:52%"></div>
+            </div>
+          </div>
+        </div>
+        <span class="pg__route">/404（含无权限场景）</span>
+        <div class="pg__meta">
+          <dl>
+            <dt>核心内容</dt><dd>错误说明与安全返回入口</dd>
+            <dt>主要去向</dt><dd>首页或来源页面</dd>
+          </dl>
+          <div class="pg__states">
+            <span class="st">内容不存在</span><span class="st">无权限（不显示他人隐私数据）</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 五、状态设计 ================= -->
+<section class="sec" id="states">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">05</span>
+      <h2>状态设计</h2>
+      <span class="head__src">PRD 9.1 – 9.4 · 5.3.4 · 5.7.3</span>
+    </div>
+    <p class="sec__note">
+      状态设计是本次前端作业的评分重点。以下三类状态在 PRD 中被逐条写死：统一状态规范七态、
+      每日打卡五态、说课视频处理四段流程。下方样例为纯静态呈现，用于说明每种状态应有的界面表现。
+    </p>
+
+    <h3 class="blk">5.1 统一状态规范七态 <small>PRD 9.2 · 全平台通用</small></h3>
+    <div class="grid g-3">
+
+      <div class="demo">
+        <div class="demo__cap"><b>① 初始态</b><span>未选择课程 / 任务 / 文件</span></div>
+        <div class="demo__body" style="align-items:center;text-align:center">
+          <div class="p" style="width:52px;height:34px;border-radius:6px"></div>
+          <div style="font-size:14px;font-weight:600">还没有正在学习的课程</div>
+          <span class="btn btn--ghost">浏览课程列表</span>
+        </div>
+        <p class="demo__desc">要求：展示说明文字和明确入口，让用户知道下一步做什么。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>② 加载态</b><span>拉取课程 / 读取视频 / 处理报告</span></div>
+        <div class="demo__body">
+          <div class="sk sk--t"></div>
+          <div class="sk sk--m"></div>
+          <div class="sk sk--s"></div>
+          <div class="sk" style="width:68%"></div>
+          <div class="row" style="margin-top:4px"><span class="spin"></span><span style="font-size:13px;color:#526778">正在加载学习数据…</span></div>
+        </div>
+        <p class="demo__desc">要求：展示加载指示<b>及提示文字</b>，不能只有一个转圈。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>③ 空状态</b><span>无课程记录 / 无标注 / 无历史视频</span></div>
+        <div class="demo__body" style="align-items:center;text-align:center">
+          <div style="font-size:14px;font-weight:600">还没有学习记录</div>
+          <div style="font-size:13px;color:#526778">完成一次课程学习或课堂观察后，记录会显示在这里。</div>
+          <span class="btn btn--ghost">去课程学习</span>
+        </div>
+        <p class="demo__desc">要求：说明原因并给出开始操作按钮，<b>不将「暂时没有数据」渲染为错误</b>。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>④ 编辑态</b><span>正在填写标注 / 评课 / 资料</span></div>
+        <div class="demo__body">
+          <div style="font-size:13px;color:#526778">观察事实（必填）</div>
+          <div style="background:#fff;border:2px solid #395A73;border-radius:10px;padding:8px 10px;font-size:13px">教师提出开放性问题后，等待了约 4 秒才点名…</div>
+          <div class="row"><span class="btn btn--primary">保存标注</span><span class="btn btn--ghost">取消</span><span style="font-size:12px;color:#526778;margin-left:auto">草稿已自动保留</span></div>
+        </div>
+        <p class="demo__desc">要求：允许保存 / 取消；必要时保留草稿；切换页面前提示未保存内容。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>⑤ 成功态</b><span>打卡 / 保存 / 上传 / 提交成功</span></div>
+        <div class="demo__body">
+          <div class="note note--ok"><b>✓</b><span>今日打卡成功，连续打卡 1 天，累计 1 天。</span></div>
+          <div class="row"><span class="btn btn--done">✓ 今日已打卡</span></div>
+        </div>
+        <p class="demo__desc">要求：<b>文字提示 + 图标 + 状态更新</b>三者齐备，并通过 <code>aria-live</code> 播报。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>⑥ 失败态</b><span>登录失败 / 上传失败 / 网络问题</span></div>
+        <div class="demo__body">
+          <div class="note note--err"><b>!</b><span>暂时无法保存，请重试。你的内容已保留在本地。</span></div>
+          <div class="row"><span class="btn btn--primary">重试</span><span class="btn btn--text">查看原因</span></div>
+        </div>
+        <p class="demo__desc">要求：明确错误原因，支持合理重试，且重试<b>不产生重复记录</b>。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>⑦ 禁用态</b><span>条件未达成 / 正在重复提交</span></div>
+        <div class="demo__body">
+          <span class="btn btn--off" style="align-self:flex-start">完成今日打卡</span>
+          <span class="btn__why">打卡按钮暂不可用：今天尚未完成任何一项有效学习任务。</span>
+          <span class="btn btn--primary" style="align-self:flex-start">去学习</span>
+        </div>
+        <p class="demo__desc">要求：按钮禁用且<b>说明无法操作的原因</b>，不只置灰——这是最容易被做漏的评分点。</p>
+      </div>
+
+    </div>
+
+    <h3 class="blk">5.2 每日学习打卡状态机（五态） <small>PRD 5.3.4 · F-03 重点功能</small></h3>
+    <div class="grid g-3" style="grid-template-columns:repeat(auto-fill,minmax(228px,1fr))">
+
+      <div class="demo">
+        <div class="demo__cap"><b>未登录</b></div>
+        <div class="demo__body">
+          <div style="font-size:14px;font-weight:600">登录后开启今日学习</div>
+          <div style="font-size:13px;color:#526778">统计显示「—」，不展示任何他人的打卡记录。</div>
+          <span class="btn btn--primary" style="align-self:flex-start">登录</span>
+        </div>
+        <p class="demo__desc">对应 PRD 11.2 数据一致性：未登录不泄露上一位用户的数据。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>今日未达标</b></div>
+        <div class="demo__body">
+          <div style="font-size:14px;font-weight:600">完成一项学习任务后即可打卡</div>
+          <span class="btn btn--off" style="align-self:flex-start">完成今日打卡</span>
+          <span class="btn__why">今天尚未完成任何一项有效学习任务</span>
+          <span class="btn btn--primary" style="align-self:flex-start">去学习</span>
+        </div>
+        <p class="demo__desc">禁用态 + 原因说明，「去学习」提供出口。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>已达标未打卡</b></div>
+        <div class="demo__body">
+          <div style="font-size:14px;font-weight:600">今天的学习任务已完成</div>
+          <span class="btn btn--primary" style="align-self:flex-start">完成今日打卡</span>
+          <span style="font-size:12px;color:#526778">主按钮可用，是唯一可提交的时刻。</span>
+        </div>
+        <p class="demo__desc">对应编辑态：卡片进入可提交状态。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>已打卡</b></div>
+        <div class="demo__body">
+          <div style="font-size:14px;font-weight:600">今日已打卡，继续保持！</div>
+          <span class="btn btn--done" style="align-self:flex-start">✓ 今日已打卡</span>
+          <div class="row" style="font-size:12px;color:#526778"><span>连续 <b>2</b> 天</span><span>累计 <b>2</b> 天</span></div>
+        </div>
+        <p class="demo__desc">按钮禁用 + 对勾图标，从源头防止同日重复提交。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo__cap"><b>提交失败</b></div>
+        <div class="demo__body">
+          <div class="note note--err"><b>!</b><span>暂时无法保存，请重试。</span></div>
+          <span class="btn btn--primary" style="align-self:flex-start">重试</span>
+        </div>
+        <p class="demo__desc">重试不新增重复记录；恢复后写入<b>恰好一条</b>。</p>
+      </div>
+
+    </div>
+
+    <h3 class="blk">5.3 七日学习日历 <small>PRD 5.3.5 · 10.4</small></h3>
+    <div class="grid g-2">
+      <div class="card">
+        <div class="cal">
+          <div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div><div>日</div>
+          <div class="on">✓</div><div class="on">✓</div><div class="on">✓</div><div class="on">✓</div><div class="today">今</div><div>—</div><div>—</div>
+        </div>
+        <div class="cal__legend">
+          <span><i style="background:#8FAFC8;border-color:#8FAFC8"></i>已完成：主蓝底 + 对勾</span>
+          <span><i style="background:#fff"></i>未完成：中性浅色 + 文字</span>
+          <span><i style="background:#fff;border-color:#395A73;border-width:2px"></i>今天：深蓝描边</span>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 8px;font-size:16px">统计与边界规则（PRD 5.3.5）</h4>
+        <ul style="margin:0;padding-left:20px;font-size:14px;color:#526778;display:flex;flex-direction:column;gap:6px">
+          <li><b style="color:#253B4A">每日最多计入一次</b>：以自然日为唯一键，同日重复操作不增加天数。</li>
+          <li><b style="color:#253B4A">连续天数</b>：今天已打卡则从今天向前连数；今天未打卡但昨天已打卡则截至昨天；更早中断从 0 开始。</li>
+          <li><b style="color:#253B4A">历史累计不清零</b>：因此「累计打卡」与「连续打卡」是两个独立指标。</li>
+          <li><b style="color:#253B4A">不靠颜色单独区分</b>：完成日同时给出对勾图标与 <code>aria-label</code>。</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="blk">5.4 说课视频处理状态流 <small>PRD 5.7.3</small></h3>
+    <div class="card">
+      <div class="flow">
+        <span class="node">未选择文件</span><span class="arw">→</span>
+        <span class="node">已选择待确认</span><span class="arw">→</span>
+        <span class="node">上传中</span><span class="arw">→</span>
+        <span class="node node--a">上传完成</span>
+      </div>
+      <div class="flow" style="margin-top:12px">
+        <span class="node node--l">待分析</span><span class="arw">→</span>
+        <span class="node node--l">分析中</span><span class="arw">→</span>
+        <span class="node node--a">评价完成</span>
+        <span class="arw" style="color:#A84646">↘</span>
+        <span class="node" style="border-color:#A84646;color:#A84646">失败 / 可重试</span>
+      </div>
+      <p class="demo__desc" style="margin-top:14px">
+        纯前端原型不真实上传服务器时，流程改为：<b>选择本地文件 → 格式校验 → 本地预览 → 点击「模拟分析」→ 显示「演示报告」</b>，
+        不得展示伪造的真实服务器进度（PRD 5.7.3）。
+      </p>
+    </div>
+
+    <h3 class="blk">5.5 关键异常场景 <small>PRD 9.3</small></h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">场景</th><th scope="col">系统行为</th><th scope="col">用户可执行操作</th></tr></thead>
+        <tbody>
+          <tr><td>登录信息缺失</td><td>高亮缺失字段并显示错误提示</td><td>补全后重新提交</td></tr>
+          <tr><td>课程搜索无结果</td><td>展示「未找到匹配课程」</td><td>清空搜索条件</td></tr>
+          <tr><td>视频资源无权限 / 失效</td><td>禁止非法访问，展示替代资源说明</td><td>返回列表、选择其他资源</td></tr>
+          <tr><td>浏览器不支持视频编码</td><td>提示格式 / 浏览器限制</td><td>更换受支持文件或浏览器</td></tr>
+          <tr><td>标注正文为空</td><td>禁止保存，聚焦必填字段</td><td>填写内容</td></tr>
+          <tr><td>尚未完成有效学习</td><td>打卡按钮不可提交，提供「去学习」</td><td>完成任务</td></tr>
+          <tr><td>当天已打卡</td><td>继续显示「今日已打卡」，不重复累加</td><td>查看日历</td></tr>
+          <tr><td>上传大小 / 时长超限</td><td>在提交前拦截，解释上限</td><td>重新选择文件</td></tr>
+          <tr><td>AI 分析失败</td><td>保留可恢复的提交记录、显示失败原因</td><td>重试或选择人工反馈路径</td></tr>
+          <tr><td>AI 证据不足</td><td>显示「不具备判断依据」</td><td>补录清晰视频或提交文本材料</td></tr>
+          <tr><td>网络中断</td><td>显示保存 / 提交失败并保护草稿</td><td>网络恢复后重试</td></tr>
+          <tr><td>数据记录不存在</td><td>展示 404 / 不可用提示</td><td>返回安全页面</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 六、配色与组件 ================= -->
+<section class="sec sec--tint" id="design">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">06</span>
+      <h2>设计配色与组件</h2>
+      <span class="head__src">PRD 10.1 – 10.4</span>
+    </div>
+    <p class="sec__note">
+      总体配色固定为「低饱和蓝 <b>#8FAFC8</b> + 纯白 <b>#FFFFFF</b>」，呈现清新、温和、可信赖的教育科技风格，
+      避免高饱和亮蓝、密集渐变及花哨动画。以下色值即 PRD 10.2 给定的设计变量，未自行改色。
+      对比度为按 WCAG 相对亮度公式实测所得。
+    </p>
+
+    <h3 class="blk">6.1 色彩变量（Design Tokens）</h3>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#8FAFC8;color:#253B4A">品牌主蓝</div>
+        <div class="sw__b">
+          <span class="sw__var">--brand-blue</span>
+          <code>#8FAFC8</code>
+          <small>按钮填充、选中态、重点卡片点缀</small>
+          <span class="ratio">白底作小字仅 <em>2.30:1</em> · <b>禁止</b>用于白底正文</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#FFFFFF;color:#526778;border-bottom:1px solid #DAE5ED">纯白</div>
+        <div class="sw__b">
+          <span class="sw__var">--brand-white</span>
+          <code>#FFFFFF</code>
+          <small>主背景、卡片背景、弹窗背景</small>
+          <span class="ratio">页面视觉面积以白色为主</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#EDF3F8;color:#253B4A">轻量衬底</div>
+        <div class="sw__b">
+          <span class="sw__var">--blue-light</span>
+          <code>#EDF3F8</code>
+          <small>轻量模块衬底、柔和悬停态</small>
+          <span class="ratio">配 <em>#253B4A</em> 正文 <em>10.41:1</em> AAA</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#F7FAFC;color:#253B4A;border-bottom:1px solid #DAE5ED">分区过渡</div>
+        <div class="sw__b">
+          <span class="sw__var">--blue-lighter</span>
+          <code>#F7FAFC</code>
+          <small>分区过渡背景，可用于轻量区块</small>
+          <span class="ratio">配 <em>#526778</em> 次要文字 <em>5.61:1</em> AA</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#253B4A;color:#FFFFFF">主文字</div>
+        <div class="sw__b">
+          <span class="sw__var">--text-primary</span>
+          <code>#253B4A</code>
+          <small>标题与正文主要文字</small>
+          <span class="ratio">白底 <em>11.65:1</em> AAA</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#526778;color:#FFFFFF">次文字</div>
+        <div class="sw__b">
+          <span class="sw__var">--text-secondary</span>
+          <code>#526778</code>
+          <small>次要说明文字</small>
+          <span class="ratio">白底 <em>5.88:1</em> AA</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#DAE5ED;color:#253B4A">描边</div>
+        <div class="sw__b">
+          <span class="sw__var">--border-default</span>
+          <code>#DAE5ED</code>
+          <small>卡片、输入框及分隔线</small>
+          <span class="ratio">仅作边界，不承载文字</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#395A73;color:#FFFFFF">焦点</div>
+        <div class="sw__b">
+          <span class="sw__var">--focus-outline</span>
+          <code>#395A73</code>
+          <small>键盘焦点描边，提高可发现性</small>
+          <span class="ratio">白底 <em>7.28:1</em> AAA</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#A84646;color:#FFFFFF">错误</div>
+        <div class="sw__b">
+          <span class="sw__var">--danger</span>
+          <code>#A84646</code>
+          <small>错误说明及删除提醒，搭配文字说明</small>
+          <span class="ratio">白底 <em>5.79:1</em> AA</span>
+        </div>
+      </div>
+
+      <div class="sw">
+        <div class="sw__chip" style="background:#3C7862;color:#FFFFFF">成功</div>
+        <div class="sw__b">
+          <span class="sw__var">--success</span>
+          <code>#3C7862</code>
+          <small>成功辅助图标，搭配明确文字说明</small>
+          <span class="ratio">白底 <em>5.18:1</em> AA</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note note--info" style="margin-top:18px">
+      <b>色彩使用原则（PRD 10.2）</b>
+      <span>
+        ① 页面视觉面积以白色为主、低饱和蓝为辅助强调；
+        ② 正常正文<b>不直接使用 #8FAFC8 作为白底小字号文字</b>，因为浅蓝与白色对比度不足；
+        ③ 蓝色按钮填充优先搭配深蓝灰色文字，必要时采用白底蓝边的次级按钮。文本与控件对比度须在实现阶段实际检测。
+      </span>
+    </div>
+
+    <h3 class="blk">6.2 卡片、按钮与表单 <small>PRD 10.4</small></h3>
+    <div class="grid g-2">
+
+      <div class="card">
+        <h4 style="margin:0 0 14px;font-size:16px">按钮</h4>
+        <div class="stack">
+          <div class="row">
+            <span class="btn btn--primary">完成今日打卡</span>
+            <span style="font-size:13px;color:#526778">主按钮：#8FAFC8 填充 + 深蓝灰文字</span>
+          </div>
+          <div class="row">
+            <span class="btn btn--ghost">取消</span>
+            <span class="btn btn--ghost">查看详情</span>
+            <span style="font-size:13px;color:#526778">次按钮：白底 + 浅蓝边框</span>
+          </div>
+          <div class="row">
+            <span class="btn btn--done">✓ 今日已打卡</span>
+            <span style="font-size:13px;color:#526778">完成态</span>
+          </div>
+          <div class="row">
+            <span class="btn btn--text">查看原因</span>
+            <span style="font-size:13px;color:#526778">文字按钮：低权重操作</span>
+          </div>
+          <div>
+            <span class="btn btn--off">完成今日打卡</span>
+            <span class="btn__why">禁用时保留文字提示并说明原因，不只置灰</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0 0 14px;font-size:16px">输入框</h4>
+        <div class="stack" style="gap:14px">
+          <div>
+            <div style="font-size:13px;color:#526778;margin-bottom:5px">默认态</div>
+            <div style="background:#fff;border:1px solid #DAE5ED;border-radius:10px;padding:9px 12px;font-size:14px;color:#526778">请输入课程关键词</div>
+          </div>
+          <div>
+            <div style="font-size:13px;color:#526778;margin-bottom:5px">聚焦态 · 可见描边</div>
+            <div style="background:#fff;border:2px solid #395A73;border-radius:10px;padding:9px 12px;font-size:14px">课堂观察</div>
+          </div>
+          <div>
+            <div style="font-size:13px;color:#526778;margin-bottom:5px">错误态 · 提示靠近字段</div>
+            <div style="background:#fff;border:1px solid #A84646;border-radius:10px;padding:9px 12px;font-size:14px">示例文本</div>
+            <div style="font-size:12px;color:#A84646;margin-top:5px">观察事实为必填项，请填写后再保存。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0 0 14px;font-size:16px">进度条与图表</h4>
+        <div class="stack" style="gap:14px">
+          <div>
+            <div class="row" style="justify-content:space-between;font-size:13px;color:#526778;margin-bottom:6px">
+              <span>课程学习进度</span><b style="color:#253B4A">62%</b>
+            </div>
+            <div class="bar"><i style="width:62%"></i></div>
+            <div style="font-size:12px;color:#526778;margin-top:5px">进度条旁必须显示文字百分比</div>
+          </div>
+          <div>
+            <div style="font-size:13px;color:#526778;margin-bottom:8px">三维观察能力（数值标签 + 文字说明，不只靠颜色）</div>
+            <div class="stack" style="gap:8px">
+              <div class="row"><span style="width:64px;font-size:13px">注意</span><span class="bar f1"><i style="width:82%"></i></span><b style="font-size:13px;width:34px;text-align:right">82</b></div>
+              <div class="row"><span style="width:64px;font-size:13px">推理</span><span class="bar f1"><i style="width:66%"></i></span><b style="font-size:13px;width:34px;text-align:right">66</b></div>
+              <div class="row"><span style="width:64px;font-size:13px">表述</span><span class="bar f1"><i style="width:54%"></i></span><b style="font-size:13px;width:34px;text-align:right">54</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0 0 14px;font-size:16px">卡片与日历</h4>
+        <div class="stack" style="gap:14px">
+          <div style="background:#fff;border:1px solid #DAE5ED;border-radius:16px;box-shadow:0 1px 2px rgba(37,59,74,.04),0 6px 20px rgba(37,59,74,.05);padding:14px">
+            <div style="font-weight:600;font-size:14px">卡片规范</div>
+            <div style="font-size:13px;color:#526778">白底 · 12–16px 圆角 · 浅边框 · 轻阴影；点击区域明确，卡片内层级清晰。</div>
+          </div>
+          <div>
+            <div style="font-size:13px;color:#526778;margin-bottom:8px">打卡日历：完成日主蓝底 + 对勾，未完成日中性浅色</div>
+            <div class="cal" style="grid-template-columns:repeat(7,1fr);max-width:250px">
+              <div class="on">✓</div><div class="on">✓</div><div>—</div><div class="on">✓</div><div class="today">今</div><div>—</div><div>—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 七、排版与间距 ================= -->
+<section class="sec" id="type">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">07</span>
+      <h2>字体排版与间距</h2>
+      <span class="head__src">PRD 10.3 · 10.6</span>
+    </div>
+    <p class="sec__note">
+      中文优先使用系统无衬线字体，减少跨系统依赖；正文建议 14–16px，桌面常规正文优先 16px，
+      行高约 1.5–1.7；PC 主内容区最大宽度 1200px；间距采用 8px 基础系统。
+    </p>
+
+    <div class="grid g-2">
+      <div class="card">
+        <h3 class="blk" style="margin-top:0">字号阶梯</h3>
+        <div class="type-row"><dt>一级页面标题 28px</dt><dd style="font-size:28px;font-weight:700;line-height:1.3">第三只眼 · 首页学习工作台</dd></div>
+        <div class="type-row"><dt>模块标题 20px</dt><dd style="font-size:20px;font-weight:700">今日学习打卡</dd></div>
+        <div class="type-row"><dt>正文 16px</dt><dd style="font-size:16px">完成一项有效学习任务后，即可获得当日的打卡资格。</dd></div>
+        <div class="type-row"><dt>辅助说明 13px</dt><dd style="font-size:13px;color:#526778">最近七日（登录后显示打卡记录）</dd></div>
+        <div class="type-row"><dt>行高 1.6</dt><dd style="font-size:16px;line-height:1.6;color:#526778">评课应围绕「课堂事实—分析解释—改进建议」三段结构展开，结论需要能被具体的时间戳标注所支持，而不是停留在笼统的好坏判断。</dd></div>
+      </div>
+
+      <div class="card">
+        <h3 class="blk" style="margin-top:0">8px 间距系统</h3>
+        <div class="space-scale">
+          <div><i style="width:8px;height:8px"></i>8</div>
+          <div><i style="width:16px;height:16px"></i>16</div>
+          <div><i style="width:24px;height:24px"></i>24</div>
+          <div><i style="width:32px;height:32px"></i>32</div>
+          <div><i style="width:48px;height:48px"></i>48</div>
+          <div><i style="width:64px;height:64px"></i>64</div>
+        </div>
+        <div class="type-row" style="margin-top:20px"><dt>--space-unit</dt><dd style="font-family:Consolas,monospace">8px</dd></div>
+        <div class="type-row"><dt>--radius-card</dt><dd style="font-family:Consolas,monospace">16px</dd></div>
+        <div class="type-row"><dt>--radius-control</dt><dd style="font-family:Consolas,monospace">10px</dd></div>
+        <div class="type-row"><dt>内容最大宽度</dt><dd style="font-family:Consolas,monospace">1200px</dd></div>
+        <div class="type-row"><dt>字体栈</dt><dd style="font-family:Consolas,monospace;font-size:13px">"Microsoft YaHei","PingFang SC",system-ui,sans-serif</dd></div>
+
+        <div class="note note--info" style="margin-top:18px">
+          <b>无障碍要求（PRD 10.6）</b>
+          <span>健康状态与错误状态不能仅通过颜色区分；键盘焦点态为 <code>2px solid #395A73</code>；全部控件可 Tab 聚焦；
+            图表须同时提供数字与文字描述；尊重 <code>prefers-reduced-motion</code>。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 八、响应式 ================= -->
+<section class="sec sec--tint" id="responsive">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">08</span>
+      <h2>响应式适配</h2>
+      <span class="head__src">PRD 10.5 · 7.3</span>
+    </div>
+    <p class="sec__note">
+      完整课堂观察标注主要面向桌面端；移动端需能基本查看录像和标注，不要求所有复杂操作与桌面完全一致。
+      说课上传与打卡功能在移动端优先可用。
+    </p>
+
+    <div class="card">
+      <div class="dev">
+        <figure>
+          <div class="frame" style="width:210px"><div class="in" style="height:126px">
+            <div style="display:flex;gap:4px"><span style="flex:none;width:14px;height:7px;border-radius:2px;background:#8FAFC8"></span><span style="flex:1;height:7px;border-radius:2px;background:#C6D6E3"></span></div>
+            <div style="display:flex;gap:5px;flex:1">
+              <div style="flex:1;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+              <div style="flex:1.2;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+            </div>
+            <div style="display:flex;gap:5px;height:26px">
+              <div style="flex:1;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+              <div style="flex:1;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+            </div>
+          </div></div>
+          <figcaption><b>桌面端 ≥1024px</b><br>顶部完整导航；首页左右分栏；<br>观察工作台视频与标注并排</figcaption>
+        </figure>
+
+        <figure>
+          <div class="frame" style="width:150px"><div class="in" style="height:150px">
+            <div style="display:flex;gap:4px"><span style="flex:none;width:14px;height:7px;border-radius:2px;background:#8FAFC8"></span><span style="flex:1;height:7px;border-radius:2px;background:#C6D6E3"></span></div>
+            <div style="display:flex;gap:5px;flex:1">
+              <div style="flex:1;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+              <div style="flex:1;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+            </div>
+          </div></div>
+          <figcaption><b>平板端 768–1023px</b><br>卡片适当缩窄；<br>标注面板可收起或置于下方</figcaption>
+        </figure>
+
+        <figure>
+          <div class="frame" style="width:78px"><div class="in" style="height:150px">
+            <div style="display:flex;gap:4px"><span style="flex:none;width:12px;height:6px;border-radius:2px;background:#8FAFC8"></span><span style="flex:1;height:6px;border-radius:2px;background:#C6D6E3"></span></div>
+            <div style="flex:1;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+            <div style="height:30px;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+            <div style="height:22px;background:#fff;border:1px solid #DAE5ED;border-radius:4px"></div>
+          </div></div>
+          <figcaption><b>手机端 &lt;768px</b><br>单列卡片、折叠菜单；<br>按钮保证触控面积</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 九、边界声明 ================= -->
+<section class="sec" id="boundary">
+  <div class="wrap">
+    <div class="head">
+      <span class="head__no">09</span>
+      <h2>原型真实边界</h2>
+      <span class="head__src">PRD 12.4 · 13 · 3.4</span>
+    </div>
+    <p class="sec__note">
+      为避免把前端演示误当成已上线产品，以下事项在课程原型阶段明确不做，或必须以「演示」字样标注。
+    </p>
+
+    <div class="grid g-2">
+      <div class="no"><i>✕</i><span>不做真实账号注册与登录鉴权；登录态切换仅为演示状态机。</span></div>
+      <div class="no"><i>✕</i><span>不做真实视频上传、视频解析与真实 AI 分析。</span></div>
+      <div class="no"><i>✕</i><span>不伪造任何 AI 评价结果、专家标注对照或真实服务器进度。</span></div>
+      <div class="no"><i>✕</i><span>不在纯静态前端实现服务端账户、跨设备同步或云端 AI 推理。</span></div>
+      <div class="no"><i>✕</i><span>不自动从第三方视频网站下载、抓取未授权的课堂录像。</span></div>
+      <div class="no"><i>✕</i><span>不将个人录课默认公开、分享或纳入模型训练数据集。</span></div>
+      <div class="no"><i>✕</i><span>不以 AI 对教师资格、课程成绩或正式专业资格做最终判定。</span></div>
+      <div class="no"><i>✕</i><span>不做在线直播授课、付费购买、社交聊天与商业化课程交易。</span></div>
+    </div>
+
+    <h3 class="blk">必须标注的要求</h3>
+    <div class="grid g-2">
+      <div class="no"><i class="ok">✓</i><span>模拟数据与模拟 AI 反馈必须清楚标注为「演示数据 / 演示结果」。</span></div>
+      <div class="no"><i class="ok">✓</i><span>课堂观察三维反馈与 AI 说课五维评分是两套体系，不得混算为单一分数。</span></div>
+      <div class="no"><i class="ok">✓</i><span>说课录像默认仅本人可见，支持删除；AI 评价标注「仅供练习参考」。</span></div>
+      <div class="no"><i class="ok">✓</i><span>未完成的功能须准确标注为「规划中 / 演示」，不宣称已实现。</span></div>
+    </div>
+
+    <h3 class="blk">关于本演示页</h3>
+    <div class="card">
+      <div class="rows" style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:#526778">
+        <div>· 本页是<b style="color:#253B4A">静态陈列页</b>，用于集中呈现 PRD 已定义的功能模块、页面与状态，<b style="color:#253B4A">不实现任何产品逻辑</b>。</div>
+        <div>· 全部内容可溯源至《智能学习平台 PRD 需求规范》V1.0（2026-10-08）；各区块右上角标注了对应 PRD 章节号。</div>
+        <div>· 本文件含 <b style="color:#253B4A">0 行 JavaScript</b>，全部图形由 CSS 与内联 SVG 绘制，不引用任何外链资源，双击即可打开、断网亦可完整查看。</div>
+        <div>· 页面缩略图为按 PRD 第 8 章文字线框重绘的<b style="color:#253B4A">线框示意</b>，不是视觉稿，也不代表这些页面已全部开发完成。</div>
+        <div>· 任务二实际完成的可交互界面为 <b style="color:#253B4A">P-03 首页学习工作台</b>，位于同目录 <code>../任务二前端/</code>。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 页脚 ================= -->
+<footer>
+  <div class="wrap">
+    <div style="display:flex;flex-wrap:wrap;gap:8px 32px">
+      <span>项目：<b>第三只眼（Third Eye）</b></span>
+      <span>课程：<b>智能学习平台开发</b></span>
+      <span>姓名：<b>章乐</b></span>
+      <span>学号：<b>1150424123</b></span>
+      <span>班级：<b>教育技术学 2401</b></span>
+    </div>
+    <p style="margin:14px 0 0;max-width:80ch">
+      本演示页依据《智能学习平台 PRD 需求规范》V1.0（编写日期 2026-10-08）整理，
+      是 PRD 的可视化陈列，不构成产品功能声明。主题配色 低饱和蓝 #8FAFC8 + 纯白 #FFFFFF。
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

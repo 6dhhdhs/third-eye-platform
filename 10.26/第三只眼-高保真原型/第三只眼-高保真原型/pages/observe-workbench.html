@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="课堂观察工作台：边看课边打时间戳标注，把证据引用到评课稿，并对照专家参考标注。"
+    />
+    <title>课堂观察工作台 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="observe-workbench" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="home.html">首页</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <a href="observe.html">课堂观察与评课</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span>观察工作台</span>
+          </nav>
+          <div class="tags" style="margin-top: 4px">
+            <span class="tag tag-blue">初中 · 语文</span>
+            <span class="tag tag-grey">45 分钟</span>
+            <span class="tag tag-sand">示例课例</span>
+          </div>
+          <h1 style="margin-top: 8px">《岳阳楼记》观察工作台</h1>
+          <p>
+            边看课边打点：先记录可观察到的事实，再写解释与建议。每条标注都会成为评课稿里可回跳的证据。
+          </p>
+        </div>
+        <div class="head-aside">
+          <a class="btn-ghost btn-sm" href="observe.html">
+            <span class="material-symbols-outlined">arrow_back</span
+            >返回任务列表
+          </a>
+          <button type="button" id="save-draft-btn" class="btn-ghost btn-sm">
+            <span class="material-symbols-outlined">save</span>保存草稿
+          </button>
+          <button type="button" class="btn-primary" data-submit-report>
+            提交评课报告
+          </button>
+        </div>
+      </div>
+
+      <div class="grid-main-side">
+        <div class="stack">
+          <section class="stage" aria-label="课堂录像播放器">
+            <img
+              src="../assets/img/poster-classroom.svg"
+              alt="《岳阳楼记》课堂录像画面（示例封面）"
+            />
+            <div class="stage-shade"></div>
+            <div class="stage-top">
+              <span class="stage-pill"><span class="dot"></span>正在观察</span>
+              <span class="stage-pill">示例录像 · 静态画面</span>
+            </div>
+            <div
+              style="
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <button
+                type="button"
+                id="play-video-btn"
+                aria-label="播放或暂停课堂录像"
+                style="
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  background: #ffffffee;
+                  color: #426278;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-shadow: 0 8px 24px #102f4340;
+                "
+              >
+                <span class="material-symbols-outlined" style="font-size: 32px"
+                  >play_arrow</span
+                >
+              </button>
+            </div>
+            <div class="stage-bottom">
+              <span class="material-symbols-outlined">replay_10</span>
+              <span class="material-symbols-outlined">play_circle</span>
+              <div class="stage-track"><span style="width: 35%"></span></div>
+              <span class="tabular">15:42 / 45:00</span>
+              <span class="stage-note">当前播放时间将用于新标注</span>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="annotate-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">01 / 打点</span>
+                <h2 id="annotate-title">添加一条观察标注</h2>
+                <p class="muted">
+                  时间戳自动取当前播放位置
+                  15:42；请写可观察到的行为，不写主观评价。
+                </p>
+              </div>
+              <span class="tag tag-grey" id="event-time-tag">15:42</span>
+            </div>
+
+            <div
+              id="category-chips-group"
+              class="pick-row"
+              role="group"
+              aria-label="事件类型"
+            >
+              <button
+                type="button"
+                class="pick cat-pill"
+                data-tag="教师提问"
+                aria-pressed="false"
+              >
+                教师提问
+              </button>
+              <button
+                type="button"
+                class="pick cat-pill"
+                data-tag="学生回应"
+                aria-pressed="false"
+              >
+                学生回应
+              </button>
+              <button
+                type="button"
+                class="pick cat-pill is-on"
+                data-tag="师生互动"
+                aria-pressed="true"
+              >
+                师生互动
+              </button>
+              <button
+                type="button"
+                class="pick cat-pill"
+                data-tag="小组合作"
+                aria-pressed="false"
+              >
+                小组合作
+              </button>
+              <button
+                type="button"
+                class="pick cat-pill"
+                data-tag="教师反馈"
+                aria-pressed="false"
+              >
+                教师反馈
+              </button>
+              <button
+                type="button"
+                class="pick cat-pill"
+                data-tag="课堂组织"
+                aria-pressed="false"
+              >
+                课堂组织
+              </button>
+              <button
+                type="button"
+                class="pick cat-pill"
+                data-tag="其他"
+                aria-pressed="false"
+              >
+                其他
+              </button>
+            </div>
+
+            <div class="field" style="margin-top: 12px">
+              <label class="field-label" for="event-desc-input">观察事实</label>
+              <textarea
+                id="event-desc-input"
+                rows="3"
+                maxlength="300"
+                aria-describedby="char-hint"
+                placeholder="例：教师指向‘先天下之忧而忧’一句，反问‘先与后是时间顺序还是价值抉择’，随后停顿约 12 秒，3 名学生翻书批注。"
+              ></textarea>
+              <div
+                style="display: flex; justify-content: space-between; gap: 10px"
+              >
+                <span class="hint" id="char-hint"
+                  ><span id="char-count">0</span> / 300 字 · 建议 10—300
+                  字</span
+                >
+                <button
+                  type="button"
+                  id="clear-input-btn"
+                  class="btn-ghost btn-sm"
+                >
+                  清空
+                </button>
+              </div>
+            </div>
+
+            <div class="panel-actions">
+              <div class="actions-left">
+                <span class="hint">保存后可引用到评课稿，也可删除重写。</span>
+              </div>
+              <div class="actions-right">
+                <button type="button" id="save-event-btn" class="btn-primary">
+                  <span
+                    class="material-symbols-outlined"
+                    style="font-size: 18px"
+                    >bookmark_add</span
+                  >保存至事件证据列表
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="evidence-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">02 / 证据</span>
+                <h2 id="evidence-title">事件证据列表</h2>
+                <p class="muted">
+                  每条证据都可回跳录像；引用后会以 [[时间戳 · 类型]]
+                  的形式进入评课稿。
+                </p>
+              </div>
+              <div class="pick-row" role="tablist" aria-label="证据类型">
+                <button
+                  type="button"
+                  id="tab-my-btn"
+                  class="pick is-on"
+                  role="tab"
+                  aria-selected="true"
+                >
+                  我的标注（<span id="my-count">3</span>）
+                </button>
+                <button
+                  type="button"
+                  id="tab-expert-btn"
+                  class="pick"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  专家参考
+                </button>
+              </div>
+            </div>
+
+            <div id="evidence-container" class="stack-sm">
+              <article class="evidence">
+                <div class="evidence-head">
+                  <div class="tags">
+                    <button
+                      type="button"
+                      class="stamp timestamp-chip"
+                      data-time="15:42"
+                    >
+                      <span class="material-symbols-outlined">play_circle</span
+                      >15:42
+                    </button>
+                    <span class="tag tag-blue">师生互动</span>
+                  </div>
+                  <span class="tag tag-grey">已保存</span>
+                </div>
+                <p>
+                  教师指向核心名句反问「先与后是时间顺序还是价值抉择」，停顿约
+                  12 秒，3 名学生翻书批注并低声交流。
+                </p>
+                <div class="evidence-foot">
+                  <span>维度建议：注意 + 推理</span>
+                  <button
+                    type="button"
+                    class="insert-cite-btn cite"
+                    data-cite="[#15:42 师生互动]"
+                  >
+                    引用到评课稿
+                  </button>
+                </div>
+              </article>
+
+              <article class="evidence">
+                <div class="evidence-head">
+                  <div class="tags">
+                    <button
+                      type="button"
+                      class="stamp ghost timestamp-chip"
+                      data-time="08:14"
+                    >
+                      <span class="material-symbols-outlined">play_circle</span
+                      >08:14
+                    </button>
+                    <span class="tag tag-blue">教师提问</span>
+                  </div>
+                  <span class="tag tag-grey">已保存</span>
+                </div>
+                <p>
+                  教师请一名学生朗读第三段，在其把「淫雨霏霏」读错后，请另一名学生示范并追问「为什么这里要读得低沉」。
+                </p>
+                <div class="evidence-foot">
+                  <span>维度建议：注意</span>
+                  <button
+                    type="button"
+                    class="insert-cite-btn cite"
+                    data-cite="[#08:14 教师提问]"
+                  >
+                    引用到评课稿
+                  </button>
+                </div>
+              </article>
+
+              <article class="evidence">
+                <div class="evidence-head">
+                  <div class="tags">
+                    <button
+                      type="button"
+                      class="stamp ghost timestamp-chip"
+                      data-time="28:10"
+                    >
+                      <span class="material-symbols-outlined">play_circle</span
+                      >28:10
+                    </button>
+                    <span class="tag tag-blue">小组合作</span>
+                  </div>
+                  <span class="tag tag-red">待补充解释</span>
+                </div>
+                <p>
+                  小组讨论开始时，教师巡视两组并停留约 20 秒，第三组持续沉默约
+                  40 秒，教师未介入。
+                </p>
+                <div class="evidence-foot">
+                  <span>维度建议：推理</span>
+                  <button
+                    type="button"
+                    class="insert-cite-btn cite"
+                    data-cite="[#28:10 小组合作]"
+                  >
+                    引用到评课稿
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <div id="expert-list" class="stack-sm" hidden>
+              <article class="evidence">
+                <div class="evidence-head">
+                  <div class="tags">
+                    <span class="stamp ghost">03:25</span>
+                    <span class="tag tag-violet">专家参考</span>
+                  </div>
+                  <span class="tag tag-grey">参考答案，不是唯一答案</span>
+                </div>
+                <p>递进追问与 12 秒等待时间，给学生组织语言的空间。</p>
+                <div class="evidence-foot">
+                  <span>事件类型：教师提问</span>
+                  <span>与你的标注一致</span>
+                </div>
+              </article>
+              <article class="evidence">
+                <div class="evidence-head">
+                  <div class="tags">
+                    <span class="stamp ghost">22:10</span>
+                    <span class="tag tag-violet">专家参考</span>
+                  </div>
+                </div>
+                <p>小组合作启动时，教师用 40 秒说明任务分工与产出要求。</p>
+                <div class="evidence-foot">
+                  <span>事件类型：课堂组织</span>
+                  <span style="color: #a84646">你尚未标注</span>
+                </div>
+              </article>
+              <article class="evidence">
+                <div class="evidence-head">
+                  <div class="tags">
+                    <span class="stamp ghost">35:06</span>
+                    <span class="tag tag-violet">专家参考</span>
+                  </div>
+                </div>
+                <p>学生回答错误后，教师用二次追问把错误变成讨论资源。</p>
+                <div class="evidence-foot">
+                  <span>事件类型：教师反馈</span>
+                  <span style="color: #a84646">你尚未标注</span>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <aside class="stack">
+          <section class="panel" aria-labelledby="critique-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">03 / 评课</span>
+                <h2 id="critique-title">评课稿</h2>
+                <p class="muted">
+                  建议结构：观察到的事实 → 教育学解释 →
+                  改进建议；至少引用一条标注。
+                </p>
+              </div>
+              <span class="tag tag-grey">演示草稿</span>
+            </div>
+
+            <div class="tags" style="margin-bottom: 10px">
+              <button
+                type="button"
+                class="insert-cite-btn cite tag tag-blue"
+                data-cite="[#15:42 师生互动]"
+              >
+                + 引用 15:42
+              </button>
+              <button
+                type="button"
+                class="insert-cite-btn cite tag tag-blue"
+                data-cite="[#08:14 教师提问]"
+              >
+                + 引用 08:14
+              </button>
+              <button
+                type="button"
+                class="insert-cite-btn cite tag tag-blue"
+                data-cite="[#28:10 小组合作]"
+              >
+                + 引用 28:10
+              </button>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="critique-section-1"
+                >评课正文（第一节）</label
+              >
+              <textarea
+                id="critique-section-1"
+                rows="9"
+                placeholder="先写事实，再解释，最后给建议。可以点击上方时间戳插入引用。"
+              >
+本节课以主客问答的情感变化为主线，提问设计有明显层次。教师在 15:42 指向核心名句反问，并留有思考时间，学生随后能主动翻书批注。我的判断是，这个停顿把“教师提问”转化成了“学生自己发现问题”的机会。</textarea>
+            </div>
+
+            <div class="notice" style="margin-top: 12px">
+              <span class="material-symbols-outlined">psychology</span>
+              <span>
+                写作提示：把“较好”“比较积极”改写成可复核的行为，例如“教师重复了
+                2 次指令，3 名学生开始动笔”。
+              </span>
+            </div>
+
+            <div class="panel-actions">
+              <div class="actions-left">
+                <span class="hint">草稿仅保存在本页，刷新会丢失。</span>
+              </div>
+              <div class="actions-right">
+                <button
+                  type="button"
+                  class="btn-ghost btn-sm"
+                  data-submit-report
+                >
+                  提交并生成报告
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel tint-green" aria-labelledby="expert-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">专家参考</span>
+                <h2 id="expert-title">对照，而不是对答案</h2>
+              </div>
+              <button
+                type="button"
+                id="toggle-expert-btn"
+                class="btn-ghost btn-sm"
+              >
+                <span class="material-symbols-outlined">visibility</span>
+                <span id="expert-toggle-text">专家参考对照 (已开启)</span>
+              </button>
+            </div>
+            <div id="expert-benchmark-card" class="stack-sm">
+              <p class="muted">
+                专家标注是讨论材料，不是唯一正确答案。出现合理的不同解读时，请回到事实证据解释。
+              </p>
+              <div class="rows">
+                <div class="row">
+                  <div class="row-main">
+                    <h3>03:25 · 教师提问</h3>
+                    <p>递进追问与等待时间</p>
+                  </div>
+                  <div class="row-side">
+                    <span class="tag tag-green">已覆盖</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="row-main">
+                    <h3>22:10 · 课堂组织</h3>
+                    <p>小组任务分工说明</p>
+                  </div>
+                  <div class="row-side">
+                    <span class="tag tag-red">未覆盖</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="row-main">
+                    <h3>35:06 · 教师反馈</h3>
+                    <p>错误后的二次追问</p>
+                  </div>
+                  <div class="row-side">
+                    <span class="tag tag-red">未覆盖</span>
+                  </div>
+                </div>
+              </div>
+              <div class="notice">
+                <span class="material-symbols-outlined">info</span>
+                <span
+                  >专家锚点共 12 个，当前覆盖 8 个；报告页会给出遗漏提示。</span
+                >
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="submit-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">提交</span>
+                <h2 id="submit-title">准备好了吗</h2>
+              </div>
+            </div>
+            <div class="rows">
+              <div class="row">
+                <div class="row-main">
+                  <p>已保存标注</p>
+                  <h3>3 项</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>评课正文</p>
+                  <h3>已填写 1 节</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>报告类型</p>
+                  <h3>三维观察能力（示例）</h3>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn-primary"
+              style="width: 100%; margin-top: 14px"
+              data-submit-report
+            >
+              提交评课报告
+            </button>
+            <p class="hint" style="text-align: center; margin-top: 8px">
+              提交后生成“注意 / 推理 / 表述”三维报告，可供教师复核。
+            </p>
+          </section>
+
+          <div class="notice warn">
+            <span class="material-symbols-outlined">info</span>
+            <span>
+              原型演示：录像为静态封面，时间戳固定为
+              15:42；标注、评课与专家对照均为示例内容。
+            </span>
+          </div>
+        </aside>
+      </div>
+
+      <p class="ws-note">
+        提示：切换任务或离开页面前，请先保存草稿；正式版会自动暂存并提示未保存内容。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/observe-workbench.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AI 说课实训：上传本人说课视频，获得五维形成性诊断与可定位的改进建议。"
+    />
+    <title>AI 说课实训 · 第三只眼</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body
+    class="bg-surface font-body-md text-body-md text-on-surface antialiased"
+    data-root=".."
+    data-page="speaking"
+  >
+    <main id="main-content" class="min-h-screen w-full bg-surface pt-16">
+      <div
+        class="mx-auto flex w-full max-w-[1240px] flex-col gap-space-lg px-margin-mobile py-space-xl md:px-margin"
+      >
+        <header class="flex flex-col gap-space-md">
+          <nav
+            aria-label="面包屑"
+            class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant"
+          >
+            <a class="hover:text-on-surface" href="home.html">首页</a>
+            <span class="material-symbols-outlined text-[14px]"
+              >chevron_right</span
+            >
+            <span class="font-semibold text-on-surface">AI 说课实训</span>
+          </nav>
+          <div
+            class="flex flex-col justify-between gap-space-md md:flex-row md:items-end"
+          >
+            <div class="flex max-w-2xl flex-col gap-2">
+              <h1
+                class="font-headline-lg text-headline-lg font-bold tracking-tight text-on-surface"
+              >
+                AI 说课实训
+              </h1>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                练得快、能坚持：上传一段本人说课视频，系统给出教材分析、目标重难点、过程方法、学习评价、语言呈现五维形成性诊断。
+              </p>
+            </div>
+            <span class="chip w-fit"
+              ><span class="material-symbols-outlined text-[14px]">lock</span
+              >视频仅本人与指导教师可见</span
+            >
+          </div>
+        </header>
+
+        <div class="grid gap-space-lg lg:grid-cols-[1fr_380px]">
+          <!-- 新建训练 -->
+          <section
+            id="new"
+            class="scroll-mt-24 rounded-2xl border border-outline-variant/50 bg-surface-container-lowest p-space-lg shadow-card"
+            aria-labelledby="new-title"
+          >
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2
+                id="new-title"
+                class="font-headline-md text-headline-md font-bold text-on-surface"
+              >
+                新建说课训练
+              </h2>
+              <span class="chip">支持 MP4 / MOV · ≤ 500MB · 5–20 分钟</span>
+            </div>
+
+            <form
+              id="speakingForm"
+              class="mt-5 flex flex-col gap-space-md"
+              novalidate
+            >
+              <div class="flex flex-col gap-2">
+                <label
+                  for="topic"
+                  class="font-label-lg text-label-lg font-semibold text-on-surface"
+                  >说课主题 <span class="text-error">*</span></label
+                >
+                <input
+                  id="topic"
+                  name="topic"
+                  type="text"
+                  required
+                  class="w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-4 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:border-primary focus:outline-none"
+                  placeholder="例如：高中语文《赤壁赋》教学设计与说课"
+                  value="高中语文《赤壁赋》教学设计与说课"
+                />
+                <p class="font-label-sm text-label-sm text-on-surface-variant">
+                  主题将用于生成诊断报告的上下文，请写清学段、学科与课题。
+                </p>
+              </div>
+
+              <div class="grid gap-space-md sm:grid-cols-2">
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="subject"
+                    class="font-label-lg text-label-lg font-semibold text-on-surface"
+                    >学段学科</label
+                  >
+                  <select
+                    id="subject"
+                    class="w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-4 py-2.5 font-body-md text-body-md text-on-surface focus:border-primary focus:outline-none"
+                  >
+                    <option>高中语文</option>
+                    <option>初中语文</option>
+                    <option>高中数学</option>
+                    <option>信息技术</option>
+                  </select>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="mentor"
+                    class="font-label-lg text-label-lg font-semibold text-on-surface"
+                    >指导教师</label
+                  >
+                  <input
+                    id="mentor"
+                    type="text"
+                    class="w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-4 py-2.5 font-body-md text-body-md text-on-surface focus:border-primary focus:outline-none"
+                    value="周文远 教授"
+                  />
+                </div>
+              </div>
+
+              <!-- 上传区 -->
+              <div class="flex flex-col gap-2">
+                <span
+                  class="font-label-lg text-label-lg font-semibold text-on-surface"
+                  >说课视频 <span class="text-error">*</span></span
+                >
+                <label
+                  id="dropZone"
+                  for="videoFile"
+                  class="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-outline-variant bg-surface-container-low px-6 py-10 text-center transition-colors hover:border-primary hover:bg-surface-container"
+                >
+                  <span
+                    class="material-symbols-outlined text-[40px] text-primary"
+                    >cloud_upload</span
+                  >
+                  <span
+                    class="font-headline-sm text-headline-sm font-semibold text-on-surface"
+                    >点击选择或拖入说课视频</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                    >请确保画面稳定、声音清晰；上传前可在本机预览</span
+                  >
+                  <input
+                    id="videoFile"
+                    type="file"
+                    accept="video/mp4,video/quicktime"
+                    class="sr-only"
+                  />
+                </label>
+                <div
+                  id="fileInfo"
+                  class="hidden items-center justify-between rounded-xl border border-outline-variant/50 bg-surface-container-low p-3"
+                >
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="material-symbols-outlined text-[20px] text-tertiary"
+                      >movie</span
+                    >
+                    <div class="flex flex-col">
+                      <span
+                        id="fileName"
+                        class="font-label-md text-label-md font-semibold text-on-surface"
+                        >—</span
+                      >
+                      <span
+                        id="fileSize"
+                        class="font-label-sm text-label-sm text-on-surface-variant"
+                        >—</span
+                      >
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    id="removeFile"
+                    class="rounded-lg p-1.5 text-on-surface-variant hover:bg-surface-container-high"
+                    aria-label="移除已选视频"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >close</span
+                    >
+                  </button>
+                </div>
+              </div>
+
+              <label
+                class="flex items-start gap-2 rounded-xl bg-surface-container-low p-3"
+              >
+                <input
+                  id="privacy"
+                  type="checkbox"
+                  class="mt-0.5 h-4 w-4 rounded border-outline-variant text-primary focus:ring-primary"
+                />
+                <span class="font-body-sm text-body-sm text-on-surface-variant"
+                  >我已阅读并同意
+                  <a href="../index.html#privacy" class="text-primary underline"
+                    >隐私与数据使用说明</a
+                  >，知悉视频仅用于生成个人诊断报告，不会公开展示。</span
+                >
+              </label>
+
+              <div
+                class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <p class="font-label-sm text-label-sm text-on-surface-variant">
+                  提交后将进入「待分析 → 分析中 → 完成」状态（PRD 5.7.3）。
+                </p>
+                <button type="submit" class="btn-primary sm:w-auto">
+                  <span class="material-symbols-outlined text-[18px]"
+                    >auto_awesome</span
+                  >开始评价
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- 右栏 -->
+          <aside class="flex flex-col gap-space-md">
+            <section
+              class="rounded-2xl border border-outline-variant/50 bg-surface-container-lowest p-space-md shadow-card"
+            >
+              <h2
+                class="font-headline-sm text-headline-sm font-bold text-on-surface"
+              >
+                五维评价量表
+              </h2>
+              <ul class="mt-3 flex flex-col gap-2.5">
+                <li
+                  class="flex items-center justify-between font-body-sm text-body-sm"
+                >
+                  <span class="text-on-surface">教材与学情分析</span
+                  ><span class="tabular text-on-surface-variant">25%</span>
+                </li>
+                <li
+                  class="flex items-center justify-between font-body-sm text-body-sm"
+                >
+                  <span class="text-on-surface">教学目标与重难点</span
+                  ><span class="tabular text-on-surface-variant">25%</span>
+                </li>
+                <li
+                  class="flex items-center justify-between font-body-sm text-body-sm"
+                >
+                  <span class="text-on-surface">教学过程与方法</span
+                  ><span class="tabular text-on-surface-variant">20%</span>
+                </li>
+                <li
+                  class="flex items-center justify-between font-body-sm text-body-sm"
+                >
+                  <span class="text-on-surface">学习评价与反思</span
+                  ><span class="tabular text-on-surface-variant">15%</span>
+                </li>
+                <li
+                  class="flex items-center justify-between font-body-sm text-body-sm"
+                >
+                  <span class="text-on-surface">语言表达与呈现</span
+                  ><span class="tabular text-on-surface-variant">15%</span>
+                </li>
+              </ul>
+              <p
+                class="mt-3 border-t border-outline-variant/40 pt-3 font-label-sm text-label-sm text-on-surface-variant"
+              >
+                量表为建议稿，须经学科教学专家审定后使用。
+              </p>
+            </section>
+
+            <section
+              class="rounded-2xl border border-outline-variant/50 bg-surface-container-lowest p-space-md shadow-card"
+            >
+              <h2
+                class="font-headline-sm text-headline-sm font-bold text-on-surface"
+              >
+                处理状态说明
+              </h2>
+              <ol
+                class="mt-3 flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant"
+              >
+                <li class="flex gap-2">
+                  <span class="chip shrink-0">待分析</span>已提交，等待排队
+                </li>
+                <li class="flex gap-2">
+                  <span class="chip shrink-0">分析中</span
+                  >转写与评分进行中，可离开页面
+                </li>
+                <li class="flex gap-2">
+                  <span class="chip shrink-0">失败</span>保留提交记录，可重试
+                </li>
+                <li class="flex gap-2">
+                  <span class="chip-success shrink-0">完成</span
+                  >生成五维报告与证据片段
+                </li>
+              </ol>
+            </section>
+          </aside>
+        </div>
+
+        <!-- 历史作品 -->
+        <section
+          aria-labelledby="history-title"
+          class="flex flex-col gap-space-sm"
+        >
+          <div class="flex items-center justify-between">
+            <h2
+              id="history-title"
+              class="font-headline-sm text-headline-sm font-bold text-on-surface"
+            >
+              我的说课作品
+            </h2>
+            <span class="font-label-sm text-label-sm text-on-surface-variant"
+              >共 2 次提交</span
+            >
+          </div>
+          <div class="grid gap-space-md md:grid-cols-2">
+            <a
+              href="speaking-report.html"
+              class="group flex min-w-0 gap-space-md rounded-2xl border border-outline-variant/50 bg-surface-container-lowest p-space-md shadow-card transition-shadow hover:shadow-floating"
+            >
+              <img
+                src="../assets/img/poster-speaking.svg"
+                alt="说课视频封面"
+                class="h-24 w-36 shrink-0 rounded-xl object-cover"
+              />
+              <div class="flex min-w-0 flex-col gap-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="chip-success">诊断完成</span
+                  ><span class="chip">2026-10-08</span>
+                </div>
+                <h3
+                  class="truncate font-headline-sm text-headline-sm font-bold text-on-surface group-hover:text-primary"
+                >
+                  高中语文《赤壁赋》教学设计与说课实训
+                </h3>
+                <p
+                  class="tabular font-label-sm text-label-sm text-on-surface-variant"
+                >
+                  09:45 · 综合 86.5 分 · 良好进阶档
+                </p>
+                <p
+                  class="mt-auto font-label-md text-label-md font-semibold text-primary"
+                >
+                  查看诊断报告 →
+                </p>
+              </div>
+            </a>
+            <a
+              href="speaking-report.html"
+              class="group flex min-w-0 gap-space-md rounded-2xl border border-outline-variant/50 bg-surface-container-lowest p-space-md shadow-card transition-shadow hover:shadow-floating"
+            >
+              <img
+                src="../assets/img/poster-speaking.svg"
+                alt="说课视频封面"
+                class="h-24 w-36 shrink-0 rounded-xl object-cover"
+              />
+              <div class="flex min-w-0 flex-col gap-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="chip-success">诊断完成</span
+                  ><span class="chip">2026-09-26</span>
+                </div>
+                <h3
+                  class="truncate font-headline-sm text-headline-sm font-bold text-on-surface group-hover:text-primary"
+                >
+                  初中语文《岳阳楼记》说课与板书设计
+                </h3>
+                <p
+                  class="tabular font-label-sm text-label-sm text-on-surface-variant"
+                >
+                  08:30 · 综合 79.0 分 · 合格档
+                </p>
+                <p
+                  class="mt-auto font-label-md text-label-md font-semibold text-primary"
+                >
+                  查看诊断报告 →
+                </p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/speaking.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

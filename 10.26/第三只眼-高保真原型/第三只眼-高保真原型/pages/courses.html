@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="课程学习：按学科与训练类型筛选课程，查看学习进度并继续学习。"
+    />
+    <title>课程学习 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="courses" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="home.html">首页</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span>课程学习</span>
+          </nav>
+          <span class="eyebrow">LEARNING PATH / 理论学习</span>
+          <h1>课程学习</h1>
+          <p>
+            围绕课堂观察与教案设计能力建设的必修课与实训专题。先补理论，再进入观察工作台与教案评价，
+            让每一次练习都有依据。
+          </p>
+        </div>
+        <div class="head-aside">
+          <label class="field" style="min-width: 240px">
+            <span class="sr-only">搜索课程</span>
+            <input
+              id="courseSearch"
+              type="search"
+              placeholder="搜索课程名称或技能指标"
+              aria-label="搜索课程"
+            />
+          </label>
+        </div>
+      </div>
+
+      <section class="panel" aria-label="课程筛选">
+        <div class="panel-head" style="margin-bottom: 10px">
+          <div>
+            <span class="eyebrow">筛选</span>
+            <h2 style="margin-top: 5px">按学科与类型找课</h2>
+          </div>
+          <span class="muted" id="courseCount" aria-live="polite">共 6 门</span>
+        </div>
+        <div class="stack-sm">
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <span class="field-label" style="min-width: 32px">学科</span>
+            <div class="pick-row" role="group" aria-label="按学科筛选">
+              <button
+                type="button"
+                class="pick is-on filter-chip"
+                data-filter-group="subject"
+                data-value="all"
+                aria-pressed="true"
+              >
+                全部
+              </button>
+              <button
+                type="button"
+                class="pick filter-chip"
+                data-filter-group="subject"
+                data-value="语文"
+                aria-pressed="false"
+              >
+                语文
+              </button>
+              <button
+                type="button"
+                class="pick filter-chip"
+                data-filter-group="subject"
+                data-value="信息技术"
+                aria-pressed="false"
+              >
+                信息技术
+              </button>
+              <button
+                type="button"
+                class="pick filter-chip"
+                data-filter-group="subject"
+                data-value="通识"
+                aria-pressed="false"
+              >
+                通识
+              </button>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <span class="field-label" style="min-width: 32px">类型</span>
+            <div class="pick-row" role="group" aria-label="按类型筛选">
+              <button
+                type="button"
+                class="pick is-on filter-chip"
+                data-filter-group="type"
+                data-value="all"
+                aria-pressed="true"
+              >
+                全部
+              </button>
+              <button
+                type="button"
+                class="pick filter-chip"
+                data-filter-group="type"
+                data-value="必修"
+                aria-pressed="false"
+              >
+                必修
+              </button>
+              <button
+                type="button"
+                class="pick filter-chip"
+                data-filter-group="type"
+                data-value="专项"
+                aria-pressed="false"
+              >
+                专项训练
+              </button>
+              <button
+                type="button"
+                class="pick filter-chip"
+                data-filter-group="type"
+                data-value="竞赛"
+                aria-pressed="false"
+              >
+                竞赛提升
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="panel"
+        aria-labelledby="continue-title"
+        style="margin-top: 18px"
+      >
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow">继续学习</span>
+            <h2 id="continue-title">接着上次的进度</h2>
+          </div>
+          <span class="muted">最近一次学习：今天 09:20</span>
+        </div>
+        <a
+          href="course-learn.html"
+          class="course-card"
+          style="padding: 0; border: 0"
+        >
+          <div
+            class="grid-side-main"
+            style="gap: 18px; align-items: center; width: 100%"
+          >
+            <div class="cover">
+              <img
+                src="../assets/img/course-observation.svg"
+                alt="《中学语文教学设计与课堂观察方法论》课程封面"
+              />
+            </div>
+            <div class="stack-sm">
+              <div class="tags">
+                <span class="tag tag-green">学习进行中</span>
+                <span class="tag tag-blue">必修实践课</span>
+                <span class="tag tag-grey">语文</span>
+              </div>
+              <h3 style="font-size: 18px">中学语文教学设计与课堂观察方法论</h3>
+              <p class="muted">
+                第 3 章第 2 节「启发式提问行为的识别与时间戳证据链」
+              </p>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  gap: 10px;
+                  font-size: 11px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span class="muted">学习进度 68% · 剩余 12 分钟</span>
+                <span><b>32 / 48 分钟</b></span>
+              </div>
+              <div class="meter" style="height: 6px">
+                <span style="width: 68%"></span>
+              </div>
+              <span class="text-link">继续学习 ↗</span>
+            </div>
+          </div>
+        </a>
+      </section>
+
+      <section class="ws-section" aria-labelledby="all-courses-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">02 / ALL COURSES</span>
+            <h2 id="all-courses-title">全部课程</h2>
+            <p class="muted">学习进度与打卡资格同步更新，课程均为示例素材。</p>
+          </div>
+          <span class="sample">示例课程</span>
+        </div>
+
+        <div id="courseGrid" class="grid-3">
+          <a
+            href="course-learn.html"
+            class="course-card"
+            data-subject="语文"
+            data-type="必修"
+            data-title="中学语文教学设计与课堂观察方法论"
+          >
+            <div class="cover">
+              <img
+                src="../assets/img/course-observation.svg"
+                alt="课堂观察课程封面"
+              />
+            </div>
+            <div class="tags">
+              <span class="tag tag-blue">语文</span>
+              <span class="tag tag-grey">必修</span>
+            </div>
+            <h3>中学语文教学设计与课堂观察方法论</h3>
+            <p>从教学事件打点到证据链评课，建立可迁移的课堂观察框架。</p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                font-size: 10px;
+                color: #6d7f8c;
+                margin-top: auto;
+                padding-top: 4px;
+              "
+            >
+              <span>12 课时 · 2.0 学分</span>
+              <b style="color: #426278">68%</b>
+            </div>
+          </a>
+
+          <a
+            href="course-learn.html"
+            class="course-card"
+            data-subject="通识"
+            data-type="专项"
+            data-title="课堂观察框架与师生言语互动分析（FIAS 升级版）"
+          >
+            <div class="cover">
+              <img
+                src="../assets/img/course-competition.svg"
+                alt="师生互动分析课程封面"
+              />
+            </div>
+            <div class="tags">
+              <span class="tag tag-blue">通识</span>
+              <span class="tag tag-grey">专项训练</span>
+            </div>
+            <h3>课堂观察框架与师生言语互动分析（FIAS 升级版）</h3>
+            <p>
+              把课堂对话转成可计算的互动矩阵，支撑注意与推理维度的量化诊断。
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                font-size: 10px;
+                color: #6d7f8c;
+                margin-top: auto;
+                padding-top: 4px;
+              "
+            >
+              <span>12 课时 · 2.0 学分</span>
+              <span>未开始</span>
+            </div>
+          </a>
+
+          <a
+            href="course-learn.html"
+            class="course-card"
+            data-subject="语文"
+            data-type="竞赛"
+            data-title="全国师范生教学技能竞赛教案设计与答辩规范"
+          >
+            <div class="cover">
+              <img
+                src="../assets/img/course-lesson-plan.svg"
+                alt="教案设计竞赛课程封面"
+              />
+            </div>
+            <div class="tags">
+              <span class="tag tag-blue">语文</span>
+              <span class="tag tag-grey">竞赛提升</span>
+            </div>
+            <h3>全国师范生教学技能竞赛教案设计与答辩规范</h3>
+            <p>
+              结合国赛获奖教案，拆解教材分析、学情研判、活动设计与答辩表达。
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                font-size: 10px;
+                color: #6d7f8c;
+                margin-top: auto;
+                padding-top: 4px;
+              "
+            >
+              <span>8 课时 · 1.5 学分</span>
+              <span>未开始</span>
+            </div>
+          </a>
+
+          <a
+            href="course-learn.html"
+            class="course-card"
+            data-subject="语文"
+            data-type="专项"
+            data-title="从教案到课堂：教学目标落地的证据链构建"
+          >
+            <div class="cover">
+              <img
+                src="../assets/img/course-lesson-plan.svg"
+                alt="教学目标证据链课程封面"
+              />
+            </div>
+            <div class="tags">
+              <span class="tag tag-blue">语文</span>
+              <span class="tag tag-grey">专项训练</span>
+            </div>
+            <h3>从教案到课堂：教学目标落地的证据链构建</h3>
+            <p>
+              破解「教案写得好、上课脱节」，用逆向设计连接目标、活动与评价。
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                font-size: 10px;
+                color: #6d7f8c;
+                margin-top: auto;
+                padding-top: 4px;
+              "
+            >
+              <span>6 课时 · 1.0 学分</span>
+              <span>未开始</span>
+            </div>
+          </a>
+
+          <a
+            href="course-learn.html"
+            class="course-card"
+            data-subject="信息技术"
+            data-type="必修"
+            data-title="课堂录像的多模态观察：从时间戳到能力画像"
+          >
+            <div class="cover">
+              <img
+                src="../assets/img/course-observation.svg"
+                alt="多模态观察课程封面"
+              />
+            </div>
+            <div class="tags">
+              <span class="tag tag-blue">信息技术</span>
+              <span class="tag tag-grey">必修</span>
+            </div>
+            <h3>课堂录像的多模态观察：从时间戳到能力画像</h3>
+            <p>理解 xAPI 埋点、观察信度与多人一致性分析的基本原理。</p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                font-size: 10px;
+                color: #6d7f8c;
+                margin-top: auto;
+                padding-top: 4px;
+              "
+            >
+              <span>10 课时 · 1.5 学分</span>
+              <span>未开始</span>
+            </div>
+          </a>
+
+          <a
+            href="course-learn.html"
+            class="course-card"
+            data-subject="通识"
+            data-type="专项"
+            data-title="教案写作规范与教学目标的可观察化表达"
+          >
+            <div class="cover">
+              <img
+                src="../assets/img/poster-speaking.svg"
+                alt="教案写作规范课程封面"
+              />
+            </div>
+            <div class="tags">
+              <span class="tag tag-blue">通识</span>
+              <span class="tag tag-grey">专项训练</span>
+            </div>
+            <h3>教案写作规范与教学目标的可观察化表达</h3>
+            <p>
+              把「理解」「感受」改写成可观察的行为，让目标、活动与评价真正对齐。
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                font-size: 10px;
+                color: #6d7f8c;
+                margin-top: auto;
+                padding-top: 4px;
+              "
+            >
+              <span>4 课时 · 1.0 学分</span>
+              <span>未开始</span>
+            </div>
+          </a>
+        </div>
+
+        <div id="courseEmpty" class="panel empty" hidden>
+          <span class="material-symbols-outlined">search_off</span>
+          <p style="font-size: 14px; font-weight: 700; color: #1e3444">
+            未找到匹配课程
+          </p>
+          <p>可以换个关键词，或清空筛选条件后重试。</p>
+          <div style="margin-top: 12px">
+            <button id="clearFilters" type="button" class="btn-ghost btn-sm">
+              清空筛选条件
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p class="ws-note">
+        原型演示：课程封面、进度与学分均为示例；正式版课程资源由平台授权后发布。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/courses.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="AI 评教案：提交教学设计文本或文档，获得六维结构化检查、原文依据与可执行的修改建议。"
+    />
+    <title>AI 评教案 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="lesson-review" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="home.html">首页</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span>AI 评教案</span>
+          </nav>
+          <span class="eyebrow">F-07 / LESSON PLAN REVIEW</span>
+          <h1>AI 评教案</h1>
+          <p>
+            提交一份教学设计，按六个维度检查目标、活动与评价是否对齐，并给出可定位到原文的修改建议。
+            评价对象是<strong>教案文本</strong>，不评价真实课堂表现，也不等同教师能力结论。
+          </p>
+        </div>
+        <div class="head-aside">
+          <span class="tag tag-blue">量表：通用六维 · 建议稿 v1.2</span>
+          <span class="sample">原型演示数据</span>
+        </div>
+      </div>
+
+      <div class="steps" aria-label="提交步骤">
+        <div class="step-chip active"><b>STEP 01</b>填写学段学科与课题</div>
+        <div class="step-chip"><b>STEP 02</b>粘贴文本或上传文档</div>
+        <div class="step-chip"><b>STEP 03</b>校验内容并确认提交</div>
+        <div class="step-chip"><b>STEP 04</b>查看分维度报告</div>
+      </div>
+
+      <div class="grid-main-side" style="margin-top: 18px">
+        <form id="lessonReviewForm" class="stack" novalidate>
+          <section class="panel" aria-labelledby="basic-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">01 / 基本信息</span>
+                <h2 id="basic-title">这份教案是什么课</h2>
+                <p class="muted">
+                  学段与学科决定评价视角与术语提示；未填写时报告会标注“依据不足”。
+                </p>
+              </div>
+              <span class="tag tag-grey">仅本人可见</span>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label class="field-label" for="grade"
+                  >学段 <span class="req" aria-hidden="true">*</span></label
+                >
+                <select id="grade" name="grade" required>
+                  <option value="">请选择学段</option>
+                  <option>小学</option>
+                  <option selected>初中</option>
+                  <option>高中</option>
+                  <option>其他 / 自定义</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="subject"
+                  >学科 <span class="req" aria-hidden="true">*</span></label
+                >
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  list="subjectOptions"
+                  value="语文"
+                  placeholder="如：语文 / 信息技术"
+                  required
+                />
+                <datalist id="subjectOptions">
+                  <option value="语文"></option>
+                  <option value="数学"></option>
+                  <option value="英语"></option>
+                  <option value="信息技术"></option>
+                  <option value="科学"></option>
+                  <option value="道德与法治"></option>
+                </datalist>
+                <span class="hint"
+                  >可输入自定义学科，正式版由教研员维护选项。</span
+                >
+              </div>
+              <div class="field">
+                <label class="field-label" for="planTitle"
+                  >教案主题 <span class="req" aria-hidden="true">*</span></label
+                >
+                <input
+                  id="planTitle"
+                  name="planTitle"
+                  type="text"
+                  value="《赤壁赋》教学设计"
+                  placeholder="如：《赤壁赋》教学设计"
+                  required
+                />
+                <span class="hint">用于历史记录与版本列表展示。</span>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top: 14px">
+              <label class="field-label" for="lessonTitle"
+                >教学课题 <span class="req" aria-hidden="true">*</span></label
+              >
+              <input
+                id="lessonTitle"
+                name="lessonTitle"
+                type="text"
+                value="《赤壁赋》第二课时 · 主客问答中的情与理"
+                placeholder="填写本节课名称，例如：第二课时 · 主客问答中的情与理"
+                required
+              />
+            </div>
+
+            <div class="field" style="margin-top: 14px">
+              <label class="field-label" for="concern"
+                >本次最希望检查的问题（选填）</label
+              >
+              <textarea
+                id="concern"
+                name="concern"
+                rows="2"
+                placeholder="例如：教学目标是否可观察、可评价？小组活动是否真的服务于目标？"
+              ></textarea>
+              <span class="hint"
+                >填写后，报告会优先围绕这个问题给出检查结果。</span
+              >
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="content-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">02 / 教案内容</span>
+                <h2 id="content-title">把教案交给平台</h2>
+                <p class="muted">
+                  支持直接粘贴文本；正式版支持 DOCX / PDF / TXT
+                  解析，原型只做文件校验与预览占位。
+                </p>
+              </div>
+              <div
+                class="panel-actions"
+                style="margin: 0; padding: 0; border: 0"
+              >
+                <div class="pick-row" role="group" aria-label="教案输入方式">
+                  <button
+                    type="button"
+                    class="pick is-on"
+                    id="modePaste"
+                    aria-pressed="true"
+                  >
+                    <span class="material-symbols-outlined">content_paste</span
+                    >粘贴文本
+                  </button>
+                  <button
+                    type="button"
+                    class="pick"
+                    id="modeUpload"
+                    aria-pressed="false"
+                  >
+                    <span class="material-symbols-outlined">upload_file</span
+                    >上传文档
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="pastePanel">
+              <div class="field">
+                <label class="field-label" for="planText">教案文本</label>
+                <textarea
+                  id="planText"
+                  name="planText"
+                  rows="14"
+                  placeholder="粘贴教学设计正文，建议包含教材分析、学情分析、教学目标、重难点、教学过程、学习评价、板书与反思等部分。"
+                ></textarea>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <span class="hint" id="textCount"
+                    >0 字 · 建议至少 600 字</span
+                  >
+                  <button
+                    type="button"
+                    id="fillSample"
+                    class="btn-ghost btn-sm"
+                  >
+                    <span class="material-symbols-outlined">auto_awesome</span
+                    >填入示例教案（演示）
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="uploadPanel" hidden>
+              <div
+                class="field"
+                id="dropZone"
+                tabindex="0"
+                role="button"
+                aria-label="选择教案文档"
+                style="
+                  border: 1px dashed #cfdde7;
+                  border-radius: 14px;
+                  padding: 28px 18px;
+                  text-align: center;
+                  background: #f8fbfd;
+                  cursor: pointer;
+                "
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size: 32px; color: #7b98aa"
+                  >upload_file</span
+                >
+                <p style="font-size: 13px; font-weight: 600; margin-top: 8px">
+                  点击选择或拖入文档
+                </p>
+                <p class="hint">
+                  支持 DOCX / PDF / TXT，单个文件不超过
+                  20MB；原型阶段不解析正文。
+                </p>
+                <input
+                  id="planFile"
+                  type="file"
+                  accept=".docx,.pdf,.txt,application/pdf,text/plain"
+                  hidden
+                />
+              </div>
+              <div id="fileInfo" hidden class="notice" style="margin-top: 12px">
+                <span class="material-symbols-outlined">description</span>
+                <span>
+                  <strong id="fileName">未选择文件</strong>
+                  <span class="muted" id="fileMeta"></span><br />
+                  原型演示：仅完成文件类型与大小校验，不读取文档内容；报告中若引用原文，均摘自下方示例文本。
+                </span>
+              </div>
+              <div class="field" style="margin-top: 12px">
+                <label class="field-label" for="planTextFallback"
+                  >补充教案文本（推荐，便于演示原文依据）</label
+                >
+                <textarea
+                  id="planTextFallback"
+                  rows="6"
+                  placeholder="如文档解析失败，可在此粘贴正文；也可点击“填入示例教案”。"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="notice warn" style="margin-top: 14px">
+              <span class="material-symbols-outlined">info</span>
+              <span>
+                平台不会补造缺失章节。若教案缺少目标、评价任务等关键部分，报告只提示缺项，并标注“信息不足
+                / 需教师复核”。
+                示例报告基于预置示例文本生成，不代表对你提交内容的真实分析。
+              </span>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="confirm-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">03 / 确认提交</span>
+                <h2 id="confirm-title">提交前请确认</h2>
+              </div>
+              <span class="tag tag-violet">版本 v1</span>
+            </div>
+            <div class="stack-sm">
+              <label
+                style="
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 10px;
+                  font-size: 11px;
+                  line-height: 1.8;
+                  color: #4d6675;
+                "
+              >
+                <input
+                  id="privacy"
+                  type="checkbox"
+                  style="
+                    width: 16px;
+                    height: 16px;
+                    min-height: 0;
+                    margin-top: 2px;
+                    flex-shrink: 0;
+                  "
+                />
+                <span>
+                  我知道这份教案仅本人与经我授权的指导教师可见，未经单独授权不会用于模型训练；
+                  我也理解本次评价是形成性参考，不是正式考核结论。
+                </span>
+              </label>
+              <p id="formError" class="notice warn" hidden role="alert"></p>
+            </div>
+            <div class="panel-actions">
+              <div class="actions-left">
+                <button type="button" id="saveDraft" class="btn-ghost btn-sm">
+                  <span class="material-symbols-outlined">save</span>保存草稿
+                </button>
+                <button
+                  type="button"
+                  id="fillAll"
+                  class="btn-ghost btn-sm"
+                  aria-label="一键填入示例内容"
+                >
+                  <span class="material-symbols-outlined">bolt</span
+                  >填入示例内容
+                </button>
+              </div>
+              <div class="actions-right">
+                <a class="text-link" href="home.html">稍后再做</a>
+                <button type="submit" class="btn-primary">
+                  校验并提交评价
+                  <span
+                    class="material-symbols-outlined"
+                    style="font-size: 18px"
+                    >arrow_forward</span
+                  >
+                </button>
+              </div>
+            </div>
+          </section>
+        </form>
+
+        <aside class="stack">
+          <section class="panel tint-blue" aria-labelledby="rubric-title">
+            <span class="eyebrow">评价量表 / 建议稿</span>
+            <h2 id="rubric-title" style="margin-top: 6px">
+              六个维度，权重固定
+            </h2>
+            <p class="muted" style="margin-top: 6px">
+              权重由学科教学专家审定后固定记录版本，量表更新不会悄悄改变历史报告含义。
+            </p>
+            <div class="rows" style="margin-top: 10px">
+              <div class="row">
+                <div class="row-main">
+                  <h3>教材内容与学情分析</h3>
+                  <p>内容地位、学生基础、学习困难及依据</p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-blue">15%</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>教学目标与重难点</h3>
+                  <p>目标是否具体、可观察、可评价</p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-blue">20%</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>教学过程与活动设计</h3>
+                  <p>环节连贯性、活动与目标的一致性</p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-blue">25%</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>学习评价与反馈设计</h3>
+                  <p>是否有可检验目标达成的任务</p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-blue">15%</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>教学资源、差异化支持与可实施性</h3>
+                  <p>资源适切、分层支持、课堂可执行</p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-blue">15%</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>教案规范性与教学反思</h3>
+                  <p>结构完整、表述清楚、含反思或待验证问题</p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-blue">10%</span>
+                </div>
+              </div>
+            </div>
+            <p class="hint" style="margin-top: 10px">
+              任一关键维度缺少材料时标注“信息不足”，不强行给出确定总分。
+            </p>
+          </section>
+
+          <section class="panel" aria-labelledby="history-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">我的教案评价</span>
+                <h2 id="history-title">历史版本</h2>
+              </div>
+              <a class="text-link" href="profile.html">全部 →</a>
+            </div>
+            <div class="rows">
+              <a class="row" href="lesson-review-report.html">
+                <div class="row-main">
+                  <h3>《赤壁赋》教学设计</h3>
+                  <p>初中 · 语文 · 10月26日 10:12</p>
+                  <div class="tags">
+                    <span class="tag tag-green">已评价 86.7</span>
+                    <span class="tag tag-grey">v1</span>
+                  </div>
+                </div>
+                <div class="row-side">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </a>
+              <a class="row" href="lesson-review-status.html">
+                <div class="row-main">
+                  <h3>《荷塘月色》教学设计</h3>
+                  <p>初中 · 语文 · 10月25日 20:41</p>
+                  <div class="tags">
+                    <span class="tag tag-sand">分析中</span>
+                    <span class="tag tag-grey">v2</span>
+                  </div>
+                </div>
+                <div class="row-side">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </a>
+              <div class="row">
+                <div class="row-main">
+                  <h3>《故都的秋》教学设计</h3>
+                  <p>高中 · 语文 · 10月23日 16:05</p>
+                  <div class="tags">
+                    <span class="tag tag-grey">草稿未提交</span>
+                  </div>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-grey">继续编辑</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="notice">
+            <span class="material-symbols-outlined">lock</span>
+            <span>
+              教案默认仅本人可见；删除版本时会同时说明关联报告与文件的处理方式。
+              无授权的教师无法查看你的私人教案。
+            </span>
+          </div>
+        </aside>
+      </div>
+
+      <p class="ws-note">
+        原型说明：页面预填内容与示例报告均为演示素材；提交后进入“分析进度 →
+        示例报告”流程， 不连接真实 AI 服务。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/lesson-review.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

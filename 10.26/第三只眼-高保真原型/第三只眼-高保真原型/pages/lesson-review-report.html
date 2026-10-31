@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="教案评价报告：六维结果、原文依据、关键缺项与带优先级的修改建议。"
+    />
+    <title>教案评价报告 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="lesson-review-report" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="home.html">首页</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <a href="lesson-review.html">AI 评教案</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span>评价报告</span>
+          </nav>
+          <span class="eyebrow">P-13 / LESSON PLAN REVIEW REPORT</span>
+          <h1 id="reportTitle">教学设计评价报告：《赤壁赋》</h1>
+          <p id="reportMeta">
+            初中学段 · 语文 · 量表 v1.2（建议稿） · 6 个维度 · 引用 9 处原文
+          </p>
+        </div>
+        <div class="head-aside">
+          <span class="sample">示例报告 · 非真实 AI 分析</span>
+          <a class="btn-ghost btn-sm" href="lesson-review.html">
+            <span class="material-symbols-outlined">history</span>历史版本
+          </a>
+          <button type="button" id="exportBtn" class="btn-ghost btn-sm">
+            <span class="material-symbols-outlined">download</span>导出报告
+          </button>
+          <a class="btn-primary" href="lesson-review.html">
+            根据建议修改
+            <span class="material-symbols-outlined" style="font-size: 18px"
+              >edit</span
+            >
+          </a>
+        </div>
+      </div>
+
+      <div class="notice warn" role="note">
+        <span class="material-symbols-outlined">info</span>
+        <span>
+          <strong>AI 辅助评价，仅供教学设计优化参考。</strong>
+          本页为演示用示例报告：分值与原文引用来自预置示例教案，不是对你提交内容的真实分析，也不是正式考核结论。
+          学科专项规则尚未配置，本次采用通用六维框架；涉及《课程标准》条文、教材版本的要求需教师人工确认。
+        </span>
+      </div>
+
+      <div class="stat-row" style="margin-top: 16px">
+        <div class="stat">
+          <span>综合得分 / 示例</span>
+          <b>86.7<small>/ 100</small></b>
+          <em>按六维加权计算</em>
+        </div>
+        <div class="stat">
+          <span>维度覆盖</span>
+          <b>6<small>/ 6</small></b>
+          <em>均有部分证据，无整维缺失</em>
+        </div>
+        <div class="stat">
+          <span>原文依据</span>
+          <b>9<small>处</small></b>
+          <em>均可回溯到教案段落</em>
+        </div>
+        <div class="stat">
+          <span>待处理问题</span>
+          <b>5<small>条</small></b>
+          <em>优先 2 · 建议优化 2 · 可选 1</em>
+        </div>
+      </div>
+
+      <div class="grid-main-side" style="margin-top: 18px">
+        <div class="stack">
+          <section class="panel" aria-labelledby="dims-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">01 / 分维度结果</span>
+                <h2 id="dims-title">六个维度，各自有据</h2>
+                <p class="muted">
+                  维度得分为 0—100；综合得分为加权和，仅作形成性参考。
+                </p>
+              </div>
+              <span class="tag tag-blue">量表 v1.2 · 建议稿</span>
+            </div>
+
+            <div class="dim">
+              <div class="dim-row">
+                <span>教材内容与学情分析<small>权重 15%</small></span>
+                <b>89</b>
+              </div>
+              <div class="meter"><span style="width: 89%"></span></div>
+              <p class="hint" style="margin-top: 6px">
+                依据 2
+                处：说明了课文在单元中的位置，并描述了学生“能疏通文意、难在推理”的起点。
+              </p>
+            </div>
+
+            <div class="dim">
+              <div class="dim-row">
+                <span>教学目标与重难点<small>权重 20%</small></span>
+                <b>94</b>
+              </div>
+              <div class="meter"><span style="width: 94%"></span></div>
+              <p class="hint" style="margin-top: 6px">
+                依据 3
+                处：三条目标均使用可观察动词，重难点与目标、学情基本对应。
+              </p>
+            </div>
+
+            <div class="dim">
+              <div class="dim-row">
+                <span>教学过程与活动设计<small>权重 25%</small></span>
+                <b>86</b>
+              </div>
+              <div class="meter"><span style="width: 86%"></span></div>
+              <p class="hint" style="margin-top: 6px">
+                依据 2
+                处：五个环节时间分配清楚，但小组活动缺少明确产出与时间节点。
+              </p>
+            </div>
+
+            <div class="dim">
+              <div class="dim-row">
+                <span>学习评价与反馈设计<small>权重 15%</small></span>
+                <b>79</b>
+              </div>
+              <div class="meter"><span style="width: 79%"></span></div>
+              <p class="hint" style="margin-top: 6px">
+                依据 1 处：有课后短评，但自评互评标准未量化，难以检验目标 3
+                的达成。
+              </p>
+            </div>
+
+            <div class="dim">
+              <div class="dim-row">
+                <span
+                  >教学资源、差异化支持与可实施性<small>权重 15%</small></span
+                >
+                <b>83</b>
+              </div>
+              <div class="meter"><span style="width: 83%"></span></div>
+              <p class="hint" style="margin-top: 6px">
+                依据 1
+                处：提供两种解读支架，但对文言薄弱学生的支持只有一句整体说明。
+              </p>
+            </div>
+
+            <div class="dim">
+              <div class="dim-row">
+                <span>教案规范性与教学反思<small>权重 10%</small></span>
+                <b>87</b>
+              </div>
+              <div class="meter"><span style="width: 87%"></span></div>
+              <p class="hint" style="margin-top: 6px">
+                依据 2
+                处：结构完整、含预设反思；反思偏笼统，缺少可验证的观察点。
+              </p>
+            </div>
+
+            <div class="panel-actions">
+              <div class="actions-left">
+                <span class="tag tag-grey"
+                  >计算：89×15% + 94×20% + 86×25% + 79×15% + 83×15% +
+                  87×10%</span
+                >
+              </div>
+              <div class="actions-right">
+                <span class="muted">86.7 分 · 示例</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="advice-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">02 / 问题定位与修改建议</span>
+                <h2 id="advice-title">每条建议都能落回原文</h2>
+                <p class="muted">
+                  六段式：位置 → 问题 → 依据 → 理由 → 建议 →
+                  优先级。局部改法需你确认后才应用。
+                </p>
+              </div>
+              <span class="tag tag-red">优先修改 2 · 建议优化 2 · 可选 1</span>
+            </div>
+
+            <div class="stack-sm">
+              <article class="advice priority-1">
+                <div class="advice-meta">
+                  <span class="tag tag-red">优先修改</span>
+                  <span class="tag tag-blue">教学过程与活动设计</span>
+                  <span class="tag tag-grey">权重 25%</span>
+                </div>
+                <h3>① 小组合作缺少“产出物 + 时间节点”</h3>
+                <p class="quote">
+                  “环节三（15
+                  分钟）细读主客问答：教师出示三层追问，小组合作完成表格，梳理‘乐—悲—喜’的情感变化及对应语句。”
+                  <cite>位置：四、教学过程 · 环节三</cite>
+                </p>
+                <dl>
+                  <dt>发现的问题</dt>
+                  <dd>
+                    小组任务只写了“完成表格”，没有说明每组填几行、必须引用几条原文、由谁汇报，15
+                    分钟内是否可达标无法判断。
+                  </dd>
+                  <dt>判断依据</dt>
+                  <dd>
+                    对应“教学过程与活动设计”维度：活动的可操作性与时间分配。
+                  </dd>
+                  <dt>修改理由</dt>
+                  <dd>
+                    缺少产出定义时，合作容易变成优生说、其余人听，教师也难以在巡视时快速判断哪个组需要介入，直接影响目标
+                    2 的达成。
+                  </dd>
+                  <dt>修改建议</dt>
+                  <dd>
+                    补充“每组至少填写 3 行、每行须摘录 1 句原文；组内 1
+                    人汇报、1 人补证”，并把 15 分钟拆为 8 分钟填写 + 4
+                    分钟组间互评 + 3 分钟教师点评。
+                  </dd>
+                </dl>
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                  "
+                >
+                  <div class="tags">
+                    <span class="tag tag-grey">依据 2 处原文</span>
+                    <span class="tag tag-grey">不自动覆盖原教案</span>
+                  </div>
+                  <div style="display: flex; gap: 6px">
+                    <button
+                      type="button"
+                      class="btn-ghost btn-sm"
+                      data-feedback="accurate"
+                    >
+                      <span class="material-symbols-outlined">thumb_up</span
+                      >准确
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-ghost btn-sm"
+                      data-feedback="inaccurate"
+                    >
+                      <span class="material-symbols-outlined">thumb_down</span
+                      >不准确
+                    </button>
+                    <button type="button" class="btn-ghost btn-sm" data-apply>
+                      生成局部改写
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="advice priority-1">
+                <div class="advice-meta">
+                  <span class="tag tag-red">优先修改</span>
+                  <span class="tag tag-blue">学习评价与反馈设计</span>
+                  <span class="tag tag-grey">权重 15%</span>
+                </div>
+                <h3>② 评价任务检验不到“联系自身经验”这一目标</h3>
+                <p class="quote">
+                  “课后完成 200
+                  字短评，按‘引用原文—解释情感—联系自身’三项要求自评与互评。”
+                  <cite>位置：五、学习评价 · 第 2 句</cite>
+                </p>
+                <dl>
+                  <dt>发现的问题</dt>
+                  <dd>
+                    短评要求与目标 3
+                    对应，但“自评与互评”没有评分标准或示例，学生无法判断“解释情感”到什么程度算达标。
+                  </dd>
+                  <dt>判断依据</dt>
+                  <dd>
+                    对应“学习评价与反馈设计”维度：评价方式是否与目标对应、是否可检验。
+                  </dd>
+                  <dt>修改理由</dt>
+                  <dd>
+                    标准模糊时，评价结果难以解释，教师也无法据此调整下一课时，目标
+                    3 容易停在“写过了”而不是“学会了”。
+                  </dd>
+                  <dt>修改建议</dt>
+                  <dd>
+                    给出三级量规（如“解释情感”分三档：只复述／结合语句说明／说明并联系自身经历），并提供一段达标注示例；互评只勾选三项标准是否达成。
+                  </dd>
+                </dl>
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                  "
+                >
+                  <div class="tags">
+                    <span class="tag tag-grey">依据 1 处原文</span>
+                    <span class="tag tag-sand">需教师确认量规</span>
+                  </div>
+                  <div style="display: flex; gap: 6px">
+                    <button
+                      type="button"
+                      class="btn-ghost btn-sm"
+                      data-feedback="accurate"
+                    >
+                      <span class="material-symbols-outlined">thumb_up</span
+                      >准确
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-ghost btn-sm"
+                      data-feedback="inaccurate"
+                    >
+                      <span class="material-symbols-outlined">thumb_down</span
+                      >不准确
+                    </button>
+                    <button type="button" class="btn-ghost btn-sm" data-apply>
+                      生成局部改写
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="advice priority-2">
+                <div class="advice-meta">
+                  <span class="tag tag-sand">建议优化</span>
+                  <span class="tag tag-blue">教学过程与活动设计</span>
+                </div>
+                <h3>③ 辩论环节可能脱离文本</h3>
+                <p class="quote">
+                  “环节四（8
+                  分钟）哲思讨论：围绕‘逝者如斯，而未尝往也’展开辩论，教师提供两种解读支架，要求学生必须引用原文佐证。”
+                  <cite>位置：四、教学过程 · 环节四</cite>
+                </p>
+                <dl>
+                  <dt>发现的问题</dt>
+                  <dd>
+                    已规定“必须引用原文”，但没有规定发言时长与轮次，8
+                    分钟内可能出现少数学生连续发言。
+                  </dd>
+                  <dt>判断依据</dt>
+                  <dd>对应“教学过程与活动设计”维度：活动组织与时间分配。</dd>
+                  <dt>修改理由</dt>
+                  <dd>发言机会不均会削弱多数学生对“变与不变”的推理参与。</dd>
+                  <dt>修改建议</dt>
+                  <dd>
+                    采用“每人一句话接力”：每轮每组派 1
+                    人，先读原文再给解释，教师只在两轮后追问一次。
+                  </dd>
+                </dl>
+                <div class="tags">
+                  <span class="tag tag-grey">依据 1 处原文</span>
+                </div>
+              </article>
+
+              <article class="advice priority-2">
+                <div class="advice-meta">
+                  <span class="tag tag-sand">建议优化</span>
+                  <span class="tag tag-blue">教学资源、差异化支持</span>
+                </div>
+                <h3>④ 对文言薄弱学生的支持偏笼统</h3>
+                <p class="quote">
+                  “部分学生在文言表达上仍有障碍，需要提供注释支架。”
+                  <cite>位置：一、教材内容与学情分析 · 第 2 段</cite>
+                </p>
+                <dl>
+                  <dt>发现的问题</dt>
+                  <dd>“注释支架”没有说明具体形式、给谁用、何时用。</dd>
+                  <dt>判断依据</dt>
+                  <dd>对应“教学资源、差异化支持与可实施性”维度。</dd>
+                  <dt>修改理由</dt>
+                  <dd>
+                    支持措施不可执行时，学情分析发现的问题不会真正进入课堂。
+                  </dd>
+                  <dt>修改建议</dt>
+                  <dd>
+                    明确“基础层：发放 6
+                    个重点句的今译卡；进阶层：只给关键词提示；两层任务共用同一张表格”。
+                  </dd>
+                </dl>
+                <div class="tags">
+                  <span class="tag tag-grey">依据 1 处原文</span>
+                </div>
+              </article>
+
+              <article class="advice priority-3">
+                <div class="advice-meta">
+                  <span class="tag tag-blue">可选完善</span>
+                  <span class="tag tag-blue">教案规范性与教学反思</span>
+                </div>
+                <h3>⑤ 板书只呈现结论</h3>
+                <p class="quote">
+                  “景：清风 明月 江水 → 情：乐—悲—喜 → 理：变与不变”
+                  <cite>位置：六、板书设计</cite>
+                </p>
+                <dl>
+                  <dt>发现的问题</dt>
+                  <dd>
+                    板书把“变与不变”直接写成结论，没有留出学生生成的空间。
+                  </dd>
+                  <dt>判断依据</dt>
+                  <dd>
+                    对应“教案规范性与教学反思”维度：板书与教学过程的呼应。
+                  </dd>
+                  <dt>修改理由</dt>
+                  <dd>结论先行会削弱课堂上“由景入理”的推理体验。</dd>
+                  <dt>修改建议</dt>
+                  <dd>
+                    板书改为留白式：先写“景—情”，把“理”留到讨论后由学生补写关键词。
+                  </dd>
+                </dl>
+                <div class="tags">
+                  <span class="tag tag-grey">依据 1 处原文</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="notice" style="margin-top: 16px">
+              <span class="material-symbols-outlined">rate_review</span>
+              <span>
+                对建议有不同意见？可逐条选择“准确 /
+                不准确”并补充原因（引用不匹配、学科要求不适用、建议不可操作、事实错误）。
+                你的反馈不会自动改写报告结论，教师复核意见会单独展示。
+              </span>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="version-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">03 / 版本管理</span>
+                <h2 id="version-title">v1 与 v2 草稿的差异</h2>
+                <p class="muted">
+                  v1 已评价并保持只读；v2 由建议生成，尚未提交评价。
+                </p>
+              </div>
+              <div class="tags">
+                <span class="tag tag-green">v1 已评价</span>
+                <span class="tag tag-grey">v2 草稿</span>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="ws-table">
+                <thead>
+                  <tr>
+                    <th>位置</th>
+                    <th>v1（已评价）</th>
+                    <th>v2（草稿）</th>
+                    <th>变化</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>环节三</td>
+                    <td>小组合作完成表格，梳理情感变化。</td>
+                    <td>
+                      每组至少填写 3 行，每行摘录 1 句原文；8 分钟填写 + 4
+                      分钟组间互评。
+                    </td>
+                    <td><span class="tag tag-sand">修改</span></td>
+                  </tr>
+                  <tr>
+                    <td>学习评价</td>
+                    <td>按三项要求自评与互评。</td>
+                    <td>新增三级量规与一段达标注示例，互评只勾选三项标准。</td>
+                    <td><span class="tag tag-green">新增</span></td>
+                  </tr>
+                  <tr>
+                    <td>板书设计</td>
+                    <td>直接写出“理：变与不变”。</td>
+                    <td>“理”留白，由学生讨论后补写。</td>
+                    <td><span class="tag tag-sand">修改</span></td>
+                  </tr>
+                  <tr>
+                    <td>教学反思</td>
+                    <td>“辩论环节可能出现脱离文本的空谈。”</td>
+                    <td>—</td>
+                    <td><span class="tag tag-red">删除</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="notice warn" style="margin-top: 12px">
+              <span class="material-symbols-outlined">compare_arrows</span>
+              <span>
+                v2
+                尚无评价结果，暂不比较分数。即使两次都已评价，只要量表版本或评价条件不同，
+                也不宜直接比较分数，应优先看文本变化与问题处理情况。
+              </span>
+            </div>
+
+            <div class="panel-actions">
+              <div class="actions-left">
+                <span class="muted"
+                  >原版本只读，不会被覆盖；恢复历史版本会创建新草稿。</span
+                >
+              </div>
+              <div class="actions-right">
+                <button type="button" class="btn-ghost btn-sm" data-open-v1>
+                  查看 v1 完整文本
+                </button>
+                <a class="btn-primary" href="lesson-review.html">
+                  提交 v2 再次评价
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="stack">
+          <section class="panel tint-sand" aria-labelledby="missing-title">
+            <span class="eyebrow">证据边界</span>
+            <h2 id="missing-title" style="margin-top: 6px">
+              关键缺项与信息不足
+            </h2>
+            <div class="rows" style="margin-top: 8px">
+              <div class="row">
+                <div class="row-main">
+                  <h3>未提供教材版本与课标依据</h3>
+                  <p>
+                    报告无法核对具体单元要求，标为“信息不足”，需教师人工确认，不推断条文。
+                  </p>
+                  <span class="tag tag-sand">信息不足</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>缺少作业与课后延伸</h3>
+                  <p>仅有 200 字短评，未见分层作业或下一课时衔接。</p>
+                  <span class="tag tag-red">缺项</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>差异化支持只有一句</h3>
+                  <p>证据偏少，维度分仅供参考，不宜据此判断设计能力。</p>
+                  <span class="tag tag-sand">依据偏少</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="report-info-title">
+            <span class="eyebrow">评价条件</span>
+            <h2 id="report-info-title" style="margin-top: 6px">报告信息</h2>
+            <div class="rows" style="margin-top: 8px">
+              <div class="row">
+                <div class="row-main">
+                  <p>学段与学科</p>
+                  <h3 id="infoGrade">初中 · 语文</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>教学课题</p>
+                  <h3 id="infoTopic">第二课时 · 主客问答中的情与理</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>提交时间</p>
+                  <h3 id="infoTime">2026-10-26 10:12</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>版本 / 字数</p>
+                  <h3>v1 · 1,180 字</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>量表版本</p>
+                  <h3>通用六维 v1.2（建议稿）</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>评价方式</p>
+                  <h3>演示规则 · 未接入真实 AI</h3>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="next-title">
+            <span class="eyebrow">下一步</span>
+            <h2 id="next-title" style="margin-top: 6px">把建议变成修改</h2>
+            <div class="rows" style="margin-top: 8px">
+              <a class="row" href="lesson-review.html">
+                <div class="row-main">
+                  <h3>修改后再次提交</h3>
+                  <p>生成 v2，保留 v1 只读记录</p>
+                </div>
+                <div class="row-side">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </a>
+              <a class="row" href="course-learn.html">
+                <div class="row-main">
+                  <h3>补学「从教案到课堂」</h3>
+                  <p>课程 · 目标、活动与评价的一致性</p>
+                </div>
+                <div class="row-side">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </a>
+              <a class="row" href="profile.html">
+                <div class="row-main">
+                  <h3>查看成长档案</h3>
+                  <p>教案评价与课堂观察分开记录</p>
+                </div>
+                <div class="row-side">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="review-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">人工复核</span>
+                <h2 id="review-title">教师意见</h2>
+              </div>
+              <span class="tag tag-grey">未申请</span>
+            </div>
+            <p class="muted">
+              指导教师可对建议标注“认可 / 需调整 / 不适用”并补充意见；
+              人工意见与 AI 建议分开展示，不会伪装成 AI 生成。
+            </p>
+            <button
+              type="button"
+              id="requestReview"
+              class="btn-ghost btn-sm"
+              style="margin-top: 10px"
+            >
+              <span class="material-symbols-outlined">person_add</span
+              >申请教师复核
+            </button>
+          </section>
+
+          <div class="notice">
+            <span class="material-symbols-outlined">visibility</span>
+            <span>
+              本次评价只针对教案文本，不使用课堂录像，也不把结果等同于你的教学能力结论。
+            </span>
+          </div>
+        </aside>
+      </div>
+
+      <p class="ws-note">
+        演示说明：本报告为预置示例，权重依据 PRD v1.2
+        建议稿；正式版需在学科教学专家审定量表后启用，
+        并按版本固定记录评价条件。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/lesson-review-report.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

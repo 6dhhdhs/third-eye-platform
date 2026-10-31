@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="课程学习页：观看微课、切换章节、完成学习任务并同步学习进度。"
+    />
+    <title>课程学习 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="course-learn" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="home.html">首页</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <a href="courses.html">课程学习</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span>第 3 章 · 启发式提问与证据链</span>
+          </nav>
+          <div class="tags" style="margin-top: 4px">
+            <span class="tag tag-blue">必修实践课</span>
+            <span class="tag tag-grey">语文</span>
+            <span class="tag tag-grey">第 3 章第 2 节</span>
+            <span class="tag tag-sand">示例课程</span>
+          </div>
+          <h1 style="margin-top: 8px">启发式提问行为的识别与时间戳证据链</h1>
+          <p>中学语文教学设计与课堂观察方法论 · 主讲：周文远 教授</p>
+        </div>
+        <div class="head-aside">
+          <a class="btn-primary" href="observe-workbench.html">
+            <span class="material-symbols-outlined" style="font-size: 18px"
+              >visibility</span
+            >去练习观察标注
+          </a>
+        </div>
+      </div>
+
+      <div class="grid-main-side">
+        <div class="stack">
+          <section aria-label="课程视频">
+            <div class="stage">
+              <img
+                src="../assets/img/poster-classroom.svg"
+                alt="课程视频封面：中学语文课堂实录"
+              />
+              <div class="stage-shade"></div>
+              <div class="stage-top">
+                <span class="stage-pill"
+                  ><span class="dot"></span>微课 · 16:20</span
+                >
+                <span class="stage-pill">演示播放器 · 静态封面</span>
+              </div>
+              <button
+                id="playBtn"
+                type="button"
+                aria-label="播放课程视频"
+                style="
+                  position: absolute;
+                  inset: 0;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 10px;
+                  color: #fff;
+                  background: transparent;
+                  border: 0;
+                "
+              >
+                <span
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 62px;
+                    height: 62px;
+                    border-radius: 50%;
+                    background: #ffffffee;
+                    color: #426278;
+                    box-shadow: 0 8px 24px #102f4340;
+                  "
+                >
+                  <span
+                    class="material-symbols-outlined"
+                    style="font-size: 32px"
+                    >play_arrow</span
+                  >
+                </span>
+                <span
+                  style="
+                    background: #102f4399;
+                    border-radius: 7px;
+                    padding: 5px 10px;
+                    font-size: 11px;
+                  "
+                  >播放本节微课 · 16:20</span
+                >
+              </button>
+              <div class="stage-bottom" style="pointer-events: none">
+                <span class="material-symbols-outlined">replay_10</span>
+                <span class="material-symbols-outlined">play_circle</span>
+                <div class="stage-track">
+                  <span id="videoProgress" style="width: 34%"></span>
+                </div>
+                <span class="tabular">05:32 / 16:20</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="progress-title">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+              "
+            >
+              <div>
+                <span class="eyebrow">学习进度</span>
+                <h2
+                  id="progress-title"
+                  style="margin-top: 5px; font-size: 16px"
+                >
+                  学习进度已自动同步
+                </h2>
+                <p class="muted">最近保存 09:20 · 本节进度计入今日打卡资格</p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div class="meter" style="width: 140px; height: 6px">
+                  <span id="lessonProgress" style="width: 34%"></span>
+                </div>
+                <span
+                  id="lessonProgressText"
+                  class="tabular"
+                  style="font-weight: 700; color: #426278"
+                  >34%</span
+                >
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="guide-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">本节导学</span>
+                <h2 id="guide-title">学完这一节，你应该能</h2>
+              </div>
+              <span class="tag tag-grey">约 16 分钟</span>
+            </div>
+            <p class="muted" style="margin-bottom: 12px">
+              本节聚焦「什么样的提问算启发式提问」，并演示如何用时间戳把一次提问事件固定为可追溯的证据：
+              记录教师原话、等待时间、学生反应与后续教学动作，做到「可观察、可复核、可引用」。
+            </p>
+            <div class="rows">
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >check_circle</span
+                  >
+                  <p style="font-size: 12px; color: #33495a">
+                    区分封闭提问、开放提问与递进追问
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >check_circle</span
+                  >
+                  <p style="font-size: 12px; color: #33495a">
+                    用「行为—意图」两段式写清客观事实
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >check_circle</span
+                  >
+                  <p style="font-size: 12px; color: #33495a">
+                    给标注入库，并引用到评课正文
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >check_circle</span
+                  >
+                  <p style="font-size: 12px; color: #33495a">
+                    理解讲师如何判定标注的证据强度
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="stack">
+          <section id="chapters" class="panel" aria-labelledby="chapters-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">课程目录</span>
+                <h2 id="chapters-title">第 3—4 章</h2>
+              </div>
+              <span class="muted">6 / 9 节完成</span>
+            </div>
+            <ol id="chapterList" style="display: grid; gap: 4px">
+              <li>
+                <button
+                  type="button"
+                  class="chapter-btn"
+                  data-chapter="第 3 章第 1 节 · 课堂观察的基本框架"
+                >
+                  <span class="material-symbols-outlined" data-icon
+                    >check_circle</span
+                  >
+                  <span class="chapter-label"
+                    >第 3 章第 1 节 · 课堂观察的基本框架</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="chapter-btn is-on"
+                  data-chapter="第 3 章第 2 节 · 启发式提问与证据链"
+                  aria-current="true"
+                >
+                  <span class="material-symbols-outlined" data-icon
+                    >play_circle</span
+                  >
+                  <span class="chapter-label"
+                    >第 3 章第 2 节 · 启发式提问与证据链</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="chapter-btn"
+                  data-chapter="第 3 章第 3 节 · 追问链与学生回应分析"
+                >
+                  <span class="material-symbols-outlined" data-icon
+                    >radio_button_unchecked</span
+                  >
+                  <span class="chapter-label"
+                    >第 3 章第 3 节 · 追问链与学生回应分析</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="chapter-btn"
+                  data-chapter="第 4 章第 1 节 · 从标注到三维能力画像"
+                >
+                  <span class="material-symbols-outlined" data-icon
+                    >radio_button_unchecked</span
+                  >
+                  <span class="chapter-label"
+                    >第 4 章第 1 节 · 从标注到三维能力画像</span
+                  >
+                </button>
+              </li>
+            </ol>
+          </section>
+
+          <section class="panel" aria-labelledby="lesson-task-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">本节学习任务</span>
+                <h2 id="lesson-task-title">完成两件事</h2>
+              </div>
+            </div>
+            <div class="rows">
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >check_circle</span
+                  >
+                  <div>
+                    <p style="font-size: 12px; color: #1e3444">
+                      观看微课并完成随堂自测
+                    </p>
+                    <p class="hint">已达成 · 计入今日打卡资格</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #a7bac7; font-size: 18px"
+                    >radio_button_unchecked</span
+                  >
+                  <div>
+                    <p style="font-size: 12px; color: #1e3444">
+                      在观察工作台提交 1 条带时间戳的提问标注
+                    </p>
+                    <p class="hint">待完成 · 约 10 分钟</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              id="completeLesson"
+              type="button"
+              class="btn-primary"
+              style="width: 100%; margin-top: 16px"
+            >
+              完成本节学习
+            </button>
+            <p class="hint" style="text-align: center; margin-top: 8px">
+              完成后自动同步至学习日历（PRD 5.3）
+            </p>
+          </section>
+        </aside>
+      </div>
+
+      <p class="ws-note">
+        原型演示：视频为静态封面模拟，播放与进度均不产生真实学习记录。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/course-learn.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

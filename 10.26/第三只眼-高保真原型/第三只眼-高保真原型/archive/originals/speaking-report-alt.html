@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="说课报告的早期布局：以雷达图为主，证据列表靠后。（设计归档）"
+    />
+    <meta name="robots" content="noindex" />
+    <title>说课报告备选方案 · 设计归档 · 第三只眼</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+  <body
+    class="bg-surface font-body-md text-body-md text-on-surface antialiased"
+    data-root="../.."
+    data-page="archive"
+    data-layout="bare"
+  >
+    <div class="border-b border-outline-variant/60 bg-secondary-container/60">
+      <div
+        class="mx-auto flex w-full max-w-[1240px] flex-wrap items-center justify-between gap-3 px-margin-mobile py-2.5 lg:px-margin"
+      >
+        <p
+          class="flex items-center gap-2 font-label-sm text-label-sm text-on-secondary-container"
+        >
+          <span class="material-symbols-outlined text-[18px]">inventory_2</span>
+          <span
+            ><strong class="font-semibold">设计归档</strong> · Stitch
+            原始备选方案，仅作对照，不是现行版本。</span
+          >
+        </p>
+        <div class="flex items-center gap-2">
+          <a
+            href="../../index.html"
+            class="rounded-lg px-2.5 py-1 font-label-sm text-label-sm text-on-secondary-container underline-offset-2 hover:underline"
+            >原型总览</a
+          >
+          <a
+            href="../../pages/home.html"
+            class="rounded-lg bg-primary px-2.5 py-1 font-label-sm text-label-sm text-on-primary"
+            >查看现行版本</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <main class="w-full pt-16 bg-surface min-h-screen">
+      <div class="flex flex-col w-full">
+        <!-- Script to update App Shell navigation active state -->
+
+        <!-- Top Status & Metadata Bar (PRD 5.7, 8.3, 12, 13) -->
+        <div class="w-full bg-surface-container-lowest shadow-sm">
+          <div
+            class="max-w-7xl mx-auto px-margin-mobile md:px-margin py-space-md flex flex-col gap-3"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-3"
+            >
+              <div class="flex items-center gap-2 text-secondary font-label-md">
+                <a
+                  class="flex items-center gap-1 hover:text-primary transition-colors text-on-surface-variant font-medium"
+                  href="../../pages/home.html"
+                  ><span class="material-symbols-outlined text-[18px]"
+                    >arrow_back</span
+                  >返回说课列表</a
+                ><span class="text-outline-variant">/</span
+                ><span class="text-on-surface font-semibold"
+                  >高中语文《赤壁赋》教学设计与说课实训</span
+                >
+              </div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <button
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low text-secondary font-label-md hover:bg-surface-container transition-colors"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[16px]"
+                    >download</span
+                  >下载报告 (PDF)</button
+                ><button
+                  class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-md hover:bg-on-primary-container transition-all shadow-sm"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[16px]"
+                    >videocam</span
+                  >重新录制说课
+                </button>
+              </div>
+            </div>
+            <div
+              class="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 pt-1"
+            >
+              <div class="flex items-center gap-3 flex-wrap">
+                <h1
+                  class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold"
+                >
+                  高中语文《赤壁赋》教学设计与说课实训
+                </h1>
+                <span
+                  class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-tertiary-container/20 text-tertiary"
+                  ><span class="material-symbols-outlined text-[14px]"
+                    >verified</span
+                  >AI 形成性诊断完成</span
+                ><span class="text-secondary text-body-sm"
+                  >时长 09:45 · 高中语文必修上 · 指导教师：周文远</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-1.5 text-secondary text-label-sm"
+              >
+                <span class="material-symbols-outlined text-[16px] text-primary"
+                  >shield</span
+                ><span>仅师生本人可见 · 供教研反思参考</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Main Container -->
+        <div
+          class="max-w-7xl mx-auto w-full px-margin-mobile md:px-margin py-space-xl flex flex-col gap-space-xl"
+        >
+          <!-- UPPER SECTION: Video Playback & 5-Dimension Radar/Dashboard -->
+          <div
+            class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start"
+          >
+            <div
+              class="xl:col-span-7 bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-4"
+            >
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-primary text-[20px]"
+                    >play_circle</span
+                  ><span
+                    class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                    >说课录像与多模态转写</span
+                  >
+                </div>
+                <span class="text-label-sm text-secondary font-mono"
+                  >1080P · 语速 245字/分 · 视线覆盖 84%</span
+                >
+              </div>
+              <div
+                class="relative w-full aspect-video rounded-xl overflow-hidden bg-on-background group shadow-inner"
+              >
+                <img
+                  alt="说课现场回放"
+                  class="w-full h-full object-cover"
+                  data-alt="A pre-service female student teacher enthusiastically delivering a structured literature presentation in a high-tech microteaching studio laboratory, standing in front of an interactive white smartboard displaying lesson goals, while peer preservice observers sit at modular student desks taking analytical notes, soft daylight, educational setting, cinematic lighting."
+                  src="../../assets/img/poster-speaking.svg"
+                />
+                <div
+                  class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col gap-2"
+                >
+                  <div
+                    class="relative w-full h-1.5 rounded-full bg-white/30 cursor-pointer overflow-hidden"
+                  >
+                    <div
+                      class="absolute top-0 left-0 h-full bg-primary-container w-[42%]"
+                    ></div>
+                    <div
+                      class="absolute top-0 left-[23%] w-1.5 h-full bg-tertiary"
+                      title="目标阐述"
+                    ></div>
+                    <div
+                      class="absolute top-0 left-[46%] w-1.5 h-full bg-primary"
+                      title="重难点探究"
+                    ></div>
+                    <div
+                      class="absolute top-0 left-[80%] w-1.5 h-full bg-error"
+                      title="评价反思建议点"
+                    ></div>
+                  </div>
+                  <div
+                    class="flex items-center justify-between text-white font-label-sm"
+                  >
+                    <div class="flex items-center gap-3">
+                      <button
+                        aria-label="播放"
+                        class="hover:text-primary-fixed transition-colors"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >play_arrow</span
+                        ></button
+                      ><span class="font-mono text-xs">04:08 / 09:45</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs text-white/80"
+                        >02:40 目标逆向阐释</span
+                      ><button
+                        class="px-1.5 py-0.5 rounded bg-white/20 text-xs"
+                      >
+                        1.0x
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-2 pt-1">
+                <button
+                  class="flex flex-col text-left p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all group"
+                  type="button"
+                >
+                  <div
+                    class="flex items-center justify-between text-on-surface font-label-md font-semibold group-hover:text-primary"
+                  >
+                    <span>一、教材学情</span
+                    ><span
+                      class="material-symbols-outlined text-tertiary text-[14px]"
+                      >check_circle</span
+                    >
+                  </div>
+                  <span class="font-label-sm text-secondary font-mono mt-0.5"
+                    >00:00-02:15</span
+                  ></button
+                ><button
+                  class="flex flex-col text-left p-2.5 rounded-lg bg-secondary-container/50 text-on-surface font-label-md font-semibold transition-all"
+                  type="button"
+                >
+                  <div
+                    class="flex items-center justify-between text-primary font-bold"
+                  >
+                    <span>二、目标重点</span
+                    ><span
+                      class="material-symbols-outlined text-primary text-[14px]"
+                      >play_circle</span
+                    >
+                  </div>
+                  <span
+                    class="font-label-sm text-primary font-mono font-medium mt-0.5"
+                    >02:15-04:30</span
+                  ></button
+                ><button
+                  class="flex flex-col text-left p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all group"
+                  type="button"
+                >
+                  <div
+                    class="flex items-center justify-between text-on-surface font-label-md font-semibold group-hover:text-primary"
+                  >
+                    <span>三、过程方法</span
+                    ><span
+                      class="material-symbols-outlined text-outline-variant text-[14px]"
+                      >radio_button_unchecked</span
+                    >
+                  </div>
+                  <span class="font-label-sm text-secondary font-mono mt-0.5"
+                    >04:30-07:50</span
+                  ></button
+                ><button
+                  class="flex flex-col text-left p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all group"
+                  type="button"
+                >
+                  <div
+                    class="flex items-center justify-between text-on-surface font-label-md font-semibold group-hover:text-primary"
+                  >
+                    <span>四、评价反思</span
+                    ><span class="text-[11px] text-error font-medium"
+                      >待优化</span
+                    >
+                  </div>
+                  <span class="font-label-sm text-secondary font-mono mt-0.5"
+                    >07:50-09:45</span
+                  >
+                </button>
+              </div>
+              <div
+                class="px-3 py-2 rounded-lg bg-surface-container-low/70 flex items-center justify-between text-body-sm text-on-surface"
+              >
+                <p class="truncate text-secondary">
+                  <span class="font-semibold text-on-surface"
+                    >转写摘录 (02:40)：</span
+                  >“以‘苏轼心路转变’为支架任务，引导层层剖析主客问答中的哲学哲理与达观心态……”
+                </p>
+                <span
+                  class="text-tertiary font-label-sm font-semibold flex-shrink-0 ml-2"
+                  >逆向设计明确</span
+                >
+              </div>
+            </div>
+            <div
+              class="xl:col-span-5 bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md"
+            >
+              <div class="flex items-center justify-between">
+                <div class="flex items-baseline gap-2">
+                  <span
+                    class="font-display-lg text-[36px] text-on-surface font-bold tracking-tight leading-none"
+                    >86.5</span
+                  ><span class="text-body-sm text-secondary"
+                    >/ 100 分 (良好进阶)</span
+                  >
+                </div>
+                <span
+                  class="text-label-sm text-tertiary font-semibold flex items-center gap-0.5"
+                  ><span class="material-symbols-outlined text-[16px]"
+                    >trending_up</span
+                  >超越班级 78%</span
+                >
+              </div>
+              <p
+                class="text-body-sm text-on-surface-variant leading-relaxed bg-surface-container-low p-3 rounded-xl"
+              >
+                <strong>综合诊断：</strong
+                >教学目标可测性强，重难点推进证据链条清晰；建议加强学业评价分层量规设计。
+              </p>
+              <div class="flex flex-col gap-2.5">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-on-surface">1. 教材与学情分析</span
+                    ><span class="font-mono text-secondary">88分</span>
+                  </div>
+                  <div
+                    class="w-full h-2 rounded-full bg-surface-container overflow-hidden"
+                  >
+                    <div
+                      class="h-full bg-primary-container rounded-full"
+                      style="width: 88%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-on-surface">2. 教学目标与重难点</span
+                    ><span class="font-mono font-semibold text-tertiary"
+                      >92分</span
+                    >
+                  </div>
+                  <div
+                    class="w-full h-2 rounded-full bg-surface-container overflow-hidden"
+                  >
+                    <div
+                      class="h-full bg-tertiary-container rounded-full"
+                      style="width: 92%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-on-surface">3. 教学过程与方法设计</span
+                    ><span class="font-mono text-secondary">85分</span>
+                  </div>
+                  <div
+                    class="w-full h-2 rounded-full bg-surface-container overflow-hidden"
+                  >
+                    <div
+                      class="h-full bg-primary-container rounded-full"
+                      style="width: 85%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-error font-medium"
+                      >4. 学习评价与教学反思 (薄弱项)</span
+                    ><span class="font-mono font-semibold text-error"
+                      >78分</span
+                    >
+                  </div>
+                  <div
+                    class="w-full h-2 rounded-full bg-surface-container overflow-hidden"
+                  >
+                    <div
+                      class="h-full bg-error rounded-full"
+                      style="width: 78%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-on-surface">5. 语言表达与说课呈现</span
+                    ><span class="font-mono text-secondary">90分</span>
+                  </div>
+                  <div
+                    class="w-full h-2 rounded-full bg-surface-container overflow-hidden"
+                  >
+                    <div
+                      class="h-full bg-primary-container rounded-full"
+                      style="width: 90%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between pt-2 border-t border-surface-container-high/40 text-label-sm text-secondary"
+              >
+                <span>结构均衡度：良好</span
+                ><span class="text-primary font-medium"
+                  >重点提升：形成性评价指标</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- LOWER SECTION: In-depth Evidence Chain & Actionable Feedback (PRD 5.7.5 & 5.8) -->
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start"
+          >
+            <div class="lg:col-span-7 flex flex-col gap-space-lg">
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-3.5"
+              >
+                <div
+                  class="flex items-center justify-between pb-2 border-b border-surface-container-high/40"
+                >
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="material-symbols-outlined text-tertiary text-[20px]"
+                      >verified</span
+                    >
+                    <h2
+                      class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                    >
+                      优势亮点 (Strengths)
+                    </h2>
+                  </div>
+                  <span class="text-label-sm text-tertiary font-medium"
+                    >2项达标</span
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div
+                    class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-1"
+                  >
+                    <div class="flex items-center justify-between">
+                      <span class="font-label-md font-semibold text-tertiary"
+                        >教学目标与重难点 (92分)</span
+                      ><span class="text-label-sm font-mono text-secondary"
+                        >02:40-03:15</span
+                      >
+                    </div>
+                    <p
+                      class="text-body-sm text-on-surface-variant leading-relaxed"
+                    >
+                      教学目标精准契合高中语文新课标，以《赤壁赋》“清风明月”为情感与哲理突破口，建立清晰的素养进阶链条。
+                    </p>
+                  </div>
+                  <div
+                    class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-1"
+                  >
+                    <div class="flex items-center justify-between">
+                      <span class="font-label-md font-semibold text-tertiary"
+                        >语言表达与呈现 (90分)</span
+                      ><span class="text-label-sm font-mono text-secondary"
+                        >05:10-06:20</span
+                      >
+                    </div>
+                    <p
+                      class="text-body-sm text-on-surface-variant leading-relaxed"
+                    >
+                      教态沉稳自然，视线前排与两侧覆盖率达84%，板书示范与课件互动衔接自如。
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-3.5"
+              >
+                <div
+                  class="flex items-center justify-between pb-2 border-b border-surface-container-high/40"
+                >
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="material-symbols-outlined text-primary text-[20px]"
+                      >tune</span
+                    >
+                    <h2
+                      class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                    >
+                      待改进项与可操作建议
+                    </h2>
+                  </div>
+                  <span class="text-label-sm text-secondary font-medium"
+                    >精准定向提升</span
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div
+                    class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-1.5"
+                  >
+                    <div class="flex items-center justify-between">
+                      <span
+                        class="font-label-md font-semibold text-error flex items-center gap-1"
+                        ><span class="material-symbols-outlined text-[16px]"
+                          >warning</span
+                        >学习评价与反思 (78分 - 薄弱项)</span
+                      ><span class="text-label-sm font-mono text-secondary"
+                        >08:15-08:50</span
+                      >
+                    </div>
+                    <p
+                      class="text-body-sm text-on-surface-variant leading-relaxed"
+                    >
+                      <strong>微观诊断：</strong
+                      >评价环节仅提及“提问与背诵检查”，缺少字词掌握与思想深度理解的分层量规（Rubric）。
+                    </p>
+                    <p
+                      class="text-body-sm text-primary leading-relaxed bg-surface-container-lowest p-2 rounded-lg"
+                    >
+                      <strong>优化策略：</strong
+                      >调整08:20处说课词，补充《文意与哲理多维理解评价量规》（字词释义、心路还原、现代表达迁移三维度）。
+                    </p>
+                  </div>
+                  <div
+                    class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-1.5"
+                  >
+                    <div class="flex items-center justify-between">
+                      <span class="font-label-md font-semibold text-on-surface"
+                        >教学过程活动支架 (85分 - 进阶项)</span
+                      ><span class="text-label-sm font-mono text-secondary"
+                        >06:30-07:15</span
+                      >
+                    </div>
+                    <p
+                      class="text-body-sm text-on-surface-variant leading-relaxed"
+                    >
+                      <strong>优化策略：</strong
+                      >合作研讨环节明确展示学习单任务，要求学生限时6分钟绘制“哀乐双线情感波动图”，外显思维成果。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5 flex flex-col gap-space-lg">
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-3.5"
+              >
+                <div
+                  class="flex items-center justify-between pb-1 border-b border-surface-container-high/40"
+                >
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="material-symbols-outlined text-primary text-[20px]"
+                      >auto_stories</span
+                    >
+                    <h3
+                      class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                    >
+                      针对性提升微课
+                    </h3>
+                  </div>
+                  <span class="text-label-sm text-secondary">AI 智能匹配</span>
+                </div>
+                <div class="flex flex-col gap-2.5">
+                  <div
+                    class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2 hover:bg-surface-container transition-colors"
+                  >
+                    <div class="flex items-start justify-between">
+                      <span class="font-label-md font-semibold text-on-surface"
+                        >《逆向教学设计中的形成性评价指标构建》</span
+                      ><span
+                        class="px-1.5 py-0.5 rounded text-[10px] bg-tertiary-container/30 text-tertiary font-bold"
+                        >精准匹配</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center justify-between text-secondary text-label-sm"
+                    >
+                      <span>刘庆 教授 (北师大) · 14分钟</span
+                      ><button
+                        class="px-2.5 py-1 rounded bg-surface-container-highest text-on-surface hover:text-primary font-label-sm font-semibold transition-all"
+                        type="button"
+                      >
+                        前往练习
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2 hover:bg-surface-container transition-colors"
+                  >
+                    <div class="flex items-start justify-between">
+                      <span class="font-label-md font-semibold text-on-surface"
+                        >《教学目标落地的证据链构建与说课阐释》</span
+                      ><span
+                        class="px-1.5 py-0.5 rounded text-[10px] bg-secondary-container text-secondary font-bold"
+                        >能力拔高</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center justify-between text-secondary text-label-sm"
+                    >
+                      <span>徐燕 特级教师 · 18分钟</span
+                      ><button
+                        class="px-2.5 py-1 rounded bg-surface-container-highest text-on-surface hover:text-primary font-label-sm font-semibold transition-all"
+                        type="button"
+                      >
+                        前往练习
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-3"
+              >
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="material-symbols-outlined text-secondary text-[20px]"
+                      >mode_comment</span
+                    >
+                    <h3
+                      class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                    >
+                      导师指导意见
+                    </h3>
+                  </div>
+                  <span class="text-label-sm text-secondary font-mono"
+                    >周文远 教授</span
+                  >
+                </div>
+                <p
+                  class="text-body-sm text-on-surface-variant leading-relaxed bg-surface-container-low p-3 rounded-xl"
+                >
+                  “本次说课节奏明显提升，抑扬顿挫有感染力；注意采纳 AI
+                  诊断中关于评价分层的建议，下周三教研室模拟试讲继续加油！”
+                </p>
+                <div
+                  class="flex items-center justify-between text-label-sm text-secondary pt-1"
+                >
+                  <span>已自动归档至师范生成长档案</span
+                  ><a
+                    class="text-primary hover:underline font-semibold flex items-center gap-0.5"
+                    href="../../pages/home.html"
+                    >查看同侪互评 (3/3)<span
+                      class="material-symbols-outlined text-[14px]"
+                      >chevron_right</span
+                    ></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Interactive Mock Logic -->
+      </div>
+    </main>
+  </body>
+</html>

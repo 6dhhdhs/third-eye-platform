@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="观察工作台的早期布局：单列证据流，未分栏。（设计归档）"
+    />
+    <meta name="robots" content="noindex" />
+    <title>观察台备选方案 · 设计归档 · 第三只眼</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+  <body
+    class="bg-surface font-body-md text-body-md text-on-surface antialiased"
+    data-root="../.."
+    data-page="archive"
+    data-layout="bare"
+  >
+    <div class="border-b border-outline-variant/60 bg-secondary-container/60">
+      <div
+        class="mx-auto flex w-full max-w-[1240px] flex-wrap items-center justify-between gap-3 px-margin-mobile py-2.5 lg:px-margin"
+      >
+        <p
+          class="flex items-center gap-2 font-label-sm text-label-sm text-on-secondary-container"
+        >
+          <span class="material-symbols-outlined text-[18px]">inventory_2</span>
+          <span
+            ><strong class="font-semibold">设计归档</strong> · Stitch
+            原始备选方案，仅作对照，不是现行版本。</span
+          >
+        </p>
+        <div class="flex items-center gap-2">
+          <a
+            href="../../index.html"
+            class="rounded-lg px-2.5 py-1 font-label-sm text-label-sm text-on-secondary-container underline-offset-2 hover:underline"
+            >原型总览</a
+          >
+          <a
+            href="../../pages/home.html"
+            class="rounded-lg bg-primary px-2.5 py-1 font-label-sm text-label-sm text-on-primary"
+            >查看现行版本</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <main class="w-full pt-16 bg-surface min-h-screen">
+      <div class="flex flex-col w-full">
+        <!-- Top Workspace Utility Bar -->
+        <section
+          class="w-full bg-surface-container-lowest px-margin py-space-sm shadow-sm"
+        >
+          <div
+            class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md py-1"
+          >
+            <div class="flex items-center gap-space-md flex-wrap">
+              <a
+                class="inline-flex items-center gap-1.5 text-secondary hover:text-on-surface transition-colors font-label-md text-label-md"
+                href="../../pages/home.html"
+                ><span class="material-symbols-outlined text-[18px]"
+                  >arrow_back</span
+                ><span>返回任务</span></a
+              >
+              <div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+              <h1
+                class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+              >
+                课堂观察实训：初中语文《岳阳楼记》名师示范课
+              </h1>
+            </div>
+            <div class="flex items-center gap-space-md flex-wrap">
+              <div
+                class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px] text-tertiary"
+                  >cloud_done</span
+                ><span>已自动保存</span>
+              </div>
+              <div class="flex items-center gap-space-sm">
+                <button
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-colors"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[16px]"
+                    >table_view</span
+                  ><span>导出量表</span></button
+                ><button
+                  class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:brightness-105 active:scale-95 transition-all"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[16px]">send</span
+                  ><span>提交报告</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Core Split Screen Workspace: Video Player & Event Matrix -->
+        <main class="w-full px-margin py-space-md">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+            <!-- LEFT 7 COLS: High-Res Pedagogical Player & Micro-Event Logger -->
+            <section class="lg:col-span-7 flex flex-col gap-space-lg">
+              <div
+                class="relative w-full rounded-xl overflow-hidden bg-inverse-surface shadow-md aspect-video flex flex-col justify-between group"
+              >
+                <div class="absolute inset-0 z-0">
+                  <img
+                    alt="初中语文《岳阳楼记》名师示范课堂现场"
+                    class="w-full h-full object-cover"
+                    src="../../assets/img/poster-classroom.svg"
+                  />
+                </div>
+                <div
+                  class="relative z-10 p-space-md flex items-center justify-between pointer-events-none bg-gradient-to-b from-inverse-surface/75 to-transparent"
+                >
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-semibold tracking-wide animate-pulse"
+                      ><span class="w-2 h-2 rounded-full bg-on-error"></span>REC
+                      15:42</span
+                    ><span
+                      class="px-2 py-0.5 rounded-md bg-inverse-surface/80 text-inverse-on-surface backdrop-blur-sm font-label-sm text-label-sm"
+                      >4K · 智慧多机位自动导播</span
+                    >
+                  </div>
+                  <div
+                    class="flex items-center gap-1.5 text-inverse-on-surface font-label-sm text-label-sm bg-inverse-surface/60 px-2.5 py-1 rounded-md backdrop-blur-sm"
+                  >
+                    <span class="material-symbols-outlined text-[16px]"
+                      >visibility</span
+                    ><span>初二(1)班 · 语文示范教室</span>
+                  </div>
+                </div>
+                <div
+                  class="relative z-10 px-space-md pb-space-sm pt-space-lg bg-gradient-to-t from-inverse-surface/95 via-inverse-surface/60 to-transparent"
+                >
+                  <div
+                    class="relative w-full py-2 cursor-pointer group/timeline"
+                  >
+                    <div
+                      class="w-full h-1.5 rounded-full bg-surface-container-lowest/30 relative"
+                    >
+                      <div
+                        class="h-full rounded-full bg-primary-fixed-dim"
+                        style="width: 34.8%"
+                      ></div>
+                    </div>
+                    <button
+                      class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest shadow-md hover:scale-125 transition-transform"
+                      style="left: 7.6%"
+                      title="03:25 教师提问"
+                    ></button
+                    ><button
+                      class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest shadow-md hover:scale-125 transition-transform"
+                      style="left: 18.2%"
+                      title="08:14 学生回应"
+                    ></button
+                    ><button
+                      class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-error ring-2 ring-surface-container-lowest shadow-lg hover:scale-125 transition-transform"
+                      style="left: 34.8%"
+                      title="15:42 当前节点"
+                    ></button
+                    ><button
+                      class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-tertiary-container ring-2 ring-surface-container-lowest shadow-md hover:scale-125 transition-transform"
+                      style="left: 49.2%"
+                      title="22:10 小组合作"
+                    ></button>
+                  </div>
+                  <div
+                    class="flex items-center justify-between text-inverse-on-surface pt-1"
+                  >
+                    <div class="flex items-center gap-space-sm">
+                      <button
+                        class="p-1 hover:text-primary-fixed-dim transition-colors"
+                        title="播放/暂停"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[24px]"
+                          >pause_circle</span
+                        ></button
+                      ><button
+                        class="p-1 hover:text-primary-fixed-dim transition-colors"
+                        title="快进10秒"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >forward_10</span
+                        ></button
+                      ><span
+                        class="font-label-md text-label-md tracking-wider pl-1"
+                        ><strong class="text-surface-container-lowest"
+                          >00:15:42</strong
+                        >
+                        / 00:45:00</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-space-md">
+                      <div
+                        class="flex items-center gap-1 bg-surface-container-lowest/15 px-2 py-0.5 rounded-md text-inverse-on-surface font-label-sm text-label-sm"
+                      >
+                        <span>倍速:</span
+                        ><button class="font-bold hover:text-primary-fixed">
+                          1.0x</button
+                        ><span class="opacity-40">/</span
+                        ><button class="text-primary-fixed font-bold">
+                          1.25x
+                        </button>
+                      </div>
+                      <button
+                        class="p-1 hover:text-primary-fixed-dim transition-colors"
+                        title="全屏"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >fullscreen</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md"
+              >
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-error"></span>
+                    <h3
+                      class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                    >
+                      微观事件标注录入
+                    </h3>
+                    <span
+                      class="font-label-sm text-label-sm text-secondary px-2 py-0.5 rounded bg-surface-container-low"
+                      >00:15:42</span
+                    >
+                  </div>
+                  <button
+                    class="text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm"
+                    id="clear-input-btn"
+                    type="button"
+                  >
+                    清空重填
+                  </button>
+                </div>
+                <div class="flex flex-wrap gap-1.5" id="category-chips-group">
+                  <button
+                    class="cat-pill px-3 py-1 rounded-full text-on-surface-variant hover:bg-surface-container bg-surface-container-low font-label-sm text-label-sm transition-all"
+                    data-tag="教师提问"
+                    type="button"
+                  >
+                    教师提问</button
+                  ><button
+                    class="cat-pill px-3 py-1 rounded-full text-on-surface-variant hover:bg-surface-container bg-surface-container-low font-label-sm text-label-sm transition-all"
+                    data-tag="学生回应"
+                    type="button"
+                  >
+                    学生回应</button
+                  ><button
+                    class="cat-pill active px-3 py-1 rounded-full bg-primary text-on-primary font-semibold font-label-sm text-label-sm shadow-xs"
+                    data-tag="师生互动"
+                    type="button"
+                  >
+                    师生互动</button
+                  ><button
+                    class="cat-pill px-3 py-1 rounded-full text-on-surface-variant hover:bg-surface-container bg-surface-container-low font-label-sm text-label-sm transition-all"
+                    data-tag="小组合作"
+                    type="button"
+                  >
+                    小组合作</button
+                  ><button
+                    class="cat-pill px-3 py-1 rounded-full text-on-surface-variant hover:bg-surface-container bg-surface-container-low font-label-sm text-label-sm transition-all"
+                    data-tag="教师反馈"
+                    type="button"
+                  >
+                    教师反馈</button
+                  ><button
+                    class="cat-pill px-3 py-1 rounded-full text-on-surface-variant hover:bg-surface-container bg-surface-container-low font-label-sm text-label-sm transition-all"
+                    data-tag="课堂组织"
+                    type="button"
+                  >
+                    课堂组织</button
+                  ><button
+                    class="cat-pill px-3 py-1 rounded-full text-on-surface-variant hover:bg-surface-container bg-surface-container-low font-label-sm text-label-sm transition-all"
+                    data-tag="其他"
+                    type="button"
+                  >
+                    板书与媒介
+                  </button>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <textarea
+                    class="w-full p-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none placeholder:text-on-surface-variant/60 transition-all"
+                    id="event-desc-input"
+                    placeholder="记录客观事实（语言、互动与板书反应）..."
+                    rows="3"
+                  >
+15:42 授课教师手指电子白板核心名句“先天下之忧而忧”，身体略微前倾，向全班抛出反问：“‘先’与‘后’究竟是时间顺序还是价值抉择？”，前排多名学生主动翻开课本做批注并低声展开同桌交流。</textarea>
+                  <div
+                    class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-1"
+                  >
+                    <span>将自动生成带时间戳的事实证据</span
+                    ><span class="text-secondary"
+                      ><span id="char-count">86</span> 字</span
+                    >
+                  </div>
+                </div>
+                <div class="flex justify-end">
+                  <button
+                    class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:brightness-105 active:scale-95 transition-all shadow-sm"
+                    id="save-event-btn"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]"
+                      >bookmark_add</span
+                    ><span>保存标注事实</span>
+                  </button>
+                </div>
+              </div>
+            </section>
+            <!-- RIGHT 5 COLS: Structured Event Evidence Registry & Expert Benchmark -->
+            <section class="lg:col-span-5 flex flex-col gap-space-md">
+              <div
+                class="w-full bg-surface-container-lowest rounded-xl p-space-sm flex items-center justify-between shadow-sm"
+              >
+                <div class="flex items-center gap-1">
+                  <button
+                    class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-bold transition-all"
+                    id="tab-my-btn"
+                    type="button"
+                  >
+                    已标事实 (4)</button
+                  ><button
+                    class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-semibold transition-all"
+                    id="tab-expert-btn"
+                    type="button"
+                  >
+                    名师参照 (12)
+                  </button>
+                </div>
+                <span
+                  class="font-label-sm text-label-sm text-on-surface-variant"
+                  >时间线顺序</span
+                >
+              </div>
+              <div
+                class="flex flex-col gap-space-md max-h-[660px] overflow-y-auto pr-1"
+                id="evidence-container"
+              >
+                <article
+                  class="p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all shadow-sm group"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <button
+                        class="timestamp-chip inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-primary-container font-label-sm text-label-sm font-semibold hover:bg-primary-container hover:text-on-primary transition-colors"
+                        data-time="03:25"
+                        type="button"
+                      >
+                        03:25</button
+                      ><span
+                        class="font-label-sm text-label-sm text-secondary font-medium"
+                        >启发提问</span
+                      >
+                    </div>
+                    <button
+                      class="insert-cite-btn text-primary hover:underline text-label-sm"
+                      data-cite="[#03:25 教师提问]"
+                      type="button"
+                    >
+                      引用
+                    </button>
+                  </div>
+                  <p
+                    class="font-body-sm text-body-sm text-on-surface leading-relaxed"
+                  >
+                    教师通过递进追问“滕子京具庆何在？为何重修岳阳楼？”，预留12秒静默思考时间，激活背景认知。
+                  </p>
+                </article>
+                <article
+                  class="p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all shadow-sm group"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <button
+                        class="timestamp-chip inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-primary-container font-label-sm text-label-sm font-semibold hover:bg-primary-container hover:text-on-primary transition-colors"
+                        data-time="08:14"
+                        type="button"
+                      >
+                        08:14</button
+                      ><span
+                        class="font-label-sm text-label-sm text-secondary font-medium"
+                        >朗读内化</span
+                      >
+                    </div>
+                    <button
+                      class="insert-cite-btn text-primary hover:underline text-label-sm"
+                      data-cite="[#08:14 学生回应]"
+                      type="button"
+                    >
+                      引用
+                    </button>
+                  </div>
+                  <p
+                    class="font-body-sm text-body-sm text-on-surface leading-relaxed"
+                  >
+                    第二组学生起立朗读“霪雨霏霏”段落，教师轻敲节拍跟随，重点纠正“浊浪排空”的重音情感。
+                  </p>
+                </article>
+                <article
+                  class="p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all shadow-sm ring-1 ring-primary/30 group"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <button
+                        class="timestamp-chip inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error text-on-error font-label-sm text-label-sm font-bold"
+                        data-time="15:42"
+                        type="button"
+                      >
+                        15:42 当前</button
+                      ><span
+                        class="font-label-sm text-label-sm text-primary font-medium"
+                        >白板批注</span
+                      >
+                    </div>
+                    <button
+                      class="insert-cite-btn text-primary font-bold hover:underline text-label-sm"
+                      data-cite="[#15:42 师生互动]"
+                      type="button"
+                    >
+                      引用
+                    </button>
+                  </div>
+                  <p
+                    class="font-body-sm text-body-sm text-on-surface leading-relaxed"
+                  >
+                    教师手指核心名句反问“先与后是时间还是抉择？”，促使多名学生翻书批注并展开同桌交流。
+                  </p>
+                </article>
+                <article
+                  class="p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all shadow-sm group"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <button
+                        class="timestamp-chip inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-primary-container font-label-sm text-label-sm font-semibold hover:bg-primary-container hover:text-on-primary transition-colors"
+                        data-time="22:10"
+                        type="button"
+                      >
+                        22:10</button
+                      ><span
+                        class="font-label-sm text-label-sm text-secondary font-medium"
+                        >探究研讨</span
+                      >
+                    </div>
+                    <button
+                      class="insert-cite-btn text-primary hover:underline text-label-sm"
+                      data-cite="[#22:10 小组合作]"
+                      type="button"
+                    >
+                      引用
+                    </button>
+                  </div>
+                  <p
+                    class="font-body-sm text-body-sm text-on-surface leading-relaxed"
+                  >
+                    教师下发导学研讨单组织小组对比“古仁人之心”，俯身倾听第4、第6小组讨论。
+                  </p>
+                </article>
+              </div>
+            </section>
+          </div>
+        </main>
+        <!-- Bottom Workspace: Evidence-Based Pedagogical Report Writing Console -->
+        <section class="w-full px-margin pb-space-xl pt-space-md">
+          <div
+            class="w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center justify-between pb-2 border-b border-surface-container gap-space-sm"
+            >
+              <div>
+                <h2
+                  class="font-headline-lg text-headline-lg text-on-surface font-semibold"
+                >
+                  专业评课撰写与能力诊断
+                </h2>
+                <p
+                  class="font-body-sm text-body-sm text-on-surface-variant mt-1"
+                >
+                  基于实证范式：事实证据 → 教学法/心理学依据 → 改进建议
+                </p>
+              </div>
+              <div
+                class="flex items-center gap-1.5 bg-surface-container-low px-2.5 py-1 rounded-lg"
+              >
+                <span
+                  class="font-label-sm text-label-sm text-on-surface-variant"
+                  >插入证据:</span
+                ><button
+                  class="insert-cite-btn px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-xs hover:bg-surface-container transition-colors"
+                  data-cite="[#03:25 教师提问]"
+                  type="button"
+                >
+                  03:25 提问</button
+                ><button
+                  class="insert-cite-btn px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-xs hover:bg-surface-container transition-colors"
+                  data-cite="[#15:42 师生互动]"
+                  type="button"
+                >
+                  15:42 互动</button
+                ><button
+                  class="insert-cite-btn px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-xs hover:bg-surface-container transition-colors"
+                  data-cite="[#22:10 小组合作]"
+                  type="button"
+                >
+                  22:10 研讨
+                </button>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start"
+            >
+              <div class="lg:col-span-8 flex flex-col gap-space-md">
+                <div
+                  class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-2"
+                >
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="font-label-md text-label-md text-on-surface font-bold"
+                      >一、客观事实与量化证据</span
+                    ><span class="text-tertiary font-label-sm text-label-sm"
+                      >已链接 3 处微观事件</span
+                    >
+                  </div>
+                  <textarea
+                    class="w-full p-3 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary-container focus:outline-none transition-all"
+                    id="critique-section-1"
+                    rows="3"
+                  >
+在本节课前半程，授课教师紧扣经典名句的逻辑张力展开设问。特别是在 [#03:25 教师提问] 阶段以追问驱动认知冲突，随后在 [#15:42 师生互动] 环节通过电子白板批注聚焦“先/后”之辨，使得学生的思维从被动的字句诵记迅速跃升至价值理念辨析。全班课堂参与观察显示，有效专注度达到 88%。</textarea>
+                </div>
+                <div
+                  class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-2"
+                >
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="font-label-md text-label-md text-on-surface font-bold"
+                      >二、教育学与教学法机制剖析</span
+                    ><span
+                      class="text-on-surface-variant font-label-sm text-label-sm"
+                      >支架式教学 · 最近发展区</span
+                    >
+                  </div>
+                  <textarea
+                    class="w-full p-3 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary-container focus:outline-none transition-all"
+                    id="critique-section-2"
+                    rows="3"
+                  >
+该教师的教学策略符合维果茨基的“最近发展区理论”与布鲁纳的“支架式教学”。在引导学生解读“不以物喜，不以己悲”时，将抽象家国情怀具象化为人生抉择，通过“提问-诵读-对照批注”形成的认知支架化解文言文理解壁垒。</textarea>
+                </div>
+                <div
+                  class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-2"
+                >
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="font-label-md text-label-md text-on-surface font-bold"
+                      >三、诊断与针对性改进策略</span
+                    ><span class="text-secondary font-label-sm text-label-sm"
+                      >可操作反思</span
+                    >
+                  </div>
+                  <textarea
+                    class="w-full p-3 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary-container focus:outline-none transition-all"
+                    id="critique-section-3"
+                    rows="3"
+                  >
+建议在 [#22:10 小组合作] 环节中，进一步明确各组成员角色分工。教师可增加1分钟的前置性小组分工指令，并在汇报展示阶段引入多组观点的互评机制，从而实现班级整体互动广度与深度的平衡。</textarea>
+                </div>
+              </div>
+              <div class="lg:col-span-4 flex flex-col gap-space-md">
+                <div
+                  class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm"
+                >
+                  <div class="flex items-center justify-between">
+                    <h4
+                      class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                    >
+                      三维能力诊断
+                    </h4>
+                    <span
+                      class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold"
+                      >综合评级 A</span
+                    >
+                  </div>
+                  <div
+                    class="relative w-full h-36 flex items-center justify-center"
+                  >
+                    <svg class="w-32 h-32" viewbox="0 0 160 160">
+                      <polygon
+                        class="text-surface-container-highest"
+                        fill="none"
+                        points="80,20 135,55 135,115 80,145 25,115 25,55"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      ></polygon>
+                      <polygon
+                        class="text-surface-container-highest"
+                        fill="none"
+                        points="80,45 115,67 115,103 80,122 45,103 45,67"
+                        stroke="currentColor"
+                        stroke-width="1"
+                      ></polygon>
+                      <polygon
+                        fill="rgba(66, 98, 120, 0.22)"
+                        points="80,30 128,110 32,108"
+                        stroke="#426278"
+                        stroke-width="2"
+                      ></polygon>
+                      <circle cx="80" cy="30" fill="#426278" r="3"></circle>
+                      <circle cx="128" cy="110" fill="#426278" r="3"></circle>
+                      <circle cx="32" cy="108" fill="#426278" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <div
+                      class="flex justify-between font-label-sm text-label-sm"
+                    >
+                      <span>敏锐洞察 (Noticing)</span
+                      ><span class="font-bold">88%</span>
+                    </div>
+                    <div
+                      class="flex justify-between font-label-sm text-label-sm"
+                    >
+                      <span>实证推理 (Reasoning)</span
+                      ><span class="font-bold">84%</span>
+                    </div>
+                    <div
+                      class="flex justify-between font-label-sm text-label-sm"
+                    >
+                      <span>专业表述 (Expressing)</span
+                      ><span class="font-bold">90%</span>
+                    </div>
+                  </div>
+                  <div
+                    class="p-2.5 rounded-lg bg-surface-container-lowest font-body-sm text-body-sm text-on-surface-variant mt-1"
+                  >
+                    💡
+                    事实锚点完备，建议在“改进策略”中丰富板书建议即可冲刺卓越评级。
+                  </div>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <button
+                    class="w-full py-2.5 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm shadow hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                    id="submit-report-btn"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]"
+                      >assignment_turned_in</span
+                    ><span>生成诊断报告</span>
+                  </button>
+                  <div class="grid grid-cols-2 gap-2">
+                    <button
+                      class="py-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors text-center"
+                      id="save-draft-btn"
+                      type="button"
+                    >
+                      暂存草稿</button
+                    ><button
+                      class="py-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors text-center"
+                      type="button"
+                    >
+                      清空重置
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Interactive Client-side Script -->
+      </div>
+    </main>
+  </body>
+</html>

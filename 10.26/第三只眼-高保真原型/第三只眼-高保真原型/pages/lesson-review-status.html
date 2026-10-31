@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="教案分析进度：查看待分析、分析中、完成或失败重试状态。"
+    />
+    <title>教案分析进度 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="lesson-review-status" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="home.html">首页</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <a href="lesson-review.html">AI 评教案</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span>分析进度</span>
+          </nav>
+          <span class="eyebrow">P-12 / SUBMISSION STATUS</span>
+          <h1>教案分析进度</h1>
+          <p>
+            提交后依次经历“待分析 → 分析中 → 完成”，异常时可失败重试。
+            原型使用定时器模拟状态变化，不会真正调用 AI 服务。
+          </p>
+        </div>
+        <div class="head-aside">
+          <span class="tag tag-sand">演示流程 · 非真实分析</span>
+          <a class="btn-ghost btn-sm" href="lesson-review.html">
+            <span class="material-symbols-outlined">add</span>新建评价
+          </a>
+        </div>
+      </div>
+
+      <div class="steps" aria-label="分析状态">
+        <div class="step-chip done" id="stepPending">
+          <b>01 / 待分析</b>已收到提交，排队等待
+        </div>
+        <div class="step-chip active" id="stepAnalyzing" aria-current="step">
+          <b>02 / 分析中</b>解析文本、按维度检查
+        </div>
+        <div class="step-chip" id="stepDone">
+          <b>03 / 完成</b>生成示例评价报告
+        </div>
+      </div>
+
+      <div class="grid-main-side" style="margin-top: 18px">
+        <section class="panel" aria-labelledby="status-title">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow">当前状态</span>
+              <h2 id="status-title">正在分析你的教案</h2>
+            </div>
+            <span class="tag tag-sand" id="statusTag">分析中</span>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              gap: 16px;
+              align-items: flex-start;
+              padding: 18px;
+              border-radius: 14px;
+              background: #f6fafd;
+              border: 1px solid #e3edf3;
+            "
+          >
+            <span
+              class="material-symbols-outlined"
+              id="statusIcon"
+              style="font-size: 34px; color: #426278"
+              >hourglass_top</span
+            >
+            <div style="min-width: 0">
+              <h3 id="statusHeadline" style="font-size: 16px">
+                正在按六个维度检查教案
+              </h3>
+              <p class="muted" id="statusDesc" style="margin-top: 5px">
+                通常需要 10—30 秒。请保持页面打开，完成后可直接查看报告。
+              </p>
+              <div
+                class="meter"
+                style="
+                  height: 6px;
+                  margin-top: 12px;
+                  background: #e2edf4;
+                  border-radius: 6px;
+                  overflow: hidden;
+                "
+              >
+                <span
+                  id="statusProgress"
+                  style="
+                    display: block;
+                    height: 100%;
+                    width: 20%;
+                    background: #426278;
+                    border-radius: 6px;
+                    transition: width 0.6s;
+                  "
+                ></span>
+              </div>
+              <span class="hint" id="statusPercent">20% · 解析文本结构</span>
+            </div>
+          </div>
+
+          <div class="rows" id="taskList" style="margin-top: 6px">
+            <div class="row" data-task="parse">
+              <div class="row-main">
+                <h3>解析教案结构</h3>
+                <p>识别章节、目标与活动段落，标注缺失部分</p>
+              </div>
+              <div class="row-side">
+                <span class="tag tag-sand" data-task-tag>进行中</span>
+              </div>
+            </div>
+            <div class="row" data-task="rubric">
+              <div class="row-main">
+                <h3>按六维量表检查</h3>
+                <p>教材学情、目标重难点、过程活动、评价、资源、规范性</p>
+              </div>
+              <div class="row-side">
+                <span class="tag tag-grey" data-task-tag>等待中</span>
+              </div>
+            </div>
+            <div class="row" data-task="advice">
+              <div class="row-main">
+                <h3>定位原文并生成建议</h3>
+                <p>每条建议包含位置、问题、依据、理由、改法与优先级</p>
+              </div>
+              <div class="row-side">
+                <span class="tag tag-grey" data-task-tag>等待中</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-actions">
+            <div class="actions-left">
+              <a class="btn-ghost btn-sm" href="lesson-review.html">
+                <span class="material-symbols-outlined">arrow_back</span
+                >返回修改
+              </a>
+              <button
+                type="button"
+                id="failDemo"
+                class="btn-ghost btn-danger-ghost btn-sm"
+              >
+                <span class="material-symbols-outlined">error</span>模拟分析失败
+              </button>
+            </div>
+            <div class="actions-right">
+              <button type="button" id="skipWait" class="btn-ghost btn-sm">
+                跳过等待（演示）
+              </button>
+              <a
+                id="viewReport"
+                class="btn-primary"
+                href="lesson-review-report.html"
+                aria-disabled="true"
+                style="pointer-events: none; opacity: 0.5"
+              >
+                查看评价报告
+                <span class="material-symbols-outlined" style="font-size: 18px"
+                  >arrow_forward</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="notice warn"
+            id="failPanel"
+            hidden
+            style="margin-top: 12px"
+          >
+            <span class="material-symbols-outlined">report</span>
+            <span>
+              <strong>分析失败（演示）</strong><br />
+              可能是文档无法解析或内容过短。你可以重试，或返回改用粘贴文本。
+              失败不会生成任何评价结论，也不会扣减打卡或成绩。
+            </span>
+          </div>
+          <div
+            class="notice green"
+            id="donePanel"
+            hidden
+            style="margin-top: 12px"
+          >
+            <span class="material-symbols-outlined">task_alt</span>
+            <span>
+              <strong>示例报告已生成</strong><br />
+              报告中的分值与原文引用均为预置示例，不代表对你这份教案的真实评价；
+              请结合教师意见判断是否采纳。
+            </span>
+          </div>
+        </section>
+
+        <aside class="stack">
+          <section class="panel tint-blue" aria-labelledby="submission-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">本次提交</span>
+                <h2 id="submission-title">提交信息</h2>
+              </div>
+              <span class="tag tag-violet" id="submissionVersion">v1</span>
+            </div>
+            <div class="rows">
+              <div class="row">
+                <div class="row-main">
+                  <h3 id="submissionTitle">《赤壁赋》教学设计</h3>
+                  <p id="submissionTopic">第二课时 · 主客问答中的情与理</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>学段与学科</p>
+                  <h3 id="submissionGrade">初中 · 语文</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>提交时间</p>
+                  <h3 id="submissionTime">—</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <p>正文字数</p>
+                  <h3 id="submissionChars">—</h3>
+                </div>
+              </div>
+            </div>
+            <p class="hint" style="margin-top: 10px">
+              演示提示：若你刚从提交页过来，这里展示的是你填写的标题与学段学科；
+              正文不会被解析。
+            </p>
+          </section>
+
+          <section class="panel" aria-labelledby="privacy-title">
+            <span class="eyebrow">权限</span>
+            <h2 id="privacy-title" style="margin-top: 6px">这份教案谁能看到</h2>
+            <div class="stack-sm" style="margin-top: 10px">
+              <div class="notice">
+                <span class="material-symbols-outlined">lock</span>
+                <span
+                  >默认仅本人可见；指导教师需经你授权或任务范围内才能查看。</span
+                >
+              </div>
+              <div class="notice">
+                <span class="material-symbols-outlined">database</span>
+                <span>未经单独、明确授权，教案与反馈不会用于模型训练。</span>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <p class="ws-note">
+        原型说明：状态切换与耗时为前端模拟。正式版由后台任务队列返回真实状态；
+        “完成后进入报告”的分值与依据仍需学科专家审定量表。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/lesson-review-status.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

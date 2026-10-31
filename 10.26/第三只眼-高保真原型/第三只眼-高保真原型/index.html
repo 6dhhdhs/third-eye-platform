@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="第三只眼高保真原型总览：页面地图、跳转规则、设计说明与工程结构。"
+    />
+    <title>原型总览 · 第三只眼</title>
+    <link rel="icon" href="./assets/img/favicon.svg" />
+    <link rel="stylesheet" href="./assets/css/app.css" />
+  </head>
+  <body data-root="." data-page="index" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <span class="eyebrow">PROTOTYPE OVERVIEW / PRD V1.2</span>
+          <h1>第三只眼 · 高保真原型</h1>
+          <p>
+            师范生智能学习与教学能力训练平台：观察他人的课，打磨自己的教案。
+            全部页面共用首页的排版骨架（顶栏 + 左侧导航 +
+            内容区），本页是统一入口与页面地图。
+          </p>
+          <div class="tags" style="margin-top: 10px">
+            <span class="tag tag-green">
+              <span class="material-symbols-outlined">verified</span>高保真原型
+            </span>
+            <span class="tag tag-blue">2026 秋 · 智能学习平台开发课程项目</span>
+            <span class="tag tag-grey">对齐 PRD v1.2</span>
+          </div>
+        </div>
+        <div class="head-aside">
+          <a class="btn-primary" href="pages/home.html">
+            <span class="material-symbols-outlined" style="font-size: 18px"
+              >play_circle</span
+            >从首页开始体验
+          </a>
+          <a class="btn-ghost btn-sm" href="docs/PRD.md">
+            <span class="material-symbols-outlined">description</span>打开 PRD
+          </a>
+        </div>
+      </div>
+
+      <section class="stat-row" aria-label="原型概况">
+        <div class="stat">
+          <span>页面</span>
+          <b>13<small>个</small></b>
+          <em>含登录与 404 外壳页</em>
+        </div>
+        <div class="stat">
+          <span>主流程</span>
+          <b>4<small>条</small></b>
+          <em>课程 / 观察 / 评教案 / 账号</em>
+        </div>
+        <div class="stat">
+          <span>核心模块</span>
+          <b>2<small>个</small></b>
+          <em>课堂观察 · AI 评教案</em>
+        </div>
+        <div class="stat">
+          <span>运行时依赖</span>
+          <b>0<small>个</small></b>
+          <em>静态 HTML + 原生 JS</em>
+        </div>
+      </section>
+
+      <section id="pagemap" class="ws-section" aria-labelledby="pagemap-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PAGE MAP / 按 PRD 7.1 路由约定</span>
+            <h2 id="pagemap-title">页面地图</h2>
+            <p class="muted">点击卡片进入对应界面；导航栏固定五个一级入口。</p>
+          </div>
+          <span class="sample">打卡为首页 + 个人中心双入口</span>
+        </div>
+
+        <div class="grid-3">
+          <a class="panel map-card" href="pages/home.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-03</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>首页学习工作台</h3>
+            <p>欢迎区、继续学习、今日打卡、两个核心模块入口与示例报告预览。</p>
+            <div class="tags">
+              <span class="tag tag-blue">打卡状态机</span>
+              <span class="tag tag-grey">推荐</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/courses.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-04</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>课程列表</h3>
+            <p>关键词搜索、学科与类型筛选、课程卡片与空状态。</p>
+            <div class="tags">
+              <span class="tag tag-blue">筛选</span>
+              <span class="tag tag-grey">空状态</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/course-learn.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-05 / P-06</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>课程学习页</h3>
+            <p>播放器、章节目录、导学任务与学习进度同步。</p>
+            <div class="tags">
+              <span class="tag tag-blue">章节切换</span>
+              <span class="tag tag-grey">完成学习</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/observe.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-07</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>课堂观察任务</h3>
+            <p>已授权课例、训练三阶段任务卡与我的观察记录。</p>
+            <div class="tags">
+              <span class="tag tag-blue">任务状态</span>
+              <span class="tag tag-grey">κ 一致性</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/observe-workbench.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-08</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>课堂观察工作台</h3>
+            <p>时间戳标注、证据列表、专家参考对照与评课撰写。</p>
+            <div class="tags">
+              <span class="tag tag-blue">打点</span>
+              <span class="tag tag-grey">引用证据</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/observe-report.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-09</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>观察能力报告</h3>
+            <p>注意 / 推理 / 表述三维反馈、证据回看与改进建议。</p>
+            <div class="tags">
+              <span class="tag tag-green">三维画像</span>
+              <span class="tag tag-grey">专家锚点</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/lesson-review.html">
+            <div class="map-top">
+              <span class="tag tag-violet">P-10 / P-11</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>AI 评教案 · 新建评价</h3>
+            <p>学段学科、粘贴或上传教案、六维量表说明与隐私确认。</p>
+            <div class="tags">
+              <span class="tag tag-violet">六维评价</span>
+              <span class="tag tag-grey">上传校验</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/lesson-review-status.html">
+            <div class="map-top">
+              <span class="tag tag-violet">P-12</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>教案分析进度</h3>
+            <p>待分析 → 分析中 → 完成 / 失败可重试的四态演示。</p>
+            <div class="tags">
+              <span class="tag tag-violet">状态机</span>
+              <span class="tag tag-grey">失败重试</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/lesson-review-report.html">
+            <div class="map-top">
+              <span class="tag tag-violet">P-13</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>教案评价报告</h3>
+            <p>六维加权结果、原文依据、五条修改建议与版本对比提示。</p>
+            <div class="tags">
+              <span class="tag tag-violet">六段式反馈</span>
+              <span class="tag tag-grey">教师复核</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/profile.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-14</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>个人中心</h3>
+            <p>学习概览、打卡日历、我的教案评价与最近学习记录。</p>
+            <div class="tags">
+              <span class="tag tag-blue">打卡日历</span>
+              <span class="tag tag-grey">成长档案</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/login.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-01 / P-02</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>登录 / 注册</h3>
+            <p>账号入口，含表单校验、错误提示与演示账号。</p>
+            <div class="tags">
+              <span class="tag tag-grey">校验</span>
+              <span class="tag tag-grey">演示账号</span>
+            </div>
+          </a>
+
+          <a class="panel map-card" href="pages/404.html">
+            <div class="map-top">
+              <span class="tag tag-grey">P-15</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+            <h3>404 / 无权限</h3>
+            <p>内容不可用与安全返回入口。</p>
+            <div class="tags"><span class="tag tag-red">异常态</span></div>
+          </a>
+
+          <a
+            class="panel map-card"
+            href="archive/originals/home-alt-2.html"
+            style="border-style: dashed"
+          >
+            <div class="map-top">
+              <span class="tag tag-grey">归档</span>
+              <span class="material-symbols-outlined">inventory_2</span>
+            </div>
+            <h3>Stitch 原始方案</h3>
+            <p>4 个未采用的备选视觉稿保留在 archive/，仅作对照。</p>
+            <div class="tags">
+              <span class="tag tag-grey">home-alt-1</span>
+              <span class="tag tag-grey">home-alt-2</span>
+              <span class="tag tag-grey">observe-alt</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="ws-section" aria-labelledby="flow-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">CORE FLOWS</span>
+            <h2 id="flow-title">核心跳转关系</h2>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <span class="eyebrow">课堂观察</span>
+            <h3 style="margin-top: 6px">观察 → 证据 → 三维反馈</h3>
+            <div class="steps" style="margin-top: 12px">
+              <div class="step-chip done"><b>观察任务</b>选择已授权课例</div>
+              <div class="step-chip active"><b>工作台</b>打点 + 写评课</div>
+              <div class="step-chip"><b>能力报告</b>注意 / 推理 / 表述</div>
+            </div>
+            <p class="muted" style="margin-top: 10px; font-size: 11px">
+              提交评课后生成三维报告，报告页提供「再练一次」与「补学课程」两条回路。
+            </p>
+          </div>
+          <div class="panel">
+            <span class="eyebrow">AI 评教案</span>
+            <h3 style="margin-top: 6px">提交 → 分析 → 六维反馈</h3>
+            <div class="steps" style="margin-top: 12px">
+              <div class="step-chip done"><b>提交教案</b>粘贴或上传文档</div>
+              <div class="step-chip active">
+                <b>分析进度</b>待分析 / 分析中 / 完成
+              </div>
+              <div class="step-chip"><b>评价报告</b>六维 + 修改建议</div>
+            </div>
+            <p class="muted" style="margin-top: 10px; font-size: 11px">
+              失败可重试；报告给出位置、问题、依据、理由、建议与优先级，不自动改写教案。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ws-section" aria-labelledby="screenshot-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">KEY SCREENS</span>
+            <h2 id="screenshot-title">核心界面</h2>
+          </div>
+          <span class="sample">截图为示例数据</span>
+        </div>
+        <div class="grid-3">
+          <a
+            class="panel map-card"
+            href="pages/home.html"
+            style="padding: 0; overflow: hidden"
+          >
+            <img
+              src="./assets/img/screenshots/home.png"
+              alt="首页学习工作台截图"
+              style="
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+                object-position: top;
+              "
+            />
+            <div
+              style="
+                padding: 12px 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <b style="font-size: 12px">首页工作台</b>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+          </a>
+          <a
+            class="panel map-card"
+            href="pages/observe-workbench.html"
+            style="padding: 0; overflow: hidden"
+          >
+            <img
+              src="./assets/img/screenshots/observe-workbench.png"
+              alt="课堂观察工作台截图"
+              style="
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+                object-position: top;
+              "
+            />
+            <div
+              style="
+                padding: 12px 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <b style="font-size: 12px">课堂观察工作台</b>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+          </a>
+          <a
+            class="panel map-card"
+            href="pages/lesson-review-report.html"
+            style="padding: 0; overflow: hidden"
+          >
+            <img
+              src="./assets/img/screenshots/lesson-review-report.png"
+              alt="AI 评教案报告截图"
+              style="
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+                object-position: top;
+              "
+            />
+            <div
+              style="
+                padding: 12px 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <b style="font-size: 12px">AI 评教案报告</b>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="ws-section" aria-labelledby="style-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">DESIGN SYSTEM</span>
+            <h2 id="style-title">设计说明</h2>
+            <p class="muted">
+              视觉令牌与 docs/DESIGN.md 一一对应，界面统一使用首页排版骨架。
+            </p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>主色与语义色</h3>
+                <p class="muted">
+                  深石板蓝为骨架色，绿 / 沙 / 紫用于区分模块与状态。
+                </p>
+              </div>
+            </div>
+            <div class="swatch-row" style="margin-top: 12px">
+              <span class="swatch"
+                ><i style="background: #426278"></i>primary #426278</span
+              >
+              <span class="swatch"
+                ><i style="background: #2c6954"></i>tertiary #2c6954</span
+              >
+              <span class="swatch"
+                ><i style="background: #a84646"></i>error #a84646</span
+              >
+              <span class="swatch"
+                ><i style="background: #f6faff"></i>surface #f6faff</span
+              >
+              <span class="swatch"
+                ><i style="background: #eaf1f5"></i>tint blue</span
+              >
+              <span class="swatch"
+                ><i style="background: #eef6f1"></i>tint green</span
+              >
+              <span class="swatch"
+                ><i style="background: #faf4ea"></i>tint sand</span
+              >
+              <span class="swatch"
+                ><i style="background: #f1eef9"></i>tint violet</span
+              >
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>字体与组件</h3>
+                <p class="muted">
+                  小字号、密信息；44px 触控目标与键盘焦点均已覆盖（PRD 10.6）。
+                </p>
+              </div>
+            </div>
+            <p style="font-size: 20px; font-weight: 700; margin-top: 10px">
+              标题 20 / 700
+            </p>
+            <p class="muted" style="font-size: 12px">
+              正文 12–13 / 400 · 深石板色，适合长时间阅读。
+            </p>
+            <div class="tags" style="margin-top: 12px">
+              <span class="btn-primary btn-sm">主按钮</span>
+              <span class="btn-ghost btn-sm">次按钮</span>
+              <span class="tag tag-blue">标签</span>
+              <span class="tag tag-green">已达成</span>
+              <span class="tag tag-red">待改进</span>
+              <span class="sample">示例</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-2" aria-label="工程结构与说明">
+        <div class="panel">
+          <span class="eyebrow">PROJECT STRUCTURE</span>
+          <h2 style="margin-top: 6px">工程结构</h2>
+          <pre
+            class="quote"
+            style="
+              margin-top: 12px;
+              overflow-x: auto;
+              font-size: 11px;
+              line-height: 1.9;
+              font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            "
+          >
+stitch_/
+├─ index.html          原型总览
+├─ pages/              13 个页面
+├─ assets/
+│  ├─ css/app.css      Tailwind 构建产物
+│  ├─ js/layout.js     统一导航 / 页脚 / 原型地图
+│  ├─ js/checkin.js    打卡状态（首页与个人中心共用）
+│  ├─ js/ui.js         轻提示 / 确认弹窗
+│  ├─ js/pages/        各页交互
+│  ├─ fonts/           本地字体（离线可用）
+│  └─ img/             本地图片与占位图
+├─ src/styles/         样式源码入口
+├─ docs/               PRD 与设计规范
+└─ archive/            Stitch 原始稿</pre>
+        </div>
+
+        <div class="stack">
+          <div id="guide" class="panel">
+            <span class="eyebrow">实训指南</span>
+            <h3 style="margin-top: 6px">建议体验路径</h3>
+            <p class="muted" style="font-size: 11px; margin-top: 6px">
+              先走「首页 → 观察任务 → 观察工作台 → 能力报告」体验课堂观察闭环；
+              再走「首页 → AI 评教案 → 分析进度 → 评价报告」体验教案评价闭环。
+              页面右下角的「原型地图」可随时直达任意界面。
+            </p>
+          </div>
+          <div id="glossary" class="panel">
+            <span class="eyebrow">指标词典</span>
+            <h3 style="margin-top: 6px">两套评价维度，互不混算</h3>
+            <div class="rows" style="margin-top: 8px">
+              <div class="row">
+                <div class="row-main">
+                  <h3>注意 / 推理 / 表述</h3>
+                  <p>
+                    课堂观察三维：看见关键事件、解释因果、用可复核语言表述。
+                  </p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-blue">观察</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>教案六维</h3>
+                  <p>
+                    教材内容与学情、目标与重难点、过程与活动、评价与反馈、资源与差异化、规范与反思。
+                  </p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-violet">评教案</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main">
+                  <h3>Cohen's κ</h3>
+                  <p>多观察者标注一致性系数，0.61–0.80 视为高度一致。</p>
+                </div>
+                <div class="row-side">
+                  <span class="tag tag-grey">示例值</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="privacy" class="panel tint-green">
+            <span class="eyebrow">学术研究与隐私说明</span>
+            <h3 style="margin-top: 6px">数据只做形成性参考</h3>
+            <p class="muted" style="font-size: 11px; margin-top: 6px">
+              课例与教案均需授权后使用，仅本人与经授权的指导教师可见；未经单独授权不用于模型训练。
+              演示阶段所有分值、证据与报告均为示例数据，不构成真实评价结论；正式版支持删除教案与关联报告。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <p class="ws-note">
+        原型演示：全部页面为静态高保真原型，AI
+        结果、课程进度与成长数据均为示例。
+      </p>
+    </main>
+
+    <script src="./assets/js/ui.js"></script>
+    <script src="./assets/js/layout.js"></script>
+    <script src="./assets/js/motion.js"></script>
+  </body>
+</html>

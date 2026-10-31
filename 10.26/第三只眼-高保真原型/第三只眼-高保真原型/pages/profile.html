@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="个人中心：学习概览、每日学习日历、课堂观察记录与教案评价记录。"
+    />
+    <title>个人中心 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body data-root=".." data-page="profile" class="workspace">
+    <main id="main-content" class="ws-main">
+      <div class="page-head">
+        <div>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="home.html">首页</a>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span>个人中心</span>
+          </nav>
+          <span class="eyebrow">MY ARCHIVE / 成长档案</span>
+          <h1>个人中心</h1>
+          <p>学习打卡、课堂观察与教案评价分开记录，不合并成单一能力分。</p>
+        </div>
+        <div class="head-aside">
+          <button type="button" id="editProfile" class="btn-ghost btn-sm">
+            <span class="material-symbols-outlined">edit</span>编辑资料
+          </button>
+          <a class="btn-primary" href="home.html">
+            <span class="material-symbols-outlined" style="font-size: 18px"
+              >dashboard</span
+            >回到工作台
+          </a>
+        </div>
+      </div>
+
+      <section class="panel tint-blue" aria-label="个人资料">
+        <div
+          style="
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+          "
+        >
+          <div style="display: flex; gap: 16px; align-items: center">
+            <span
+              style="
+                width: 62px;
+                height: 62px;
+                border-radius: 50%;
+                background: #8fafc8;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 26px;
+                font-weight: 700;
+                flex-shrink: 0;
+              "
+              aria-hidden="true"
+              >林</span
+            >
+            <div>
+              <h2 style="font-size: 20px">林思齐</h2>
+              <p class="muted" style="margin-top: 4px">
+                汉语言文学（师范）2302 班 · 学号 2023020317
+              </p>
+              <div class="tags" style="margin-top: 8px">
+                <span class="tag tag-green">
+                  <span class="material-symbols-outlined"
+                    >local_fire_department</span
+                  >连续打卡 <b id="profileStreak">—</b> 天
+                </span>
+                <span class="tag tag-grey"
+                  >本月打卡 <b id="monthTotal">—</b> 天</span
+                >
+                <span class="tag tag-grey">示例账号</span>
+              </div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag tag-blue">课堂观察 · 注意 / 推理 / 表述</span>
+            <span class="tag tag-violet">教案评价 · 六维（独立）</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="stat-row" aria-label="学习概览" style="margin-top: 18px">
+        <div class="stat">
+          <span>已学课程</span>
+          <b>4<small>门</small></b>
+          <em>共 6 门可选</em>
+        </div>
+        <div class="stat">
+          <span>课堂观察</span>
+          <b>12<small>节</small></b>
+          <em>已提交 9 份评课</em>
+        </div>
+        <div class="stat">
+          <span>教案评价</span>
+          <b>6<small>次</small></b>
+          <em>2 个版本在修改中</em>
+        </div>
+        <div class="stat">
+          <span>连续打卡</span>
+          <b id="streakStat">—<small>天</small></b>
+          <em>数据与首页一致</em>
+        </div>
+      </section>
+
+      <div class="grid-side-main" style="margin-top: 18px">
+        <section id="calendar" class="panel" aria-labelledby="calendar-title">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow">学习打卡</span>
+              <h2 id="calendar-title">每日学习日历</h2>
+              <p class="muted">
+                完成任一有效学习任务即可打卡（PRD 5.3）；同一天只计一次。
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px">
+              <button
+                type="button"
+                id="prevMonth"
+                class="btn-ghost btn-sm"
+                aria-label="上个月"
+              >
+                <span class="material-symbols-outlined">chevron_left</span>
+              </button>
+              <span
+                id="calendarMonth"
+                style="
+                  min-width: 100px;
+                  text-align: center;
+                  font-weight: 600;
+                  font-size: 12px;
+                "
+                >—</span
+              >
+              <button
+                type="button"
+                id="nextMonth"
+                class="btn-ghost btn-sm"
+                aria-label="下个月"
+              >
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="calendarGrid" class="cal"></div>
+
+          <div class="legend" style="margin-top: 14px">
+            <span><i style="background: #2c6954"></i>已打卡</span>
+            <span
+              ><i style="border: 1px solid #426278; background: #fff"></i
+              >今天</span
+            >
+            <span
+              ><i style="border: 1px solid #eef2f5; background: #fff"></i
+              >未打卡</span
+            >
+            <span style="margin-left: auto">示例历史记录，可继续打卡</span>
+          </div>
+        </section>
+
+        <aside class="stack">
+          <section class="panel" aria-labelledby="ability-title">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">课堂观察 / 能力结构</span>
+                <h2 id="ability-title">三维概览</h2>
+              </div>
+              <span class="tag tag-grey">示例</span>
+            </div>
+            <div class="dim">
+              <div class="dim-row"><span>课堂注意</span><b>72</b></div>
+              <div class="meter"><span style="width: 72%"></span></div>
+            </div>
+            <div class="dim">
+              <div class="dim-row"><span>教学推理</span><b>65</b></div>
+              <div class="meter"><span style="width: 65%"></span></div>
+            </div>
+            <div class="dim">
+              <div class="dim-row"><span>专业表述</span><b>58</b></div>
+              <div class="meter"><span style="width: 58%"></span></div>
+            </div>
+            <a
+              class="text-link"
+              href="observe-report.html"
+              style="margin-top: 12px"
+              >查看完整观察报告 →</a
+            >
+          </section>
+
+          <section class="panel" aria-labelledby="privacy-title">
+            <span class="eyebrow">隐私与数据</span>
+            <h2 id="privacy-title" style="margin-top: 6px">
+              你的内容怎么被使用
+            </h2>
+            <div class="rows" style="margin-top: 8px">
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >lock</span
+                  >
+                  <p style="font-size: 11px; color: #4d6675">
+                    教案与观察记录默认仅本人可见；教师需授权后查看。
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >history</span
+                  >
+                  <p style="font-size: 11px; color: #4d6675">
+                    可随时删除个人教案、文档与关联报告，并说明删除范围。
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row-main" style="flex-direction: row; gap: 8px">
+                  <span
+                    class="material-symbols-outlined"
+                    style="color: #2c6954; font-size: 18px"
+                    >download</span
+                  >
+                  <p style="font-size: 11px; color: #4d6675">
+                    未经单独授权，内容不会用于模型训练；支持导出个人档案。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="privacySettings"
+              class="btn-ghost btn-sm"
+              style="width: 100%; margin-top: 12px"
+            >
+              隐私设置
+            </button>
+          </section>
+        </aside>
+      </div>
+
+      <section class="ws-section" aria-labelledby="plans-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">MY LESSON PLANS</span>
+            <h2 id="plans-title">我的教案评价</h2>
+            <p class="muted">每次提交生成独立版本，历史版本只读保留。</p>
+          </div>
+          <a class="text-link" href="lesson-review.html">新建评价 ↗</a>
+        </div>
+        <div class="panel" style="padding: 0; overflow: hidden">
+          <div class="table-wrap">
+            <table class="ws-table">
+              <thead>
+                <tr>
+                  <th>教案</th>
+                  <th>学段 / 学科</th>
+                  <th>提交时间</th>
+                  <th>版本</th>
+                  <th>状态</th>
+                  <th style="text-align: right">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>《赤壁赋》教学设计</b></td>
+                  <td>初中 · 语文</td>
+                  <td class="tabular">10-26 10:12</td>
+                  <td>v1</td>
+                  <td><span class="tag tag-green">已评价 86.7</span></td>
+                  <td style="text-align: right">
+                    <a class="cite" href="lesson-review-report.html"
+                      >查看报告 →</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>《荷塘月色》教学设计</b></td>
+                  <td>初中 · 语文</td>
+                  <td class="tabular">10-25 20:41</td>
+                  <td>v2</td>
+                  <td><span class="tag tag-sand">分析中</span></td>
+                  <td style="text-align: right">
+                    <a class="cite" href="lesson-review-status.html"
+                      >查看进度 →</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>《故都的秋》教学设计</b></td>
+                  <td>高中 · 语文</td>
+                  <td class="tabular">10-23 16:05</td>
+                  <td>草稿</td>
+                  <td><span class="tag tag-grey">未提交</span></td>
+                  <td style="text-align: right">
+                    <a class="cite" href="lesson-review.html">继续编辑 →</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="ws-section" aria-labelledby="recent-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">RECENT ACTIVITY</span>
+            <h2 id="recent-title">最近学习记录</h2>
+          </div>
+          <span class="sample">示例记录</span>
+        </div>
+        <div class="panel" style="padding: 0; overflow: hidden">
+          <div class="table-wrap">
+            <table class="ws-table">
+              <thead>
+                <tr>
+                  <th>类型</th>
+                  <th>内容</th>
+                  <th>时间</th>
+                  <th>结果</th>
+                  <th style="text-align: right">去向</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="tag tag-blue">课程</span></td>
+                  <td><b>启发式提问行为的识别与证据链</b></td>
+                  <td class="tabular">10-26 09:20</td>
+                  <td>进度 68%</td>
+                  <td style="text-align: right">
+                    <a class="cite" href="course-learn.html">继续学习 →</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="tag tag-blue">观察</span></td>
+                  <td><b>高中信息技术《算法与生活》</b></td>
+                  <td class="tabular">10-08 15:42</td>
+                  <td><span class="tag tag-green">综合 65 分</span></td>
+                  <td style="text-align: right">
+                    <a class="cite" href="observe-report.html">查看报告 →</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="tag tag-violet">教案</span></td>
+                  <td><b>《赤壁赋》教学设计</b></td>
+                  <td class="tabular">10-26 10:12</td>
+                  <td><span class="tag tag-green">综合 86.7 分</span></td>
+                  <td style="text-align: right">
+                    <a class="cite" href="lesson-review-report.html"
+                      >查看报告 →</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <p class="ws-note">
+        原型演示：课程进度、观察与教案记录均为示例；打卡数据保存在本机浏览器，与首页共用同一份记录。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/checkin.js"></script>
+    <script src="../assets/js/pages/profile.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

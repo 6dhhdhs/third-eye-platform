@@ -1,0 +1,28 @@
+# 依赖
+node_modules/
+
+# 打包文件（体积大，不进仓库）
+*.zip
+*.rar
+*.7z
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# 日志与临时文件
+*.log
+~$*
+
+# 数据库数据卷（本地 Docker 用）
+mysql-data/
+
+# AI 出图的原始导出素材（体积大，保留在本地即可）
+_stitch_raw/
+stitch_/
+
+# 原型的历史快照副本（当前版本以 10.26/ 下的为准）
+第三只眼-高保真原型-v1.0-20261022/

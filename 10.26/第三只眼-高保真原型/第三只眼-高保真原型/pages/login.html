@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="第三只眼登录与注册：师范生智能学习、课堂观察与 AI 评教案训练平台。"
+    />
+    <title>登录 · 第三只眼</title>
+    <link rel="icon" href="../assets/img/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+  <body
+    data-root=".."
+    data-page="login"
+    data-layout="bare"
+    class="workspace no-sidebar"
+  >
+    <main id="main-content" class="ws-main" style="padding-top: 44px">
+      <div class="auth-grid">
+        <!-- 品牌区 -->
+        <section class="panel auth-brand" aria-labelledby="brand-title">
+          <div
+            class="login-float"
+            aria-hidden="true"
+            style="
+              position: absolute;
+              width: 320px;
+              height: 320px;
+              border-radius: 50%;
+              right: -110px;
+              top: -120px;
+              background: #ffffff12;
+            "
+          ></div>
+          <div
+            class="login-float"
+            aria-hidden="true"
+            style="
+              position: absolute;
+              width: 260px;
+              height: 260px;
+              border-radius: 50%;
+              left: -110px;
+              bottom: -110px;
+              background: #ffffff0d;
+              animation-duration: 7.5s;
+              animation-delay: -2.8s;
+            "
+          ></div>
+
+          <div style="position: relative">
+            <a
+              href="home.html"
+              style="display: flex; align-items: center; gap: 10px; color: #fff"
+            >
+              <span
+                style="
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 12px;
+                  background: #ffffff1f;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <span class="material-symbols-outlined" style="font-size: 24px"
+                  >visibility</span
+                >
+              </span>
+              <span
+                style="display: flex; flex-direction: column; line-height: 1.4"
+              >
+                <b style="font-size: 18px">第三只眼</b>
+                <small style="font-size: 11px; color: #ffffffb3"
+                  >师范生智能学习与教学能力训练平台</small
+                >
+              </span>
+            </a>
+          </div>
+
+          <div style="position: relative; max-width: 420px">
+            <span class="eyebrow" style="color: #bfd8d6; letter-spacing: 1.6px"
+              >OBSERVE · REASON · ARTICULATE</span
+            >
+            <h1
+              id="brand-title"
+              style="
+                margin-top: 10px;
+                font-size: 30px;
+                line-height: 1.45;
+                font-weight: 700;
+                color: #fff;
+              "
+            >
+              观察他人的课，<br />打磨自己的教案。
+            </h1>
+            <p style="margin-top: 12px; color: #ffffffc2; font-size: 12px">
+              用时间戳证据链和六维评价框架，让教学成长有据可依、修改有迹可循。
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+                margin-top: 22px;
+              "
+            >
+              <div
+                style="
+                  background: #ffffff12;
+                  border: 1px solid #ffffff1f;
+                  border-radius: 12px;
+                  padding: 12px;
+                "
+              >
+                <b class="tabular" style="font-size: 20px; display: block"
+                  >72</b
+                >
+                <small style="font-size: 10px; color: #ffffffa6"
+                  >观察注意</small
+                >
+              </div>
+              <div
+                style="
+                  background: #ffffff12;
+                  border: 1px solid #ffffff1f;
+                  border-radius: 12px;
+                  padding: 12px;
+                "
+              >
+                <b class="tabular" style="font-size: 20px; display: block"
+                  >0.68</b
+                >
+                <small style="font-size: 10px; color: #ffffffa6"
+                  >标注一致性</small
+                >
+              </div>
+              <div
+                style="
+                  background: #ffffff12;
+                  border: 1px solid #ffffff1f;
+                  border-radius: 12px;
+                  padding: 12px;
+                "
+              >
+                <b class="tabular" style="font-size: 20px; display: block"
+                  >86.7</b
+                >
+                <small style="font-size: 10px; color: #ffffffa6"
+                  >教案示例分</small
+                >
+              </div>
+            </div>
+            <p
+              style="
+                margin-top: 12px;
+                font-size: 10px;
+                color: #ffffff80;
+                line-height: 1.7;
+              "
+            >
+              以上数值为示例数据，仅用于展示报告形态，不代表真实评价结论。
+            </p>
+          </div>
+
+          <p
+            style="
+              position: relative;
+              font-size: 10px;
+              color: #ffffff8c;
+              line-height: 1.8;
+            "
+          >
+            © 2026 第三只眼 · 国家级教师教育实验教学示范中心技术支持
+          </p>
+        </section>
+
+        <!-- 表单区 -->
+        <section
+          class="panel"
+          aria-labelledby="formTitle"
+          style="padding: 30px"
+        >
+          <span class="eyebrow">ACCOUNT</span>
+          <h2 id="formTitle" style="margin-top: 6px; font-size: 22px">
+            欢迎回来
+          </h2>
+          <p
+            id="formSubtitle"
+            class="muted"
+            style="margin-top: 4px; font-size: 11px"
+          >
+            登录后继续你的课堂观察与 AI 评教案训练。
+          </p>
+
+          <div
+            class="pick-row"
+            role="tablist"
+            aria-label="登录或注册"
+            style="margin-top: 18px"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              id="tabLogin"
+              class="pick is-on"
+              style="flex: 1; justify-content: center"
+            >
+              登录
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              id="tabRegister"
+              class="pick"
+              style="flex: 1; justify-content: center"
+            >
+              注册
+            </button>
+          </div>
+
+          <form
+            id="authForm"
+            class="stack-sm"
+            style="margin-top: 18px"
+            novalidate
+          >
+            <div id="nicknameField" class="field" hidden>
+              <label class="field-label" for="nickname">昵称</label>
+              <input
+                id="nickname"
+                type="text"
+                autocomplete="nickname"
+                placeholder="在平台内显示的名字"
+              />
+            </div>
+            <div class="field">
+              <label class="field-label" for="email">邮箱</label>
+              <input
+                id="email"
+                type="email"
+                autocomplete="email"
+                placeholder="name@example.com"
+                value="linsiqi@example.com"
+              />
+            </div>
+            <div class="field">
+              <label class="field-label" for="password">密码</label>
+              <input
+                id="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="至少 8 位字符"
+                value="demo1234"
+              />
+            </div>
+            <div id="confirmField" class="field" hidden>
+              <label class="field-label" for="confirm">确认密码</label>
+              <input
+                id="confirm"
+                type="password"
+                autocomplete="new-password"
+                placeholder="再次输入密码"
+              />
+            </div>
+
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                font-size: 11px;
+                color: #5a6f7d;
+              "
+            >
+              <label style="display: flex; align-items: center; gap: 6px">
+                <input
+                  type="checkbox"
+                  checked
+                  style="width: 14px; height: 14px"
+                />
+                记住我
+              </label>
+              <a id="forgot" href="#forgot" style="color: #426278"
+                >忘记密码？</a
+              >
+            </div>
+
+            <button
+              type="submit"
+              id="submitBtn"
+              class="btn-primary"
+              style="width: 100%"
+            >
+              登录
+            </button>
+            <p id="errorText" class="notice warn" role="alert" hidden></p>
+          </form>
+
+          <p
+            style="
+              margin-top: 16px;
+              text-align: center;
+              font-size: 10px;
+              color: #7b8b97;
+              line-height: 1.8;
+            "
+          >
+            演示账号已预填，直接登录即可浏览原型 ·
+            <a href="home.html" style="color: #426278">免登录进入</a>
+          </p>
+        </section>
+      </div>
+
+      <p class="ws-note">
+        原型演示：登录与注册不连接真实后端，不收集或上传任何账号信息。
+      </p>
+    </main>
+
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/login.js"></script>
+    <script src="../assets/js/motion.js"></script>
+  </body>
+</html>

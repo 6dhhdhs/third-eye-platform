@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第三只眼 · 首页学习工作台</title>
+  <meta name="description" content="第三只眼——师范生智能学习与教学能力训练平台。P-03 首页学习工作台（含每日学习打卡）前端演示原型。">
+  <!-- 内联 SVG 站点图标：不引用外部图片，保证离线可用 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%238FAFC8'/><path d='M5 16s4.6-6.5 11-6.5S27 16 27 16s-4.6 6.5-11 6.5S5 16 5 16Z' fill='none' stroke='%23253B4A' stroke-width='2.4' stroke-linejoin='round'/><circle cx='16' cy='16' r='3.4' fill='%23253B4A'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 键盘用户跳过导航 -->
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<!-- ========== 顶部导航（PRD 7.3 / 8.1） ========== -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="logo" href="#" aria-label="第三只眼 首页">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
+          <path d="M2 16s5.4-8 14-8 14 8 14 8-5.4 8-14 8-14-8-14-8Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="16" cy="16" r="4.5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="16" r="1.6" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <strong>第三只眼</strong>
+        <em>师范生智能学习与教学能力训练平台</em>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" type="button"
+            aria-expanded="false" aria-controls="main-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="sr-only">展开导航菜单</span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="主导航">
+      <ul>
+        <li><a href="#" class="nav-link is-current" aria-current="page">首页</a></li>
+        <li><a href="#" class="nav-link" data-demo-page="课程学习">课程学习</a></li>
+        <li><a href="#" class="nav-link" data-demo-page="课堂观察">课堂观察</a></li>
+        <li><a href="#" class="nav-link" data-demo-page="AI说课实训">AI说课实训</a></li>
+        <li><a href="#" class="nav-link" data-demo-page="个人中心">个人中心</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-user" id="header-user"><!-- 由 script.js 渲染登录态 --></div>
+
+  </div>
+</header>
+
+<main id="main" class="container">
+
+  <!-- ========== 欢迎区（PRD 8.1） ========== -->
+  <section class="welcome" aria-labelledby="welcome-title">
+    <h1 id="welcome-title" class="welcome-title">
+      你好，<span id="welcome-name">欢迎回来</span>
+    </h1>
+    <p class="welcome-sub">观察他人的课，练习自己的课，让教学成长有据可依。</p>
+  </section>
+
+  <!-- ========== 主分栏 ========== -->
+  <div class="dashboard">
+
+    <!-- 左：继续学习 -->
+    <section class="card card-continue" id="continue-card" aria-labelledby="continue-title">
+      <div class="card-head">
+        <h2 class="card-title" id="continue-title">
+          <svg class="ico" viewBox="0 0 20 20" aria-hidden="true" fill="none">
+            <path d="M3 4.5A1.5 1.5 0 0 1 4.5 3H9v14H4.5A1.5 1.5 0 0 1 3 15.5v-11Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M17 4.5A1.5 1.5 0 0 0 15.5 3H11v14h4.5A1.5 1.5 0 0 0 17 15.5v-11Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          继续学习
+        </h2>
+      </div>
+      <div class="card-body" id="continue-body">
+        <!-- 由 script.js 按 加载态 / 初始态 / 正常态 渲染 -->
+      </div>
+    </section>
+
+    <!-- 右：今日学习打卡（核心状态机） -->
+    <section class="card card-checkin" id="checkin-card" aria-labelledby="checkin-title">
+      <div class="card-head">
+        <h2 class="card-title" id="checkin-title">
+          <svg class="ico" viewBox="0 0 20 20" aria-hidden="true" fill="none">
+            <rect x="3" y="4.5" width="14" height="12.5" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M3 8.5h14M7 3v3.5M13 3v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="m7.5 13 2 2 3.5-3.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          今日学习打卡
+        </h2>
+        <span class="badge badge-demo">演示数据</span>
+      </div>
+
+      <div class="card-body">
+
+        <p class="checkin-goal">今日目标：完成一项有效学习任务</p>
+
+        <!-- 模拟有效学习任务（PRD 5.3.3） -->
+        <div class="task-block">
+          <p class="task-label" id="task-label">今天完成的任务（可多选，任一项即获得打卡资格）</p>
+          <ul class="task-list" id="task-list" role="group" aria-labelledby="task-label">
+            <li>
+              <label class="task-item">
+                <input type="checkbox" data-task="course">
+                <span class="task-box" aria-hidden="true"></span>
+                <span class="task-text">
+                  <strong>课程学习</strong>
+                  <em>有效观看满 5 分钟并完成随堂任务</em>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label class="task-item">
+                <input type="checkbox" data-task="observe">
+                <span class="task-box" aria-hidden="true"></span>
+                <span class="task-text">
+                  <strong>课堂观察</strong>
+                  <em>提交一次含事件标注与评课的观察任务</em>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label class="task-item">
+                <input type="checkbox" data-task="speaking">
+                <span class="task-box" aria-hidden="true"></span>
+                <span class="task-text">
+                  <strong>说课训练</strong>
+                  <em>完成一次说课提交并填写自我反思</em>
+                </span>
+              </label>
+            </li>
+          </ul>
+          <p class="task-note">
+            <span aria-hidden="true">ⓘ</span>
+            演示说明：以上为<strong>模拟</strong>学习任务，仅用于触发打卡资格，不代表已实现真实学习行为核验。
+          </p>
+        </div>
+
+        <!-- 状态显示区：五态状态机（PRD 5.3.4） -->
+        <div class="checkin-status" id="checkin-status">
+          <span class="status-icon" id="status-icon" aria-hidden="true"></span>
+          <div class="status-text">
+            <p class="status-title" id="status-title">正在加载…</p>
+            <p class="status-desc" id="status-desc"></p>
+          </div>
+        </div>
+
+        <!-- 操作区：按钮随五态状态机变化，由 script.js 渲染 -->
+        <div class="checkin-actions" id="checkin-actions"></div>
+        <!-- 禁用原因 / 失败原因（PRD 9.2 禁用态要求：说明无法操作的原因） -->
+        <p class="checkin-hint" id="checkin-hint" hidden></p>
+
+        <!-- 统计 -->
+        <dl class="stats">
+          <div class="stat">
+            <dt>连续打卡</dt>
+            <dd><span class="stat-num" id="streak-count">0</span><span class="stat-unit">天</span></dd>
+          </div>
+          <div class="stat">
+            <dt>累计打卡</dt>
+            <dd><span class="stat-num" id="total-count">0</span><span class="stat-unit">天</span></dd>
+          </div>
+        </dl>
+
+        <!-- 最近七日（PRD 8.1 / 10.4 打卡日历） -->
+        <div class="week-block">
+          <p class="week-title" id="week-title">最近七日</p>
+          <ul class="week-calendar" id="week-calendar" aria-labelledby="week-title"></ul>
+          <p class="week-legend">
+            <span class="legend-item"><span class="legend-dot is-done" aria-hidden="true">✓</span>已打卡</span>
+            <span class="legend-item"><span class="legend-dot" aria-hidden="true"></span>未打卡</span>
+            <span class="legend-item"><span class="legend-dot is-today" aria-hidden="true">今</span>今天</span>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========== 平台双入口（PRD 8.1） ========== -->
+  <section class="entries" aria-label="平台核心入口">
+    <a class="entry-card" href="#" data-demo-page="课堂观察工作台">
+      <span class="entry-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+          <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"
+                stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/>
+        </svg>
+      </span>
+      <span class="entry-main">
+        <strong>课堂观察训练</strong>
+        <em>在真实课堂录像上做时间戳标注与评课</em>
+      </span>
+      <span class="entry-cta">进入观察工作台<span aria-hidden="true"> →</span></span>
+    </a>
+
+    <a class="entry-card" href="#" data-demo-page="AI说课实训">
+      <span class="entry-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+          <rect x="3" y="6" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/>
+          <path d="m16 11 5-3v8l-5-3v-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="entry-main">
+        <strong>AI说课实训</strong>
+        <em>上传说课视频，获得五维形成性反馈</em>
+      </span>
+      <span class="entry-cta">上传我的说课视频<span aria-hidden="true"> →</span></span>
+    </a>
+  </section>
+
+  <!-- ========== 为你推荐的课程 ========== -->
+  <section class="section" aria-labelledby="recommend-title">
+    <div class="section-head">
+      <h2 class="section-title" id="recommend-title">为你推荐的课程</h2>
+      <button class="btn btn-text" id="recommend-filter" type="button"
+              aria-pressed="false">只看课堂观察类</button>
+    </div>
+    <div class="course-grid" id="course-grid"></div>
+    <p class="section-note">课程数据为本地演示数据（PRD 11.3），不含真实用户信息。</p>
+  </section>
+
+  <!-- ========== 最近学习记录 ========== -->
+  <section class="section" aria-labelledby="recent-title">
+    <div class="section-head">
+      <h2 class="section-title" id="recent-title">最近学习记录</h2>
+    </div>
+    <div id="recent-body"></div>
+  </section>
+
+</main>
+
+<!-- ========== 页脚：原型边界声明（PRD 12.4 / 13 / 验收 C） ========== -->
+<footer class="site-footer">
+  <div class="container">
+    <p class="footer-line">
+      <strong>原型说明：</strong>本页为课程作业《第三只眼》任务二的前端演示原型（P-03 首页学习工作台）。
+      页面中的课程、进度、打卡与推荐数据<strong>均为本地演示数据</strong>，保存在浏览器 <code>localStorage</code> 中，
+      清除浏览器数据或更换设备后会丢失，不代表正式产品的持久化方案。
+    </p>
+    <p class="footer-line">
+      本原型<strong>不包含</strong>真实账号鉴权、真实视频上传与真实 AI 分析；相关入口点击后仅给出演示提示。
+      正式产品的权限校验、服务端唯一性约束与文件存储方案见 PRD 第 11、13 章。
+    </p>
+    <p class="footer-line footer-meta">第三只眼 · 师范生智能学习与教学能力训练平台 · 教育技术学 2401</p>
+  </div>
+</footer>
+
+<!-- ========== 演示控制台（非正式产品功能，仅用于课堂演示与截图） ========== -->
+<aside class="demo-console" id="demo-console" aria-label="演示控制台">
+  <button class="demo-toggle" id="demo-toggle" type="button"
+          aria-expanded="false" aria-controls="demo-panel">
+    <span aria-hidden="true">⚙</span> 演示控制台
+  </button>
+
+  <div class="demo-panel" id="demo-panel" hidden>
+    <div class="demo-warn">
+      <strong>非正式产品功能</strong>
+      仅供课堂演示与截图使用，用于快速切换界面状态。正式产品不提供此类入口（PRD 5.3.5 不允许补签伪造记录）。
+    </div>
+
+    <fieldset class="demo-group">
+      <legend>登录状态</legend>
+      <div class="demo-row">
+        <button class="btn btn-chip" type="button" data-demo="login-on">已登录</button>
+        <button class="btn btn-chip" type="button" data-demo="login-off">未登录</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="demo-group">
+      <legend>今日学习任务</legend>
+      <div class="demo-row">
+        <button class="btn btn-chip" type="button" data-demo="task-none">全部清除</button>
+        <button class="btn btn-chip" type="button" data-demo="task-one">完成一项</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="demo-group">
+      <legend>今日打卡</legend>
+      <div class="demo-row">
+        <button class="btn btn-chip" type="button" data-demo="checkin-set">标记已打卡</button>
+        <button class="btn btn-chip" type="button" data-demo="checkin-clear">清除今日打卡</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="demo-group">
+      <legend>异常与边界状态</legend>
+      <div class="demo-row">
+        <button class="btn btn-chip" type="button" data-demo="toggle-fail" aria-pressed="false">
+          模拟保存失败：关
+        </button>
+        <button class="btn btn-chip" type="button" data-demo="toggle-nocourse" aria-pressed="false">
+          无进行中课程：关
+        </button>
+        <button class="btn btn-chip" type="button" data-demo="toggle-norecent" aria-pressed="false">
+          最近记录为空：关
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset class="demo-group">
+      <legend>跨天连续计数演示</legend>
+      <div class="demo-row">
+        <button class="btn btn-chip" type="button" data-demo="day-prev">日期 −1 天</button>
+        <button class="btn btn-chip" type="button" data-demo="day-reset">回到今天</button>
+        <button class="btn btn-chip" type="button" data-demo="day-next">日期 +1 天</button>
+      </div>
+      <p class="demo-current">当前演示日期：<strong id="demo-date">—</strong></p>
+    </fieldset>
+
+    <div class="demo-row demo-row-end">
+      <button class="btn btn-secondary" type="button" data-demo="reset">重置全部演示数据</button>
+    </div>
+  </div>
+</aside>
+
+<!-- 轻提示 + 无障碍播报 -->
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="sr-only" aria-live="polite" aria-atomic="true" id="live-region"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
