@@ -1,0 +1,20 @@
+name: third-eye
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: third-eye-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?请在 .env 中设置}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-third_eye}
+      MYSQL_USER: ${MYSQL_USER:-thirdeye}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?请在 .env 中设置}
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
