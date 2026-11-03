@@ -27,14 +27,22 @@
 
 ```
 .
-├── 10.26/                    # 最新一版交付材料
-│   ├── 第三只眼-高保真原型/  # 当前前端原型（Tailwind 静态站点）
-│   ├── 新版prd文档.md
-│   └── _提交截图/
-├── 任务二前端/               # 任务二原生 HTML/CSS/JS 实现
-├── 产品演示页/
-├── 智能学习平台 PRD 需求规范.md
-└── docker-compose.yml        # 本地 MySQL 环境
+├── prototype/            # 当前前端原型（Tailwind 静态站点）
+├── web/
+│   ├── 任务二前端/        # 任务二原生 HTML/CSS/JS 实现
+│   └── 产品演示页/
+├── db/
+│   ├── init.sql          # 建库建表脚本（14 张表）
+│   └── 数据库设计说明.md
+├── docs/
+│   ├── PRD-需求规范V1.md      # 课程 PRD 需求规范
+│   ├── PRD-第三只眼V1.2.md    # 当前版本 PRD
+│   ├── 实验材料/              # 实验三、实验四提交文档
+│   ├── 截图/                  # 提交用界面截图
+│   └── 配色.png
+├── tools/                # 导出、转文档等小脚本
+├── _archive/             # 旧版本、压缩包、原始素材（不入库）
+└── docker-compose.yml    # 本地 MySQL 环境
 ```
 
 ## 本地运行
@@ -42,7 +50,7 @@
 ### 1. 前端原型
 
 ```bash
-cd "10.26/第三只眼-高保真原型/第三只眼-高保真原型"
+cd prototype
 npm install          # 首次
 npm run serve        # 打开 http://localhost:4173
 ```
@@ -61,14 +69,23 @@ docker compose up -d
 | 项 | 值 |
 | --- | --- |
 | 地址 | `127.0.0.1:3306` |
-| 库名 | `third_eye`（见 `.env`） |
-| 用户 / 密码 | 见 `.env` |
+| 库名 | `third_eye` |
+| 用户 | `root`（密码见 `.env`，课程要求与 `db/init.sql` 保持一致） |
 
-进入容器验证：
+首次启动时，`db/init.sql` 会被挂载到 `docker-entrypoint-initdb.d` 自动执行，建好 14 张表。
+数据卷已存在时不会重复执行，需要重建时：
 
 ```bash
-docker exec -it third-eye-mysql mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SHOW DATABASES;"
+docker exec -i third-eye-mysql mysql -uroot -p"$MYSQL_ROOT_PASSWORD" < db/init.sql
 ```
+
+验证：
+
+```bash
+docker exec -it third-eye-mysql mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "USE third_eye; SHOW TABLES;"
+```
+
+数据库结构详见 [db/数据库设计说明.md](db/数据库设计说明.md)。
 
 > `.env` 已在 `.gitignore` 中，密码不会进仓库。
 
