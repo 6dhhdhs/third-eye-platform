@@ -8,8 +8,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?请在 .env 中设置}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-third_eye}
-      MYSQL_USER: ${MYSQL_USER:-thirdeye}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?请在 .env 中设置}
+      MYSQL_USER: ${MYSQL_USER:-}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-}
       TZ: Asia/Shanghai
     ports:
       - "3306:3306"
