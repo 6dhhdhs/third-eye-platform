@@ -28,6 +28,9 @@
           <button type="button" id="editProfile" class="btn-ghost btn-sm">
             <span class="material-symbols-outlined">edit</span>编辑资料
           </button>
+          <button type="button" class="btn-ghost btn-sm" data-logout>
+            <span class="material-symbols-outlined">logout</span>退出登录
+          </button>
           <a class="btn-primary" href="home.html">
             <span class="material-symbols-outlined" style="font-size: 18px"
               >dashboard</span
@@ -62,12 +65,14 @@
                 flex-shrink: 0;
               "
               aria-hidden="true"
-              >林</span
+              data-user-initial
+              >?</span
             >
             <div>
-              <h2 style="font-size: 20px">林思齐</h2>
+              <h2 style="font-size: 20px" data-user-name>同学</h2>
               <p class="muted" style="margin-top: 4px">
-                汉语言文学（师范）2302 班 · 学号 2023020317
+                <span data-user-role>师范生</span> ·
+                <span data-user-email>—</span>
               </p>
               <div class="tags" style="margin-top: 8px">
                 <span class="tag tag-green">
@@ -78,7 +83,7 @@
                 <span class="tag tag-grey"
                   >本月打卡 <b id="monthTotal">—</b> 天</span
                 >
-                <span class="tag tag-grey">示例账号</span>
+                <span class="tag tag-grey" data-user-role>师范生</span>
               </div>
             </div>
           </div>
@@ -378,6 +383,7 @@
 
     <script src="../assets/js/ui.js"></script>
     <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/checkin.js"></script>
     <script src="../assets/js/pages/profile.js"></script>
     <script src="../assets/js/motion.js"></script>

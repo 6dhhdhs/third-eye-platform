@@ -215,12 +215,15 @@
       '<a class="hidden items-center gap-2.5 rounded-lg p-1 transition-colors hover:bg-surface-container-high sm:flex" href="' +
       url("pages/profile.html") +
       '">' +
-      '<span class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-container font-label-lg text-label-lg font-semibold text-on-primary" aria-hidden="true">林</span>' +
+      '<span class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-container font-label-lg text-label-lg font-semibold text-on-primary" aria-hidden="true" data-user-initial>?</span>' +
       '<span class="hidden flex-col leading-tight lg:flex">' +
-      '<span class="font-label-md text-label-md font-semibold text-on-surface">林思齐</span>' +
-      '<span class="font-label-sm text-label-sm text-on-surface-variant">汉语言师范 2302 班</span>' +
+      '<span class="font-label-md text-label-md font-semibold text-on-surface" data-user-name>同学</span>' +
+      '<span class="font-label-sm text-label-sm text-on-surface-variant" data-user-role>师范生</span>' +
       "</span>" +
       "</a>" +
+      '<button type="button" data-logout aria-label="退出登录" title="退出登录" class="rounded-lg p-2 text-on-surface-variant transition-colors hover:bg-surface-container-high">' +
+      '<span class="material-symbols-outlined text-[22px]">logout</span>' +
+      "</button>" +
       '<button id="te-menu-btn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="te-mobile-nav" class="rounded-lg p-2 text-on-surface-variant transition-colors hover:bg-surface-container-high xl:hidden">' +
       '<span class="material-symbols-outlined text-[24px]">menu</span>' +
       "</button>" +
