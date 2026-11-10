@@ -31,6 +31,7 @@
 ├── web/
 │   ├── 任务二前端/        # 任务二原生 HTML/CSS/JS 实现
 │   └── 产品演示页/
+├── backend/              # 后端 API（Express 5 + MySQL + JWT）
 ├── db/
 │   ├── init.sql          # 建库建表脚本（14 张表）
 │   └── 数据库设计说明.md
@@ -56,6 +57,8 @@ npm run serve        # 打开 http://localhost:4173
 ```
 
 改了样式源文件后：`npm run build:css`
+
+> 登录 / 注册已接真实后端：需先按下一节启动 MySQL 与 `backend` API，再用 `http://localhost:4173` 打开页面。只起静态服务而不起后端时，登录会提示「无法连接后端 API」。
 
 ### 2. 数据库
 
@@ -90,6 +93,27 @@ docker exec -it third-eye-mysql mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "USE th
 > `.env` 已在 `.gitignore` 中，密码不会进仓库。
 
 数据落在 `./mysql-data/`，该目录不进仓库。
+
+### 3. 后端 API
+
+已实现登录 / 注册（PRD F-01）。详细接口、错误码与前端接入示例见 [backend/README.md](backend/README.md)。
+
+```bash
+cd backend
+cp .env.example .env     # 首次：确认 DB_PASSWORD 与根目录 .env 一致，并设置 JWT_SECRET
+npm install              # 首次
+npm run seed             # 创建演示账号 linsiqi@example.com / demo1234
+npm run dev              # http://127.0.0.1:3000
+```
+
+验证：
+
+```bash
+curl http://127.0.0.1:3000/api/health
+curl http://127.0.0.1:3000/api/health/db
+```
+
+测试：`npm test`（24 项，不依赖数据库）、`npm run smoke`（需 MySQL 与 API 已启动）。
 
 ## 协作约定
 
